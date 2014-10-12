@@ -414,11 +414,7 @@ p.InfoBlue, li.InfoBlue, div.InfoBlue
 	margin-right:0in;
 	margin-bottom:6.0pt;
 	margin-left:38.25pt;
-	line-height:12.0pt;
-	font-size:10.0pt;
-	font-family:"Times New Roman";
-	color:blue;
-	font-style:italic;}
+	line-height:12.0pt;}
 ol
 	{margin-bottom:0in;}
 ul
@@ -630,80 +626,46 @@ Specification </p>
 <h1><a name="1.                  Introduction">1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Introduction</a></h1>
 
-<p class=InfoBlue>[The introduction of the <b>Software Requirements
-Specification (SRS) </b>should provide an overview of the entire document. It
-should include the purpose, scope, definitions, acronyms, abbreviations,
-references, and overview of the <b>Software Requirements Specification</b>.]</p>
-
-<p class=InfoBlue>[Note: The <b>Software Requirements Specification </b>captures
-the complete software requirements for the system, or a portion of the
-system.&nbsp; Following is a typical <b>Software Requirements Specification</b>
-outline for a project <b>using use-case modeling</b>. This artifact consists of
-a package containing use cases of the use-case model and applicable
-Supplementary Specifications and other supporting information.  For a template of an <b>Software Requirements
-Specification</b> <b>not</b> using use-case modeling, which captures all
-requirements in a single document, with applicable sections inserted from the
-Supplementary Specifications (which would no longer be needed), see
-rup_srs.dot.]</p>
-
-<p class=InfoBlue>[Many different arrangements of a <b>Software Requirements
-Specification </b>are possible.  Refer
-to [IEEE830-1998] for further elaboration of these explanations, as well as other
-options for a <b>Software Requirements Specification</b> organization.]</p>
-
 <h2><a name="1.1               Purpose">1.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Purpose</a></h2>
 
-<p class=InfoBlue>[Specify the purpose of this <b>Software Requirements
-Specification</b>. The <b>Software Requirements Specification</b> should fully
-describe the external behavior of the application or subsystem identified. It
-also describes nonfunctional requirements, design constraints and other factors
-necessary to provide a complete and comprehensive description of the
-requirements for the software.]</p>
-<p>The Software Requirements Specification should describe the external behaviour of the If I Were You App for Android Smartphones. It also describes non-functional requirements.</p>
+<p class=InfoBlue>The Software Requirements Specification should give a detailed description of the Android application
+"If I Were You". This includes a description of the external behaviour of the app as well as 
+ a description of requirements and use-cases. Consequently it should provide the developers of this application with
+ information how it's functions should finally look like.</p>
 <h2><a name="1.2               Scope">1.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Scope</a></h2>
 
-<p class=InfoBlue>[A brief description of the software application that the <b>Software
-Requirements Specification</b> applies to; the feature or other subsystem
-grouping; what Use-case model(s) it is associated with; and anything else that
-is affected or influenced by this document.]</p>
-
-<p>This Software Requirements Specification applies to the native Android Application "If I Were You".</p>
+<p class=InfoBlue>
+This Software Requirements Specification applies to the native Android Application "If I Were You".
+This application is intended to enable users to challenge friends from all over the world with several tasks they will have to do.
+These tasks or challenges are managed in the application. Apart from
+that there are many other functions the users will be able to access (see 2).
+This document describes five Use-Cases for the application which will be finished until December 2014.
+</p>
 
 <h2><a name="1.3               Definitions, Acronyms and Abbreviations">1.3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Definitions, Acronyms and Abbreviations</a></h2>
 
-<p>n/a</p>
+<p class=InfoBlue>n/a</p>
 
 <h2><a name="1.4               References">1.4<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>References</a></h2>
 
-<p class=InfoBlue>[This subsection should provide a complete list of all
-documents referenced elsewhere in the <b>Software Requirements Specification</b>.  Each document should be identified by title,
-report number (if applicable), date, and publishing organization.  Specify the sources from which the
-references can be obtained. This information may be provided by reference to an
-appendix or to another document.]</p>
+<p class=InfoBlue>n/a</p>
 
 <h2><a name="1.5               Overview">1.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Overview</a></h2>
 
-<p class=InfoBlue>[This subsection should describe what the rest of the <b>Software
-Requirements Specification</b> contains and explain how the document is
-organized.]</p>
+<p class=InfoBlue> In section two of this document the idea and the functions of this application will
+be described in detail.
+Furthermore this section will also include a Use-Case diagram and a description of these use cases.
+Afterwards, in section three, specific requirements will be defined and clarified.</p>
 
 <h1><a name="2.                  Overall Description">2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Overall Description</a></h1>
 
-<p class=InfoBlue>[This section of the <b>Software Requirements Specification</b>
-should describe the general factors that affect the product and its
-requirements.  This section does not
-state specific requirements.  Instead,
-it provides a background for those requirements, which are defined in detail in
-<b>Section 3</b>, and makes them easier to understand. Include such items as
-product perspective, product functions, user characteristics, constraints,
-assumptions and dependencies, and requirements subsets.]</p>
-<p>If I Were You is a native Android application to challenge friends or people from all over the world. Such a challenge represents a (funny) task another person will have to do.<br><br>
+<p class=InfoBlue>
 
 Functions:
 <ul>
@@ -713,85 +675,61 @@ Functions:
 <li>Set challenge or group visibility (When marked as private the challenge or group is only visible by the appropriate members. When marked as public everybody who is using the app can see the challenge or group)</li>
 <li>Upload a  proof of a fulfilled task (e.g. a picture or video)</li>
 <li>Look up proposals for possible tasks (provided either by the app itself or by browsing public groups/ challenges)</li>
-</ul><br>
-Dependencies and Assumptions:
-<ul>
-<li>The user needs to have internet access</li>
-<li>The user needs to have an Android phone</li>
-<li>To use the integration with Facebook, a Facebook account is necessary</li>
 </ul>
 </p>
 <h2><a name="2.1               Use-Case Model Survey">2.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Use-Case Model Survey</a></h2>
 
-<p class=InfoBlue> [If using use-case
-modeling, this section contains an overview of the use-case model or the subset
-of the use-case model that is applicable for this subsystem or feature.&nbsp;
-This includes a list of names and brief descriptions of all use cases and
-actors, along with applicable diagrams and relationships.&nbsp; Refer to the <b>Use-Case-Model
-Survey Report</b>, which may be used as an enclosure at this point.]</p>
+<p class=InfoBlue> </p>
+<img src="UseCaseDiagram.jpeg" alt="Grafik">
 
 <h2><a name="2.2               Assumptions and Dependencies">2.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Assumptions and Dependencies</a></h2>
-
-<p class=InfoBlue>[This section describes any key technical feasibility,
-subsystem or component availability, or other project related assumptions on
-which the viability of the software described by this <b>Software Requirements
-Specification</b> may be based.]</p>
+<ul>
+<li>The user needs to have internet access</li>
+<li>The user needs to have an Android phone</li>
+<li>To use the integration with Facebook, a Facebook account is necessary</li>
+</ul>
 
 <h1><a name="3.                  Specific Requirements">3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Specific Requirements</a> </h1>
 
-<p class=InfoBlue>[This section of the <b>Software Requirements Specification</b>
-should contain all the software requirements to a level of detail sufficient to
-enable designers to design a system to satisfy those requirements and testers
-to test that the system satisfies those requirements. &nbsp; When using
-use-case modeling, these requirements are captured in the use cases and the
-applicable supplementary specifications. 
-If use-case modeling is not used, the outline for supplementary specifications
-may be inserted directly into this section.]</p>
+<p class=InfoBlue></p>
 
 <h2><a name="3.1               Use-Case Reports">3.1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Use-Case Reports</a></h2>
 
-<p class=InfoBlue>[In use-case modeling, the use cases often define the
-majority of the functional requirements of the system, along with some
-non-functional requirements.  For each
-use case in the above use-case model, or subset thereof, refer to, or enclose,
-the use-case report in this section. 
-Make sure that each requirement is clearly labeled.]</p>
+<p class=InfoBlue>
+There are three different actors namely an unregistered actor, a registered actor and a user who has already logged into the application.<br>
+The unregistered actor needs to sign for the application to be able to use it. To do so, he has two possible options:
+Firstly, he can register with his e-mail-address and secondly he has the possability to register with his Facebook account
+to be able to use the integration with Facebook of the app.<br>
+A registered actor needs to log into the application. Depending on how he has enrolled he can either log in
+with his e-mail-address or his Facebook account.<br>
+The user already logged into the application can use the different functionalities the application provides:<br>
+One alternative is to look up top challenges which means that he can view a list of challenges which have one of
+the best ratings. These ratings are done by the users which means that the user can also rate a challenge
+that he has looked at.<br>
+Apart from that the user can deal with his own challenges: <br>
+That means that he can view all his past challenges, fulfil or decline a challenge of a friend and create a
+new challenge one of his friends will have to do.<br>
+Finally there is the possibility to maintain contacts. A user can view his contacts, add a contact (who is already
+registered) or invite a friend to use the application.
+
+
+
+</p>
+
 
 <h2><a name="3.2               Supplementary Requirements">3.2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Supplementary Requirements</a> </h2>
 
-<p class=InfoBlue>[Supplementary Specifications capture requirements that are
-not included in the use cases.  The
-specific requirements from the Supplementary Specifications, which are
-applicable to this subsystem or feature, should be included here and refined to
-the necessary level of detail to describe this subsystem or feature.  These may be captured directly in this
-document or referred to as separate Supplementary Specifications, which may be
-used as an enclosure at this point. Make sure that each requirement is clearly
-labeled.]</p>
+<p>tbd</p>
 
 <h1><a name="4.                  Supporting Information">4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>Supporting Information</a></h1>
 
-<p class=InfoBlue>[The supporting information makes the <b>Software
-Requirements Specification</b> easier to use. 
-It includes:</p>
-
-<p class=InfoBlue>•           Table of
-Contents</p>
-
-<p class=InfoBlue>•          Index</p>
-
-<p class=InfoBlue>•          Appendices </p>
-
-<p class=InfoBlue> These may include
-use-case storyboards or user-interface prototypes. When appendices are
-included, the <b>Software Requirements Specification</b> should explicitly
-state whether or not the appendices are to be considered part of the
-requirements.]</p>
+<ps>tbd</p>
 
 </div>
 

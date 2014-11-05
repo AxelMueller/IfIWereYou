@@ -1,0 +1,31 @@
+<resources>
+    
+    <!-- Action Bar Items -->
+    <string name="action_add_contact">Kontakt hinzufügen</string>
+    <string name="action_new_challenge">Neue Challenge</string>
+    <string name="action_settings">Einstellungen</string>
+    
+    <!-- Activity Names -->
+    <string name="title_add_contact">Kontakt hinzufügen</string>
+    <string name="title_new_challenge">Neue Challenge</string>
+
+    <!-- Challenges Master View -->
+    <string name="challenges_master_no_challenges">Du hast im Moment keine Challenges</string>
+    
+    <!-- Highscore Master View -->
+    <string name="highscore_master_no_entries">Aktuell ist keine Highscore Liste verfügbar</string>
+    
+    <!-- Top Challenges Master View -->
+    <string name="top_challenges_master_no_entries">Aktuell ist keine Liste mit den besten Challenges verfügbar</string>
+    
+    <!-- New Challenge -->
+    <string name="new_challenge_no_contacts">Du kannst nur Deine eigenen Kontakte zu einer Challenge herausfordern, leider hast Du im Moment noch keine Kontakte</string>
+    
+    <!-- Add Contact -->
+    <string name="add_contact_message">Bitte gib die E-Mail Adresse der Person ein, die Du als Kontakt hinzufügen möchtest:</string>
+    <string name="add_contact_email_label">E-Mail</string>
+    <string name="add_contact_add_button_label">Hinzufügen</string>
+    <string name="add_contact_email_not_valid_message">Die eingegebene E-Mail Adresse ist ungültig.</string>
+    <string name="add_contact_fail_message">Es gibt keinen Benutzer mit der E-Mail Adresse %1$s.</string>
+    
+</resources>

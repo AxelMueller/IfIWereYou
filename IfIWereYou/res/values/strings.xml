@@ -1,6 +1,42 @@
 <resources>
+    <!-- Info on placeholders: http://www.piwai.info/android-string-placeholders/ -->
 
-    <string name="app_name">If I Were You</string>
+	<!-- Language codes of languages where the string is not translated to as comment after each string. -->
+    <string name="app_name">If I Were You</string> <!-- de -->
     <string name="facebook_app_id">1543123995900304</string>
+    
+    <!-- Page Titles (Currently not used) NOT TRANSLATED-->
+    <string name="feedPageTitle">Feed</string>
+    <string name="challangesPageTitle">Challanges</string>
+    <string name="toplistPageTitle">Top List</string>
+    <string name="highscorePageTitle">Highscore</string>
+    
+    <!-- Action Bar Items -->
+    <string name="action_add_contact">Add Contact</string>
+    <string name="action_new_challenge">New Challenge</string>
+    <string name="action_settings">Settings</string>
+    
+    <!-- Activity Names -->
+    <string name="title_add_contact">Add Contact</string>
+    <string name="title_new_challenge">New Challenge</string>
 
+    <!-- Challenges Master View -->
+    <string name="challenges_master_no_challenges">You have currently no challenges</string>
+    
+    <!-- Highscore Master View -->
+    <string name="highscore_master_no_entries">There is currently no highscore list available</string>
+    
+    <!-- Top Challenges Master View -->
+    <string name="top_challenges_master_no_entries">There is currently no top challenges list available</string>
+    
+    <!-- New Challenge -->
+    <string name="new_challenge_no_contacts">You can only start a new challenge with a contact, unfortunately you don\'t have any contacts yet</string>
+    
+    <!-- Add Contact -->
+    <string name="add_contact_message">Please enter the email address of the contact you want to add:</string>
+    <string name="add_contact_email_label">Email</string>
+    <string name="add_contact_add_button_label">Add</string>
+    <string name="add_contact_email_not_valid_message">The email address you entered is not valid.</string>
+    <string name="add_contact_fail_message">A user with the email address %1$s does not exist.</string>
+    
 </resources>

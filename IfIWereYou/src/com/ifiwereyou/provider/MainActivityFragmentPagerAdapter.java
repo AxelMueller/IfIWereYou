@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.ifiwereyou.fragments.ChallengesMasterFragment;
-import com.ifiwereyou.fragments.HighScoreFragment;
 import com.ifiwereyou.fragments.TopListFragment;
 
 public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
@@ -24,8 +23,8 @@ public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
 			return new ChallengesMasterFragment();
 		case 1:
 			return new TopListFragment();
-		case 2:
-			return new HighScoreFragment();
+			// case 2:
+			// return new HighScoreFragment();
 		}
 		return null;
 	}
@@ -33,7 +32,7 @@ public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 3;
+		return 2;
 	}
 
 	@Override
@@ -46,8 +45,8 @@ public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
 			return ChallengesMasterFragment.pageTitle;
 		case 1:
 			return TopListFragment.pageTitle;
-		case 2:
-			return HighScoreFragment.pageTitle;
+			// case 2:
+			// return HighScoreFragment.pageTitle;
 		}
 		return null;
 	}

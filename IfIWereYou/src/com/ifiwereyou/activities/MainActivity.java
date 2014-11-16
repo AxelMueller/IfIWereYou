@@ -6,6 +6,9 @@ package com.ifiwereyou.activities;
 
 // Navigation implemented with: http://developer.android.com/training/implementing-navigation/lateral.html
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.AlertDialog;
@@ -96,6 +99,25 @@ public class MainActivity extends FragmentActivity {
 			actionBar.addTab(actionBar.newTab()
 					.setText(mPagerAdapter.getPageTitle(i))
 					.setTabListener(tabListener));
+		}
+
+		try {
+			Method setHasEmbeddedTabsMethod = actionBar.getClass()
+					.getDeclaredMethod("setHasEmbeddedTabs", boolean.class);
+			setHasEmbeddedTabsMethod.setAccessible(true);
+			setHasEmbeddedTabsMethod.invoke(actionBar, false);
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

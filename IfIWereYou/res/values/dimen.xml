@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="challenges_master_row_marginStart">5dp</dimen>
+</resources>

@@ -8,7 +8,9 @@ package com.ifiwereyou.activities;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.facebook.Session;
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.User;
 import com.ifiwereyou.provider.MainActivityFragmentPagerAdapter;
@@ -118,6 +121,36 @@ public class MainActivity extends FragmentActivity {
 			startActivityForResult(intent, REQUEST_NEW_CONTACT);
 			return true;
 		case R.id.action_settings:
+			/* Test!!! */
+			final Session openSession = Session.getActiveSession();
+			if (openSession != null) {
+				String logout = getResources().getString(
+						R.string.com_facebook_loginview_log_out_action);
+				String cancel = getResources().getString(
+						R.string.com_facebook_loginview_cancel_action);
+				String message;
+
+				message = "Axel Müller";
+
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setMessage(message)
+						.setCancelable(true)
+						.setPositiveButton(logout,
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int which) {
+										openSession
+												.closeAndClearTokenInformation();
+										Intent intent = new Intent(
+												MainActivity.this,
+												LoginScreenActivity.class);
+										startActivity(intent);
+									}
+								}).setNegativeButton(cancel, null);
+				builder.create().show();
+			}
+			/* Test!!!! */
+
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

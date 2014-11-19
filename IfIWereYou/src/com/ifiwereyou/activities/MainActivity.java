@@ -143,19 +143,17 @@ public class MainActivity extends FragmentActivity {
 			startActivityForResult(intent, REQUEST_NEW_CONTACT);
 			return true;
 		case R.id.action_settings:
-			/* Test!!! */
+			return true;
+		case R.id.facebook_logout:
 			final Session openSession = Session.getActiveSession();
 			if (openSession != null) {
 				String logout = getResources().getString(
 						R.string.com_facebook_loginview_log_out_action);
 				String cancel = getResources().getString(
 						R.string.com_facebook_loginview_cancel_action);
-				String message;
-
-				message = "Axel Müller";
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage(message)
+				builder.setMessage("Do you really want to log out?")
 						.setCancelable(true)
 						.setPositiveButton(logout,
 								new DialogInterface.OnClickListener() {
@@ -163,17 +161,14 @@ public class MainActivity extends FragmentActivity {
 											int which) {
 										openSession
 												.closeAndClearTokenInformation();
-										Intent intent = new Intent(
+										Intent logoutIntent = new Intent(
 												MainActivity.this,
 												LoginScreenActivity.class);
-										startActivity(intent);
+										startActivity(logoutIntent);
 									}
 								}).setNegativeButton(cancel, null);
 				builder.create().show();
 			}
-			/* Test!!!! */
-
-			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

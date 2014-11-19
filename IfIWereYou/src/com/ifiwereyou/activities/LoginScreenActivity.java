@@ -5,7 +5,6 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -55,9 +54,6 @@ public class LoginScreenActivity extends Activity {
 					MainActivity.class);
 			startActivity(intent);
 			finish();
-			Log.i(TAG, "Logged in...");
-		} else if (state.isClosed()) {
-			Log.i(TAG, "Logged out...");
 		}
 	}
 

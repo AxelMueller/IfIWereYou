@@ -16,5 +16,8 @@
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
           android:showAsAction="never" />
+    <item android:id="@+id/facebook_logout"
+          android:title="@string/facebook_logout"
+          android:showAsAction="never" />
 
 </menu>

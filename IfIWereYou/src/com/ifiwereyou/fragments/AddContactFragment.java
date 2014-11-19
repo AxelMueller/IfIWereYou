@@ -19,6 +19,7 @@ public class AddContactFragment extends Fragment {
 	Button addButton;
 
 	public AddContactFragment() {
+
 	}
 
 	@Override

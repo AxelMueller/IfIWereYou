@@ -38,5 +38,6 @@
     <string name="add_contact_add_button_label">Add</string>
     <string name="add_contact_email_not_valid_message">The email address you entered is not valid.</string>
     <string name="add_contact_fail_message">A user with the email address %1$s does not exist.</string>
+    <string name="facebook_logout">Logout</string>
     
 </resources>

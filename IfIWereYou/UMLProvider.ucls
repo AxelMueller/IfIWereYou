@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.7" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.ifiwereyou.provider.HighscoreAdapter.ViewHolder" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/HighscoreAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1174" y="478"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.ifiwereyou.provider.ToplistAdapter.ViewHolder" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/ToplistAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="254" y="487"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.ifiwereyou.provider.MainActivityFragmentPagerAdapter" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/MainActivityFragmentPagerAdapter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="260" y="136"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.ifiwereyou.provider.ToplistAdapter" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/ToplistAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="252" y="318"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.ifiwereyou.provider.ChallengeFlowAdapter.ViewHolder" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/ChallengeFlowAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="597" y="458"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.ifiwereyou.provider.ContactListAdapter.ViewHolder" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/ContactListAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="910" y="471"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.ifiwereyou.provider.HighscoreAdapter" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/HighscoreAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1171" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.ifiwereyou.provider.ContactListAdapter" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/ContactListAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="908" y="139"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.ifiwereyou.provider.ChallengeFlowAdapter" project="IfIWereYou" 
+    file="/IfIWereYou/src/com/ifiwereyou/provider/ChallengeFlowAdapter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="593" y="139"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <nesting id="10">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </nesting>  
+  <nesting id="11">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </nesting>  
+  <nesting id="12">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
+  </nesting>  
+  <nesting id="13">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

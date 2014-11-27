@@ -11,24 +11,24 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.Contact;
+import com.ifiwereyou.objects.User;
 import com.ifiwereyou.utils.ContactComperator;
 
-public class ContactListAdapter extends ArrayAdapter<Contact> {
+public class ContactListAdapter extends ArrayAdapter<User> {
 
 	private final Activity context;
-	private List<Contact> contacts;
+	private List<User> contacts;
 
 	static class ViewHolder {
 		public TextView contactNameTextView;
 	}
 
-	public ContactListAdapter(Activity context, List<Contact> contacts) {
+	public ContactListAdapter(Activity context, List<User> contacts) {
 		super(context, R.layout.row_contact_list, contacts);
 		this.context = context;
 		this.contacts = contacts;
 		Collections.sort(this.contacts,
-				new ContactComperator(Contact.FIRSTNAME));
+				new ContactComperator(User.FIRSTNAME));
 	}
 
 	@Override

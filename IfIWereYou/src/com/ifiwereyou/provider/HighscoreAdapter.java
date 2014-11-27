@@ -11,23 +11,23 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.Contact;
+import com.ifiwereyou.objects.User;
 import com.ifiwereyou.utils.ContactComperator;
 
-public class HighscoreAdapter extends ArrayAdapter<Contact> {
+public class HighscoreAdapter extends ArrayAdapter<User> {
 
 	private final Activity context;
-	private List<Contact> contacts;
+	private List<User> contacts;
 
 	static class ViewHolder {
 		public TextView nameTextView;
 	}
 
-	public HighscoreAdapter(Activity context, List<Contact> challenges) {
+	public HighscoreAdapter(Activity context, List<User> challenges) {
 		super(context, android.R.layout.simple_list_item_1, challenges);
 		this.context = context;
 		this.contacts = challenges;
-		Collections.sort(this.contacts, new ContactComperator(Contact.SCORE));
+		Collections.sort(this.contacts, new ContactComperator(User.SCORE));
 	}
 
 	@Override

@@ -2,9 +2,9 @@ package com.ifiwereyou.utils;
 
 import java.util.Comparator;
 
-import com.ifiwereyou.objects.Contact;
+import com.ifiwereyou.objects.User;
 
-public class ContactComperator implements Comparator<Contact> {
+public class ContactComperator implements Comparator<User> {
 
 	private int order;
 
@@ -13,13 +13,13 @@ public class ContactComperator implements Comparator<Contact> {
 	}
 
 	@Override
-	public int compare(Contact contact1, Contact contact2) {
+	public int compare(User contact1, User contact2) {
 		switch (order) {
-		case Contact.FIRSTNAME:
+		case User.FIRSTNAME:
 			return contact1.getFirstName().compareTo(contact2.getFirstName());
-		case Contact.LASTNAME:
+		case User.LASTNAME:
 			return contact1.getLastName().compareTo(contact2.getLastName());
-		case Contact.SCORE:
+		case User.SCORE:
 			return contact1.getScore() < contact2.getScore() ? -1 : (contact1
 					.getScore() == contact2.getScore() ? 0 : 1);
 			// Code from Integer.compare. This code had to be copied, because it

@@ -8,24 +8,24 @@ public class SessionData {
 	// This class could also be realized as subclass from Contact
 
 	private static SessionData instance;
-	private Contact user;
-	private List<Contact> contactList;
+	private User user;
+	private List<User> contactList;
 	private List<ChallengeFlow> challengeFlows;
 	private List<Challenge> topChallengesList;
-	private List<Contact> highscoreList;
+	private List<User> highscoreList;
 
 	private SessionData(int userID, String firstname, String lastname) {
 		super();
-		this.user = new Contact(userID, firstname, lastname);
-		contactList = new ArrayList<Contact>();
+		this.user = new User(userID, firstname, lastname);
+		contactList = new ArrayList<User>();
 		challengeFlows = new ArrayList<ChallengeFlow>();
 		topChallengesList = new ArrayList<Challenge>();
-		highscoreList = new ArrayList<Contact>();
+		highscoreList = new ArrayList<User>();
 	}
 
-	public boolean addContact(Contact contact) {
+	public boolean addContact(User contact) {
 		int contactID = contact.getContactID();
-		for (Contact c : contactList) {
+		for (User c : contactList) {
 			if (contactID == c.getContactID()) {
 				if (contact.getFirstName().equals(c.getFirstName())
 						&& contact.getLastName().equals(c.getLastName()))
@@ -38,9 +38,9 @@ public class SessionData {
 		return contactList.add(contact);
 	}
 
-	public boolean addAllContacts(List<Contact> contacts) {
+	public boolean addAllContacts(List<User> contacts) {
 		boolean changeInContactList = false;
-		for (Contact c : contacts) {
+		for (User c : contacts) {
 			if (addContact(c))
 				changeInContactList = true;
 		}
@@ -64,11 +64,11 @@ public class SessionData {
 		return null;
 	}
 
-	public Contact getUserAsContact() {
+	public User getUserAsContact() {
 		return user;
 	}
 
-	public List<Contact> getContactList() {
+	public List<User> getContactList() {
 		return contactList;
 	}
 
@@ -80,7 +80,7 @@ public class SessionData {
 		return topChallengesList;
 	}
 
-	public List<Contact> getHighscoreList() {
+	public List<User> getHighscoreList() {
 		return highscoreList;
 	}
 
@@ -93,21 +93,21 @@ public class SessionData {
 
 	public static SessionData getDemoUser() {
 		SessionData user = new SessionData(0, "Max", "Mustermann");
-		Contact hendrik = new Contact(1, "Hendrik", "Böwer");
-		Contact axel = new Contact(2, "Axel", "Müller");
-		Contact simon = new Contact(3, "Simon", "Tenbeitel");
-		Contact christopher = new Contact(4, "Christopher", "Fries");
-		Contact christian = new Contact(5, "Christian", "Düfel");
-		Contact nils = new Contact(6, "Nils", "Hirsekorn");
-		Contact niels = new Contact(7, "Niels", "Becker");
-		Contact pascal = new Contact(8, "Pascal", "Reitermann");
-		Contact david = new Contact(9, "David", "Ehlen");
-		Contact dustin = new Contact(10, "Dustin", "Hoffner");
-		Contact heinrich = new Contact(11, "Heinrich", "Braun");
-		Contact juergen = new Contact(12, "Jürgen", "Röthig");
-		Contact markus = new Contact(13, "Markus", "Reischl");
-		Contact daniel = new Contact(14, "Daniel", "Gerdes");
-		Contact geraldine = new Contact(15, "Geraldine", "Beer");
+		User hendrik = new User(1, "Hendrik", "Böwer");
+		User axel = new User(2, "Axel", "Müller");
+		User simon = new User(3, "Simon", "Tenbeitel");
+		User christopher = new User(4, "Christopher", "Fries");
+		User christian = new User(5, "Christian", "Düfel");
+		User nils = new User(6, "Nils", "Hirsekorn");
+		User niels = new User(7, "Niels", "Becker");
+		User pascal = new User(8, "Pascal", "Reitermann");
+		User david = new User(9, "David", "Ehlen");
+		User dustin = new User(10, "Dustin", "Hoffner");
+		User heinrich = new User(11, "Heinrich", "Braun");
+		User juergen = new User(12, "Jürgen", "Röthig");
+		User markus = new User(13, "Markus", "Reischl");
+		User daniel = new User(14, "Daniel", "Gerdes");
+		User geraldine = new User(15, "Geraldine", "Beer");
 		user.addContact(hendrik);
 		user.addContact(axel);
 		user.addContact(simon);

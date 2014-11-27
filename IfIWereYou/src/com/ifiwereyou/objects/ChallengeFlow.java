@@ -10,19 +10,19 @@ public class ChallengeFlow {
 
 	public static final int DATE = 0;
 
-	private Contact challenger;
+	private User challenger;
 	private List<Challenge> challenges;
 
 	public ChallengeFlow(int challangerID, String challengerFirstName,
 			String challengerLastName) {
-		this(new Contact(challangerID, challengerFirstName, challengerLastName));
+		this(new User(challangerID, challengerFirstName, challengerLastName));
 	}
 
-	public ChallengeFlow(Contact challenger) {
+	public ChallengeFlow(User challenger) {
 		this(challenger, new ArrayList<Challenge>());
 	}
 
-	public ChallengeFlow(Contact challenger, List<Challenge> challenges) {
+	public ChallengeFlow(User challenger, List<Challenge> challenges) {
 		super();
 		this.challenger = challenger;
 		this.challenges = challenges;
@@ -36,7 +36,7 @@ public class ChallengeFlow {
 
 	// TODO: Delete Challenge
 
-	public Contact getChallenger() {
+	public User getChallenger() {
 		return challenger;
 	}
 

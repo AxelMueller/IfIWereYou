@@ -1,6 +1,6 @@
 package com.ifiwereyou.objects;
 
-public class Contact {
+public class User {
 
 	public static final int FIRSTNAME = 0;
 	public static final int LASTNAME = 1;
@@ -11,7 +11,7 @@ public class Contact {
 	private String lastName;
 	private int score;
 
-	public Contact(int contactID, String firstName, String lastName) {
+	public User(int contactID, String firstName, String lastName) {
 		super();
 		this.contactID = contactID;
 		this.firstName = firstName;

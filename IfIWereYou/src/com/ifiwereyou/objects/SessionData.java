@@ -3,18 +3,18 @@ package com.ifiwereyou.objects;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class SessionData {
 
 	// This class could also be realized as subclass from Contact
 
-	private static User instance;
+	private static SessionData instance;
 	private Contact user;
 	private List<Contact> contactList;
 	private List<ChallengeFlow> challengeFlows;
 	private List<Challenge> topChallengesList;
 	private List<Contact> highscoreList;
 
-	private User(int userID, String firstname, String lastname) {
+	private SessionData(int userID, String firstname, String lastname) {
 		super();
 		this.user = new Contact(userID, firstname, lastname);
 		contactList = new ArrayList<Contact>();
@@ -84,15 +84,15 @@ public class User {
 		return highscoreList;
 	}
 
-	public static User getInstance() {
+	public static SessionData getInstance() {
 		// TODO: Collect data from Database
 		// if (instance == null)
 		// instance = new Profile(userID, lastname, lastname);
 		return instance;
 	}
 
-	public static User getDemoUser() {
-		User user = new User(0, "Max", "Mustermann");
+	public static SessionData getDemoUser() {
+		SessionData user = new SessionData(0, "Max", "Mustermann");
 		Contact hendrik = new Contact(1, "Hendrik", "Böwer");
 		Contact axel = new Contact(2, "Axel", "Müller");
 		Contact simon = new Contact(3, "Simon", "Tenbeitel");

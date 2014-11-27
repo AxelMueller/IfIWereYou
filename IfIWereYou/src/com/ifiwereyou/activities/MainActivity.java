@@ -26,7 +26,7 @@ import android.view.MenuItem;
 
 import com.facebook.Session;
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.User;
+import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.provider.MainActivityFragmentPagerAdapter;
 
 public class MainActivity extends FragmentActivity {
@@ -36,7 +36,7 @@ public class MainActivity extends FragmentActivity {
 
 	FragmentPagerAdapter mPagerAdapter;
 	ViewPager mViewPager;
-	User profile;
+	SessionData profile;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

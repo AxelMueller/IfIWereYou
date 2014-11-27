@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.ChallengeFlow;
-import com.ifiwereyou.objects.User;
+import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.provider.ChallengeFlowAdapter;
 
 public class ChallengesMasterFragment extends ListFragment {
@@ -18,7 +18,7 @@ public class ChallengesMasterFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		List<ChallengeFlow> challengeFlows = User.getDemoUser()
+		List<ChallengeFlow> challengeFlows = SessionData.getDemoUser()
 				.getChallengeFlows();
 		ArrayAdapter<ChallengeFlow> mAdapter = new ChallengeFlowAdapter(
 				getActivity(), challengeFlows);

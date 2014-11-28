@@ -79,9 +79,11 @@ public class ServerFunctions {
 	 * @param name
 	 * @param email
 	 * @param password
+	 * @throws Exception
 	 * */
 	public boolean registerUser(Context context, String firstname,
-			String lastname, String email, String password, String phoneNumber) {
+			String lastname, String email, String password, String phoneNumber)
+			throws Exception {
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("tag", register_tag));
@@ -96,7 +98,10 @@ public class ServerFunctions {
 		try {
 			if (json.getString(KEY_SUCCESS) == null)
 				return false;
-			else {
+			if (json.getString(KEY_ERROR) != null
+					&& json.getString(KEY_ERROR).equals("2")) {
+				throw new Exception("User already existed");
+			} else {
 				JSONObject json_user = json.getJSONObject("user");
 				User user = new User(json.getInt(KEY_ID),
 						json_user.getString(KEY_FIRSTNAME),

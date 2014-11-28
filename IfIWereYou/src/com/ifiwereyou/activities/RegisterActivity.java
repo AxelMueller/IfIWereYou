@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.provider.ServerFunctions;
@@ -50,14 +51,26 @@ public class RegisterActivity extends Activity {
 		String lastname = registerLastName.getText().toString();
 		String email = registerMail.getText().toString();
 		String password = registerPassword.getText().toString();
-		if (!password.equals(registerPasswordConfirm.getText().toString()))
+		if (!password.equals(registerPasswordConfirm.getText().toString())) {
+			Toast.makeText(this, R.string.passwordNoMatch, Toast.LENGTH_LONG);
 			return;
+		}
 		String phoneNumber = registerPhonenumber.getText().toString();
-		if (server.registerUser(this, firstname, lastname, email, password,
-				phoneNumber)) {
-			Intent intent = new Intent(this, MainActivity.class);
-			startActivity(intent);
-			finish();
+		try {
+			if (server.registerUser(this, firstname, lastname, email, password,
+					phoneNumber)) {
+				Intent intent = new Intent(this, MainActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		} catch (Exception e) {
+			if (e.getMessage().equals("User already existed")) {
+				Toast.makeText(this, R.string.emailAlreadyInUse,
+						Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(this, R.string.unknownError, Toast.LENGTH_LONG)
+						.show();
+			}
 		}
 	}
 }

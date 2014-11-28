@@ -41,6 +41,7 @@ public class MainActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
 		final ActionBar actionBar = getActionBar();
 
 		// ViewPager and its adapters use support library
@@ -126,6 +127,8 @@ public class MainActivity extends FragmentActivity {
 		// Inflate the menu items for use in the action bar
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main_activity_menu, menu);
+		menu.findItem(R.id.action_profile).setTitle(
+				profile.getUser().getFirstName());
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -142,8 +145,10 @@ public class MainActivity extends FragmentActivity {
 			intent = new Intent(this, AddContactActivity.class);
 			startActivityForResult(intent, REQUEST_NEW_CONTACT);
 			return true;
+		case R.id.action_profile:
+			return false;
 		case R.id.action_settings:
-			return true;
+			return false;
 		case R.id.facebook_logout:
 			final Session openSession = Session.getActiveSession();
 			if (openSession != null) {

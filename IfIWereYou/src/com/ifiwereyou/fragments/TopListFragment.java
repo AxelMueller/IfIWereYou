@@ -18,7 +18,7 @@ public class TopListFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		List<Challenge> challengeFlows = SessionData.getDemoUser()
+		List<Challenge> challengeFlows = SessionData.getDemoUser(getActivity())
 				.getTopChallengesList();
 		ArrayAdapter<Challenge> mAdapter = new ToplistAdapter(getActivity(),
 				challengeFlows);

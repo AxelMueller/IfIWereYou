@@ -22,39 +22,7 @@
             android:textSize="25dip"
             android:textStyle="bold" />
         
-        <!--   First Name Label -->
-        
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="First Name" />
-        
-        <!--   First Name TextField -->
-        
-
-        <EditText
-            android:id="@+id/registerFirstname"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-        
-        <!--   Last Name Label -->
-        
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Last Name" />
-        
-        <!--   Last Name TextField -->
-        
-
-        <EditText
-            android:id="@+id/registerLastname"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-         
-        
+       
         <!--   Email Label -->
         
 
@@ -108,6 +76,58 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:password="true" />
+         
+         <!--   First Name Label -->
+        
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="First Name" />
+        
+        <!--   First Name TextField -->
+        
+
+        <EditText
+            android:id="@+id/registerFirstname"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        
+        <!--   Last Name Label -->
+        
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Last Name" />
+        
+        <!--   Last Name TextField -->
+        
+
+        <EditText
+            android:id="@+id/registerLastname"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        
+        
+        <!--   Phonenumber Label -->
+        
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Phonenumber" />
+        
+        <!--   Last Name TextField -->
+        
+
+        <EditText
+            android:id="@+id/registerPhonenumber"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
          
         
         <!--   Error message -->

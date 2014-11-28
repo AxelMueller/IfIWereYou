@@ -37,7 +37,7 @@ public class LoginScreenActivity extends Activity {
 			public void onClick(View v) {
 				// TODO: Call Login with E-Mail Screen and not MainActivity
 				Intent intent = new Intent(LoginScreenActivity.this,
-						MainActivity.class);
+						EmailLoginActivity.class);
 				startActivity(intent);
 				finish();
 			}

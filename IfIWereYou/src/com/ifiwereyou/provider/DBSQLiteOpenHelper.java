@@ -1,5 +1,6 @@
 package com.ifiwereyou.provider;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,34 +15,34 @@ public class DBSQLiteOpenHelper extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME = "FragenDB";
 
 	// Table Names
-	private static final String TABLE_USER = "user";
-	private static final String TABLE_FRIEND = "friend";
-	private static final String TABLE_CHALLENGE = "challenge";
-	private static final String TABLE_VOTE = "vote";
+	public static final String TABLE_USER = "user";
+	public static final String TABLE_FRIEND = "friend";
+	public static final String TABLE_CHALLENGE = "challenge";
+	public static final String TABLE_VOTE = "vote";
 
-	private static final String KEY_ID = "id";
-	private static final String KEY_MAIL = "mail";
-	private static final String KEY_FACEBOOK_MAIL = "facebookmail";
-	private static final String KEY_FIRST_NAME = "firstname";
-	private static final String KEY_LAST_NAME = "lastname";
-	private static final String KEY_PHONE_NUMBER = "phonenumber";
-	private static final String KEY_TIMESTAMP_CREATED = "created";
-	private static final String KEY_TIMESTAMP_LAST_CHANGE = "lastchange";
-	private static final String KEY_ID1 = "id1";
-	private static final String KEY_ID2 = "id2";
-	private static final String KEY_TIMESTAMP = "timestamp";
-	private static final String KEY_CHALLENGER_ID = "challenger";
-	private static final String KEY_CHALLENGED_ID = "challenged";
-	private static final String KEY_TITLE = "title";
-	private static final String KEY_TEXT = "text";
-	private static final String KEY_COMPLETED = "completed";
-	private static final String KEY_TIMESTAMP_STARTED = "started";
-	private static final String KEY_TIMESTAMP_FINISHED = "finished";
-	private static final String KEY_PRIVACY = "privacy";
-	private static final String KEY_CONFIRMED = "confirmed";
-	private static final String KEY_CHALLENGE_ID = "challenge";
-	private static final String KEY_VOTER_ID = "voter";
-	private static final String KEY_TYPE = "type";
+	public static final String KEY_ID = "id";
+	public static final String KEY_MAIL = "mail";
+	public static final String KEY_FACEBOOK_MAIL = "facebookmail";
+	public static final String KEY_FIRST_NAME = "firstname";
+	public static final String KEY_LAST_NAME = "lastname";
+	public static final String KEY_PHONE_NUMBER = "phonenumber";
+	public static final String KEY_TIMESTAMP_CREATED = "created";
+	public static final String KEY_TIMESTAMP_LAST_CHANGE = "lastchange";
+	public static final String KEY_ID1 = "id1";
+	public static final String KEY_ID2 = "id2";
+	public static final String KEY_TIMESTAMP = "timestamp";
+	public static final String KEY_CHALLENGER_ID = "challenger";
+	public static final String KEY_CHALLENGED_ID = "challenged";
+	public static final String KEY_TITLE = "title";
+	public static final String KEY_TEXT = "text";
+	public static final String KEY_COMPLETED = "completed";
+	public static final String KEY_TIMESTAMP_STARTED = "started";
+	public static final String KEY_TIMESTAMP_FINISHED = "finished";
+	public static final String KEY_PRIVACY = "privacy";
+	public static final String KEY_CONFIRMED = "confirmed";
+	public static final String KEY_CHALLENGE_ID = "challenge";
+	public static final String KEY_VOTER_ID = "voter";
+	public static final String KEY_TYPE = "type";
 
 	public DBSQLiteOpenHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -53,7 +54,7 @@ public class DBSQLiteOpenHelper extends SQLiteOpenHelper {
 				+ " INTEGER PRIMARY KEY NOT NULL," + KEY_MAIL + " TEXT UNIQUE,"
 				+ KEY_FACEBOOK_MAIL + " TEXT UNIQUE," + KEY_FIRST_NAME
 				+ " TEXT NOT NULL," + KEY_LAST_NAME + " TEXT NOT NULL,"
-				+ KEY_PHONE_NUMBER + " TEXT" + KEY_TIMESTAMP_CREATED
+				+ KEY_PHONE_NUMBER + " TEXT," + KEY_TIMESTAMP_CREATED
 				+ " INTEGER NOT NULL," + KEY_TIMESTAMP_LAST_CHANGE + " INTEGER"
 				+ ");";
 		db.execSQL(CREATE_USER_TABLE);
@@ -66,21 +67,61 @@ public class DBSQLiteOpenHelper extends SQLiteOpenHelper {
 
 		String CREATE_CHALLENGE_TABLE = "CREATE TABLE " + TABLE_CHALLENGE + "("
 				+ KEY_ID + " INTEGER PRIMARY KEY NOT NULL," + KEY_CHALLENGER_ID
-				+ " INTEGER NOT NOLL," + KEY_CHALLENGED_ID
-				+ " INTEGER NOT NOLL," + KEY_TITLE + " TEXT_NOT_NULL,"
+				+ " INTEGER NOT NULL," + KEY_CHALLENGED_ID
+				+ " INTEGER NOT NULL," + KEY_TITLE + " TEXT_NOT_NULL,"
 				+ KEY_TEXT + " TEXT NOT NULL," + KEY_COMPLETED
 				+ " INTEGER DEFAULT 0," + KEY_TIMESTAMP_STARTED
 				+ " INTEGER NOT NULL," + KEY_TIMESTAMP_FINISHED + " INTEGER,"
 				+ KEY_PRIVACY + " INTEGER," + KEY_CONFIRMED
-				+ " INTEGER DEFAULT 0";
+				+ " INTEGER DEFAULT 0);";
 		db.execSQL(CREATE_CHALLENGE_TABLE);
 
 		String CREATE_VOTE_TABLE = "CREATE TABLE " + TABLE_VOTE + "(" + KEY_ID
 				+ " INTEGER PRIMARY KEY NOT NULL," + KEY_CHALLENGE_ID
-				+ " INTEGER NOT NOLL," + KEY_VOTER_ID + " INTEGER NOT NOLL,"
+				+ " INTEGER NOT NULL," + KEY_VOTER_ID + " INTEGER NOT NULL,"
 				+ KEY_TIMESTAMP + " INTEGER NOT NULL," + KEY_TYPE
 				+ " INTEGER NOT NULL" + ");";
 		db.execSQL(CREATE_VOTE_TABLE);
+
+		ContentValues valuesSimon = new ContentValues();
+		valuesSimon.put(KEY_ID, 1);
+		valuesSimon.put(KEY_MAIL, "si.tenbeitel@gmx.de");
+		valuesSimon.put(KEY_FIRST_NAME, "Simon");
+		valuesSimon.put(KEY_LAST_NAME, "Tenbeitel");
+		valuesSimon.put(KEY_TIMESTAMP_CREATED, System.currentTimeMillis());
+		db.insert(TABLE_USER, null, valuesSimon);
+		ContentValues valuesAxel = new ContentValues();
+		valuesAxel.put(KEY_ID, 2);
+		valuesAxel.put(KEY_MAIL, "axel.mueller01@sap.com");
+		valuesAxel.put(KEY_FIRST_NAME, "Axel");
+		valuesAxel.put(KEY_LAST_NAME, "Müller");
+		valuesAxel.put(KEY_TIMESTAMP_CREATED, System.currentTimeMillis());
+		db.insert(TABLE_USER, null, valuesAxel);
+		ContentValues valuesHendrik = new ContentValues();
+		valuesHendrik.put(KEY_ID, 3);
+		valuesHendrik.put(KEY_MAIL, "hboewer1@web.de");
+		valuesHendrik.put(KEY_FIRST_NAME, "Hendrik");
+		valuesHendrik.put(KEY_LAST_NAME, "Böwer");
+		valuesHendrik.put(KEY_TIMESTAMP_CREATED, System.currentTimeMillis());
+		db.insert(TABLE_USER, null, valuesHendrik);
+		ContentValues valuesKeinFreund = new ContentValues();
+		valuesKeinFreund.put(KEY_ID, 4);
+		valuesKeinFreund.put(KEY_MAIL, "arsch@depp.eu");
+		valuesKeinFreund.put(KEY_FIRST_NAME, "Rainer");
+		valuesKeinFreund.put(KEY_LAST_NAME, "Vollarsch");
+		valuesKeinFreund.put(KEY_TIMESTAMP_CREATED, System.currentTimeMillis());
+		db.insert(TABLE_USER, null, valuesKeinFreund);
+
+		ContentValues valuesFriendHendrik = new ContentValues();
+		valuesFriendHendrik.put(KEY_ID1, 1);
+		valuesFriendHendrik.put(KEY_ID2, 2);
+		valuesFriendHendrik.put(KEY_TIMESTAMP, System.currentTimeMillis());
+		db.insert(TABLE_FRIEND, null, valuesFriendHendrik);
+		ContentValues valuesFriendAxel = new ContentValues();
+		valuesFriendAxel.put(KEY_ID1, 3);
+		valuesFriendAxel.put(KEY_ID2, 1);
+		valuesFriendAxel.put(KEY_TIMESTAMP, System.currentTimeMillis());
+		db.insert(TABLE_FRIEND, null, valuesFriendAxel);
 	}
 
 	@Override

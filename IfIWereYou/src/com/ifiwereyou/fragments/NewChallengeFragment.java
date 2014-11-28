@@ -7,8 +7,8 @@ import android.support.v4.app.ListFragment;
 import android.widget.ArrayAdapter;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.User;
 import com.ifiwereyou.objects.SessionData;
+import com.ifiwereyou.objects.User;
 import com.ifiwereyou.provider.ContactListAdapter;
 
 public class NewChallengeFragment extends ListFragment {
@@ -16,7 +16,8 @@ public class NewChallengeFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		List<User> contacts = SessionData.getDemoUser().getContactList();
+		List<User> contacts = SessionData.getDemoUser(getActivity())
+				.getContactList();
 		ArrayAdapter<User> mAdapter = new ContactListAdapter(getActivity(),
 				contacts);
 		setListAdapter(mAdapter);

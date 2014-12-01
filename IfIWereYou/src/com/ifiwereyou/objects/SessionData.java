@@ -5,6 +5,8 @@ import java.util.List;
 
 import android.content.Context;
 
+import com.ifiwereyou.provider.DataProvider;
+
 public class SessionData {
 
 	// This class could also be realized as subclass from Contact
@@ -26,7 +28,7 @@ public class SessionData {
 		super();
 		this.context = context;
 		this.user = user;
-		contactList = new ArrayList<User>();
+		contactList = DataProvider.getFriends(context, user);
 		challengeFlows = new ArrayList<ChallengeFlow>();
 		topChallengesList = new ArrayList<Challenge>();
 		highscoreList = new ArrayList<User>();
@@ -95,8 +97,6 @@ public class SessionData {
 
 	public static SessionData getInstance() {
 		// TODO: Collect data from Database
-		// if (instance == null)
-		// instance = new Profile(userID, lastname, lastname);
 		return instance;
 	}
 

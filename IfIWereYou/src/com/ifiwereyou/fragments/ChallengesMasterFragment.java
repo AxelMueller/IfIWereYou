@@ -18,8 +18,8 @@ public class ChallengesMasterFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		List<ChallengeFlow> challengeFlows = SessionData.getDemoUser(
-				getActivity()).getChallengeFlows();
+		List<ChallengeFlow> challengeFlows = SessionData.getInstance()
+				.getChallengeFlows();
 		ArrayAdapter<ChallengeFlow> mAdapter = new ChallengeFlowAdapter(
 				getActivity(), challengeFlows);
 		setListAdapter(mAdapter);

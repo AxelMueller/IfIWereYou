@@ -16,8 +16,7 @@ public class NewChallengeFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		List<User> contacts = SessionData.getDemoUser(getActivity())
-				.getContactList();
+		List<User> contacts = SessionData.getInstance().getContactList();
 		ArrayAdapter<User> mAdapter = new ContactListAdapter(getActivity(),
 				contacts);
 		setListAdapter(mAdapter);

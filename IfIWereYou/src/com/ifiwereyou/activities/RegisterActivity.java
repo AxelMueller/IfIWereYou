@@ -50,17 +50,17 @@ public class RegisterActivity extends Activity {
 		String lastname = registerLastName.getText().toString();
 		String email = registerMail.getText().toString();
 		String password = registerPassword.getText().toString();
-		if (firstname == null || lastname == null) {
+		if (firstname.equals("") || lastname.equals("")) {
 			Toast.makeText(this, R.string.registrationNameMissing,
-					Toast.LENGTH_LONG);
+					Toast.LENGTH_LONG).show();
 			return;
 		}
-		if (email == null) {
+		if (email.equals("")) {
 			Toast.makeText(this, R.string.emailMissing, Toast.LENGTH_LONG)
 					.show();
 			return;
 		}
-		if (password == null) {
+		if (password.equals("")) {
 			Toast.makeText(this, R.string.passwordMissing, Toast.LENGTH_LONG)
 					.show();
 			return;

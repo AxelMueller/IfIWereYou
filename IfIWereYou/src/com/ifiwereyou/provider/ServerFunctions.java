@@ -46,8 +46,10 @@ public class ServerFunctions {
 	 * 
 	 * @param email
 	 * @param password
+	 * @throws Exception
 	 * */
-	public boolean loginUser(Context context, String email, String password) {
+	public boolean loginUser(Context context, String email, String password)
+			throws Exception {
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("tag", login_tag));
@@ -57,7 +59,10 @@ public class ServerFunctions {
 		try {
 			if (json.getString(KEY_SUCCESS) == null)
 				return false;
-			else {
+			if (json.getString(KEY_ERROR) != null
+					&& json.getString(KEY_ERROR).equals("2")) {
+				throw new Exception("Incorrect email or password");
+			} else {
 				JSONObject json_user = json.getJSONObject("user");
 				User user = new User(json.getInt(KEY_ID),
 						json_user.getString(KEY_FIRSTNAME),

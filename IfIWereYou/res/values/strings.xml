@@ -37,6 +37,7 @@
     <!-- Email Login Activity -->
     <string name="noAccountButton">I don\'t have an account. Register me!</string>
     <string name="loginUppercase">LOGIN</string> <!-- de -->
+    <string name="incorrectLoginData">Incorrect email or password</string>
     
     <!-- Registration Activity -->
     <string name="emailAlreadyInUse">This email address is already in use. Please login.</string>

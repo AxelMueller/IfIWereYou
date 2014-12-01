@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,6 +41,9 @@ public class MainActivity extends FragmentActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		profile = SessionData.getInstance();
+
 		setContentView(R.layout.activity_main);
 
 		final ActionBar actionBar = getActionBar();
@@ -127,6 +131,7 @@ public class MainActivity extends FragmentActivity {
 		// Inflate the menu items for use in the action bar
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main_activity_menu, menu);
+		Log.d("Name", profile.getUser().getFirstName());
 		menu.findItem(R.id.action_profile).setTitle(
 				profile.getUser().getFirstName());
 		return super.onCreateOptionsMenu(menu);
@@ -149,7 +154,7 @@ public class MainActivity extends FragmentActivity {
 			return false;
 		case R.id.action_settings:
 			return false;
-		case R.id.facebook_logout:
+		case R.id.action_logout:
 			final Session openSession = Session.getActiveSession();
 			if (openSession != null) {
 				String logout = getResources().getString(

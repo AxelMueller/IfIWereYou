@@ -1,13 +1,36 @@
 <resources>
     
+    <!-- General Strings -->
+    <string name="unknownError">Ein unbekannter Fehler ist aufgetreten. Bitte später erneut versuchen.</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Passwort</string>
+    <string name="firstName">Vorname</string>
+    <string name="lastName">Nachname</string>
+    <string name="phoneNumber">Telefonnummer</string>
+    <string name="emailMissing">Ihre E-Mail Adressse fehlt. Bitte eingeben und erneut versuchen.</string>
+    <string name="passwordMissing">Das Passwort fehlt. Bitte eingeben und erneut versuchen.</string>
+    
     <!-- Action Bar Items -->
     <string name="action_add_contact">Kontakt hinzufügen</string>
     <string name="action_new_challenge">Neue Challenge</string>
+    <string name="action_profile">Profil</string>
     <string name="action_settings">Einstellungen</string>
     
     <!-- Activity Names -->
     <string name="title_add_contact">Kontakt hinzufügen</string>
     <string name="title_new_challenge">Neue Challenge</string>
+    
+    <!-- Email Login Activity -->
+    <string name="noAccountButton">Ich besitze noch keinen Account. Jetzt registrieren!</string>
+    <string name="incorrectLoginData">Falsche E-Mail oder Passwort</string>
+    
+    <!-- Registration Activity -->
+    <string name="emailAlreadyInUse">Die E-Mail Adresse ist bereits vergeben. Bitte einloggen.</string>
+    <string name="passwordNoMatch">Die Passwörter stimmen nicht überein.</string>
+    <string name="registerlUppercase">REGESTRIEREN</string>
+    <string name="confirmPassword">Passwort bestätigen</string>
+    <string name="register">Registrieren</string>
+    <string name="registrationNameMissing">Bitte Namen angeben um Registrierung abzuschließen.</string>
 
     <!-- Challenges Master View -->
     <string name="challenges_master_no_challenges">Du hast im Moment keine Challenges</string>

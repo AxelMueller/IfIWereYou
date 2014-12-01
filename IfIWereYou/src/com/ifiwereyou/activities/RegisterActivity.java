@@ -46,16 +46,32 @@ public class RegisterActivity extends Activity {
 	}
 
 	private void register() {
-		ServerFunctions server = new ServerFunctions();
 		String firstname = registerFirstName.getText().toString();
 		String lastname = registerLastName.getText().toString();
 		String email = registerMail.getText().toString();
 		String password = registerPassword.getText().toString();
+		if (firstname == null || lastname == null) {
+			Toast.makeText(this, R.string.registrationNameMissing,
+					Toast.LENGTH_LONG);
+			return;
+		}
+		if (email == null) {
+			Toast.makeText(this, R.string.emailMissing, Toast.LENGTH_LONG)
+					.show();
+			return;
+		}
+		if (password == null) {
+			Toast.makeText(this, R.string.passwordMissing, Toast.LENGTH_LONG)
+					.show();
+			return;
+		}
 		if (!password.equals(registerPasswordConfirm.getText().toString())) {
-			Toast.makeText(this, R.string.passwordNoMatch, Toast.LENGTH_LONG);
+			Toast.makeText(this, R.string.passwordNoMatch, Toast.LENGTH_LONG)
+					.show();
 			return;
 		}
 		String phoneNumber = registerPhonenumber.getText().toString();
+		ServerFunctions server = new ServerFunctions();
 		try {
 			if (server.registerUser(this, firstname, lastname, email, password,
 					phoneNumber)) {

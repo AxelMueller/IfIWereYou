@@ -8,8 +8,10 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.ifiwereyou.R;
+import com.ifiwereyou.provider.ServerFunctions;
 
 public class EmailLoginActivity extends Activity {
 
@@ -45,7 +47,22 @@ public class EmailLoginActivity extends Activity {
 	}
 
 	private void login() {
+		String email = loginEmail.getText().toString();
+		String password = loginPassword.getText().toString();
+		if (email == null) {
+			Toast.makeText(this, R.string.emailMissing, Toast.LENGTH_LONG)
+					.show();
+			return;
+		}
+		if (password == null) {
+			Toast.makeText(this, R.string.passwordMissing, Toast.LENGTH_LONG)
+					.show();
+			return;
+		}
+		ServerFunctions server = new ServerFunctions();
+		if (server.loginUser(this, email, password)) {
 
+		}
 	}
 
 	private void register() {

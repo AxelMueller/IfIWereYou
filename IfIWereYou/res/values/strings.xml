@@ -21,6 +21,8 @@
     <string name="firstName">First name</string>
     <string name="lastName">Last name</string>
     <string name="phoneNumber">Phone number</string>
+    <string name="emailMissing">Your email address is missing. Please enter it and try again.</string>
+    <string name="passwordMissing">The password is missing. Please enter it and try again.</string>
 
     <!-- Action Bar Items -->
     <string name="action_add_contact">Add Contact</string>
@@ -42,6 +44,7 @@
     <string name="registerlUppercase">REGISTER</string>
     <string name="confirmPassword">Confirm password</string>
     <string name="register">Register</string>
+    <string name="registrationNameMissing">Please enter your name to complete the registration.</string>
 
     <!-- Challenges Master View -->
     <string name="challenges_master_no_challenges">You have currently no challenges</string>

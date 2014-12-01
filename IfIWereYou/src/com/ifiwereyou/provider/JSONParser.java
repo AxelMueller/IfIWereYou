@@ -1,6 +1,5 @@
 package com.ifiwereyou.provider;
 
-import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -8,10 +7,6 @@ import org.apache.http.NameValuePair;
 import org.json.JSONObject;
 
 public class JSONParser {
-
-	static InputStream is = null;
-	static JSONObject jObj = null;
-	static String json = "";
 
 	// constructor
 	public JSONParser() {

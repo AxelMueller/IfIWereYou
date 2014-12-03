@@ -191,6 +191,11 @@ public class MainActivity extends FragmentActivity {
 								}).setNegativeButton(cancel, null);
 				builder.create().show();
 			}
+			SessionData.getInstance().endSession();
+			Intent mIntent = new Intent(this, LoginScreenActivity.class);
+			startActivity(mIntent);
+			finish();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

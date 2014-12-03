@@ -52,7 +52,7 @@ public class AddContactFragment extends Fragment {
 						Toast.makeText(
 								getActivity(),
 								"Contact successfully added to your friend list",
-								Toast.LENGTH_LONG);
+								Toast.LENGTH_LONG).show();
 					}
 				} catch (Exception e) {
 					if (e.getMessage() != null

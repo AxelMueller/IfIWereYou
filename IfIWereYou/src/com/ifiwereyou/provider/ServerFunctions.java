@@ -8,7 +8,9 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.objects.User;
@@ -21,9 +23,11 @@ public class ServerFunctions {
 	// use http://10.0.2.2/ to connect to your localhost ie http://localhost/
 	private static String loginURL = "http://ifiwereyou.bplaced.net/android_api/";
 	private static String registerURL = "http://ifiwereyou.bplaced.net/android_api/";
+	private static String addFriendURL = "http://ifiwereyou.bplaced.net/android_api/";
 
 	private static String login_tag = "login";
 	private static String register_tag = "register";
+	private static String addFriend_tag = "addfriend";
 
 	// JSON Response node names
 	private static String KEY_SUCCESS = "success";
@@ -32,7 +36,7 @@ public class ServerFunctions {
 	private static String KEY_ID = "id";
 	private static String KEY_FIRSTNAME = "firstname";
 	private static String KEY_LASTNAME = "lastname";
-	private static String KEY_EMAIL = "email";
+	private static String KEY_EMAIL = "mail";
 	private static String KEY_PHONENUMBER = "phonenumber";
 	private static String KEY_CREATED_AT = "created_at";
 
@@ -68,6 +72,21 @@ public class ServerFunctions {
 						json_user.getString(KEY_FIRSTNAME),
 						json_user.getString(KEY_LASTNAME));
 				SessionData.newInstance(context, user);
+
+				DBSQLiteOpenHelper sqlHelper = new DBSQLiteOpenHelper(context);
+				SQLiteDatabase db = sqlHelper.getWritableDatabase();
+
+				ContentValues valuesUser = new ContentValues();
+				valuesUser.put(DBSQLiteOpenHelper.KEY_ID, user.getContactID());
+				valuesUser.put(DBSQLiteOpenHelper.KEY_MAIL,
+						json_user.getString(KEY_EMAIL));
+				valuesUser.put(DBSQLiteOpenHelper.KEY_FIRST_NAME,
+						user.getFirstName());
+				valuesUser.put(DBSQLiteOpenHelper.KEY_LAST_NAME,
+						user.getLastName());
+				valuesUser.put(DBSQLiteOpenHelper.KEY_TIMESTAMP_CREATED,
+						System.currentTimeMillis());
+				db.insert(DBSQLiteOpenHelper.TABLE_USER, null, valuesUser);
 				return true;
 			}
 		} catch (JSONException e) {
@@ -120,6 +139,65 @@ public class ServerFunctions {
 		}
 	}
 
+	public boolean addFriend(Context context, String email) throws Exception {
+		// TODO: Add friend also in contact list on other device.
+		// fetch data from server regularly
+
+		// Building Parameters
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", addFriend_tag));
+		params.add(new BasicNameValuePair("userid", SessionData.getInstance()
+				.getUser().getContactID()
+				+ ""));
+		params.add(new BasicNameValuePair("friendmail", email));
+
+		// getting JSON Object
+		JSONObject json = jsonParser.getJSONFromUrl(addFriendURL, params);
+		try {
+			if (json.getString(KEY_SUCCESS) == null) {
+				return false;
+			} else if (json.getString(KEY_SUCCESS).equals("1")) {
+				JSONObject json_user = json.getJSONObject("user");
+				User user = new User(Integer.parseInt(json.getString(KEY_ID)),
+						json_user.getString(KEY_FIRSTNAME),
+						json_user.getString(KEY_LASTNAME));
+				DBSQLiteOpenHelper sqlHelper = new DBSQLiteOpenHelper(context);
+				SQLiteDatabase db = sqlHelper.getWritableDatabase();
+
+				ContentValues valuesUser = new ContentValues();
+				valuesUser.put(DBSQLiteOpenHelper.KEY_ID, user.getContactID());
+				valuesUser.put(DBSQLiteOpenHelper.KEY_MAIL,
+						json_user.getString(KEY_EMAIL));
+				valuesUser.put(DBSQLiteOpenHelper.KEY_FIRST_NAME,
+						user.getFirstName());
+				valuesUser.put(DBSQLiteOpenHelper.KEY_LAST_NAME,
+						user.getLastName());
+				valuesUser.put(DBSQLiteOpenHelper.KEY_TIMESTAMP_CREATED,
+						System.currentTimeMillis());
+				db.insert(DBSQLiteOpenHelper.TABLE_USER, null, valuesUser);
+
+				ContentValues values = new ContentValues();
+				values.put(DBSQLiteOpenHelper.KEY_ID1, SessionData
+						.getInstance().getUser().getContactID());
+				values.put(DBSQLiteOpenHelper.KEY_ID2, user.getContactID());
+				values.put(DBSQLiteOpenHelper.KEY_TIMESTAMP,
+						System.currentTimeMillis());
+				db.insert(DBSQLiteOpenHelper.TABLE_FRIEND, null, values);
+
+				SessionData.getInstance().addContact(user);
+				return true;
+			}
+			if (json.getString(KEY_ERROR) != null
+					&& json.getString(KEY_ERROR).equals("3")) {
+				throw new Exception("No user with the given mail address");
+			}
+			throw new Exception();
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	// /**
 	// * Function get Login status
 	// * */

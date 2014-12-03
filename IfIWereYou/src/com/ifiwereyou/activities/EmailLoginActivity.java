@@ -49,12 +49,12 @@ public class EmailLoginActivity extends Activity {
 	private void login() {
 		String email = loginEmail.getText().toString();
 		String password = loginPassword.getText().toString();
-		if (email == null) {
+		if (email.equals("")) {
 			Toast.makeText(this, R.string.emailMissing, Toast.LENGTH_LONG)
 					.show();
 			return;
 		}
-		if (password == null) {
+		if (password.equals("")) {
 			Toast.makeText(this, R.string.passwordMissing, Toast.LENGTH_LONG)
 					.show();
 			return;

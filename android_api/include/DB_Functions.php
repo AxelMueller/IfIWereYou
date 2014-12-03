@@ -76,6 +76,26 @@ class DB_Functions {
             return false;
         }
     }
+	
+	/**
+     * Add a contact to you friend list
+     * returns user details
+     */
+    public function addfriend($userid, $friendmail) {
+		$friendresult = mysql_query("SELECT id FROM User WHERE mail = '$friendmail'");
+		$friendresult = mysql_fetch_array($friendresult);
+		$friendid = $friendresult['id'];
+        $result = mysql_query("INSERT INTO Friend(id1, id2, created_at) VALUES('$userid', '$friendid', NOW())");
+        // check for success
+        if ($result) {
+            // get user details 
+            $result = mysql_query("SELECT * FROM User WHERE id = '$friendid'");
+            // return user details
+            return mysql_fetch_array($result);
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Encrypting password

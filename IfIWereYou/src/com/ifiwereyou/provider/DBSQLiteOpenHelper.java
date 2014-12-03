@@ -1,6 +1,5 @@
 package com.ifiwereyou.provider;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -82,46 +81,6 @@ public class DBSQLiteOpenHelper extends SQLiteOpenHelper {
 				+ KEY_TIMESTAMP + " INTEGER NOT NULL," + KEY_TYPE
 				+ " INTEGER NOT NULL" + ");";
 		db.execSQL(CREATE_VOTE_TABLE);
-
-		ContentValues valuesSimon = new ContentValues();
-		valuesSimon.put(KEY_ID, 1);
-		valuesSimon.put(KEY_MAIL, "si.tenbeitel@gmx.de");
-		valuesSimon.put(KEY_FIRST_NAME, "Simon");
-		valuesSimon.put(KEY_LAST_NAME, "Tenbeitel");
-		valuesSimon.put(KEY_TIMESTAMP_CREATED, System.currentTimeMillis());
-		db.insert(TABLE_USER, null, valuesSimon);
-		ContentValues valuesAxel = new ContentValues();
-		valuesAxel.put(KEY_ID, 2);
-		valuesAxel.put(KEY_MAIL, "axel.mueller01@sap.com");
-		valuesAxel.put(KEY_FIRST_NAME, "Axel");
-		valuesAxel.put(KEY_LAST_NAME, "Müller");
-		valuesAxel.put(KEY_TIMESTAMP_CREATED, System.currentTimeMillis());
-		db.insert(TABLE_USER, null, valuesAxel);
-		ContentValues valuesHendrik = new ContentValues();
-		valuesHendrik.put(KEY_ID, 3);
-		valuesHendrik.put(KEY_MAIL, "hboewer1@web.de");
-		valuesHendrik.put(KEY_FIRST_NAME, "Hendrik");
-		valuesHendrik.put(KEY_LAST_NAME, "Böwer");
-		valuesHendrik.put(KEY_TIMESTAMP_CREATED, System.currentTimeMillis());
-		db.insert(TABLE_USER, null, valuesHendrik);
-		ContentValues valuesKeinFreund = new ContentValues();
-		valuesKeinFreund.put(KEY_ID, 4);
-		valuesKeinFreund.put(KEY_MAIL, "arsch@depp.eu");
-		valuesKeinFreund.put(KEY_FIRST_NAME, "Rainer");
-		valuesKeinFreund.put(KEY_LAST_NAME, "Vollarsch");
-		valuesKeinFreund.put(KEY_TIMESTAMP_CREATED, System.currentTimeMillis());
-		db.insert(TABLE_USER, null, valuesKeinFreund);
-
-		ContentValues valuesFriendHendrik = new ContentValues();
-		valuesFriendHendrik.put(KEY_ID1, 1);
-		valuesFriendHendrik.put(KEY_ID2, 2);
-		valuesFriendHendrik.put(KEY_TIMESTAMP, System.currentTimeMillis());
-		db.insert(TABLE_FRIEND, null, valuesFriendHendrik);
-		ContentValues valuesFriendAxel = new ContentValues();
-		valuesFriendAxel.put(KEY_ID1, 3);
-		valuesFriendAxel.put(KEY_ID2, 1);
-		valuesFriendAxel.put(KEY_TIMESTAMP, System.currentTimeMillis());
-		db.insert(TABLE_FRIEND, null, valuesFriendAxel);
 	}
 
 	@Override

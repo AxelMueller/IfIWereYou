@@ -75,11 +75,39 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
             } else {
                 // user failed to store
                 $response["error"] = 1;
-                $response["error_msg"] = "Error occured in Registartion";
+                $response["error_msg"] = "Error occurred in Registration";
                 echo json_encode($response);
             }
         }
-    } else {
+    } else if ($tag == 'addfriend') {
+		// Request type ist add a new contact as a friend
+		$userid = $_POST['userid'];
+		$friendmail = $_POST['friendmail'];
+		if(!$db->isUserExisted($friendmail)) {
+			$response["error"] = 3;
+			$response["error_msg"] = "No user with the given mail address";
+			echo json_encode($response);
+		}
+		else {
+			$user = $db->addfriend($userid, $friendmail);
+            if ($user) {
+                // user stored successfully
+                $response["success"] = 1;
+                $response["id"] = $user["id"];
+                $response["user"]["firstname"] = $user["firstname"];
+				$response["user"]["lastname"] = $user["lastname"];
+				$response["user"]["mail"] = $user["mail"];
+				$response["user"]["phonenumber"] = $user["phonenumber"];
+                echo json_encode($response);
+            } else {
+                // user failed to store
+                $response["error"] = 4;
+                $response["error_msg"] = "Error occurred while adding contact";
+                echo json_encode($response);
+            }
+		}
+	}
+	else {
         echo "Invalid Request";
     }
 } else {

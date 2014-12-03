@@ -20,7 +20,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -131,7 +130,6 @@ public class MainActivity extends FragmentActivity {
 		// Inflate the menu items for use in the action bar
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main_activity_menu, menu);
-		Log.d("Name", profile.getUser().getFirstName());
 		menu.findItem(R.id.action_profile).setTitle(
 				profile.getUser().getFirstName());
 		return super.onCreateOptionsMenu(menu);

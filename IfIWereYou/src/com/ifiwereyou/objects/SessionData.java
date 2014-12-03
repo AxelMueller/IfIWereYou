@@ -9,8 +9,6 @@ import com.ifiwereyou.provider.DataProvider;
 
 public class SessionData {
 
-	// This class could also be realized as subclass from Contact
-
 	private static SessionData instance;
 	private Context context;
 	private User user;
@@ -28,7 +26,7 @@ public class SessionData {
 		super();
 		this.context = context;
 		this.user = user;
-		contactList = DataProvider.getFriends(context, user);
+		contactList = DataProvider.getFriends(this.context, user);
 		challengeFlows = new ArrayList<ChallengeFlow>();
 		topChallengesList = new ArrayList<Challenge>();
 		highscoreList = new ArrayList<User>();

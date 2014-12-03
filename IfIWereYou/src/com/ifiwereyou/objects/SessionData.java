@@ -110,4 +110,9 @@ public class SessionData {
 			instance = new SessionData(context, user);
 		return instance;
 	}
+
+	public boolean endSession() {
+		instance = null;
+		return true;
+	}
 }

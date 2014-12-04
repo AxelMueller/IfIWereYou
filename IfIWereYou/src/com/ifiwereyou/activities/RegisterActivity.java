@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.provider.ServerFunctions;
+import com.ifiwereyou.utils.UserInputCheck;
 
 public class RegisterActivity extends Activity {
 
@@ -58,6 +59,14 @@ public class RegisterActivity extends Activity {
 		if (email.equals("")) {
 			Toast.makeText(this, R.string.emailMissing, Toast.LENGTH_LONG)
 					.show();
+			return;
+		}
+		if (!UserInputCheck.isValidEmail(email)) {
+			Toast.makeText(
+					getApplicationContext(),
+					getResources().getString(
+							R.string.add_contact_email_not_valid_message),
+					Toast.LENGTH_LONG).show();
 			return;
 		}
 		if (password.equals("")) {

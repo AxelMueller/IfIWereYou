@@ -24,10 +24,12 @@ public class ServerFunctions {
 	private static String loginURL = "http://ifiwereyou.bplaced.net/android_api/";
 	private static String registerURL = "http://ifiwereyou.bplaced.net/android_api/";
 	private static String addFriendURL = "http://ifiwereyou.bplaced.net/android_api/";
+	private static String deleteAccountURL = "http://ifiwereyou.bplaced.net/android_api/";
 
 	private static String login_tag = "login";
 	private static String register_tag = "register";
 	private static String addFriend_tag = "addfriend";
+	private static String deleteAccount_tag = "deleteaccount";
 
 	// JSON Response node names
 	private static String KEY_SUCCESS = "success";
@@ -197,6 +199,27 @@ public class ServerFunctions {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public boolean deleteAccount() {
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("tag", deleteAccount_tag));
+		params.add(new BasicNameValuePair("userid", SessionData.getInstance()
+				.getUser().getContactID()
+				+ ""));
+		JSONObject json = jsonParser.getJSONFromUrl(deleteAccountURL, params);
+		try {
+			if (json.getString(KEY_SUCCESS) == null) {
+				return false;
+			} else if (json.getString(KEY_SUCCESS).equals("1")) {
+				return SessionData.getInstance().endSession();
+			}
+			return false;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 	// /**
 	// * Function get Login status

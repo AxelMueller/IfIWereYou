@@ -96,6 +96,20 @@ class DB_Functions {
             return false;
         }
     }
+	
+	public function deleteaccount($userid) {
+		$result = mysql_query("DELETE FROM User WHERE id = '$userid'");
+		if(mysql_affected_rows($result)>0) {
+			$response["success"] = 1;
+            $response["id"] = $user["id"];
+			return $response;
+		}
+		else {
+			$response["error"] = 4;
+            $response["error_msg"] = "Error occurred while deleting account";
+			return $response;
+		}
+	}
 
     /**
      * Encrypting password

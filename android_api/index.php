@@ -106,6 +106,9 @@ if (isset($_POST['tag']) && $_POST['tag'] != '') {
                 echo json_encode($response);
             }
 		}
+	} else if ($tag == 'deleteaccount') {
+		$userid = $_POST['userid'];
+		echo json_encode($db->deleteaccount($userid));
 	}
 	else {
         echo "Invalid Request";

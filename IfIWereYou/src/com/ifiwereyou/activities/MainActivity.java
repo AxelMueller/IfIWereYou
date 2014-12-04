@@ -23,11 +23,13 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.facebook.Session;
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.provider.MainActivityFragmentPagerAdapter;
+import com.ifiwereyou.provider.ServerFunctions;
 
 public class MainActivity extends FragmentActivity {
 
@@ -152,6 +154,18 @@ public class MainActivity extends FragmentActivity {
 			return false;
 		case R.id.action_settings:
 			return false;
+		case R.id.action_delete_account:
+			ServerFunctions server = new ServerFunctions();
+			if (server.deleteAccount()) {
+				Toast.makeText(this, "Account deleted", Toast.LENGTH_LONG)
+						.show();
+				Intent mIntent = new Intent(this, LoginScreenActivity.class);
+				startActivity(mIntent);
+				finish();
+			} else {
+				Toast.makeText(this, "Account could not be deleted",
+						Toast.LENGTH_LONG);
+			}
 		case R.id.action_logout:
 			final Session openSession = Session.getActiveSession();
 			if (openSession != null) {
@@ -177,6 +191,11 @@ public class MainActivity extends FragmentActivity {
 								}).setNegativeButton(cancel, null);
 				builder.create().show();
 			}
+			SessionData.getInstance().endSession();
+			Intent mIntent = new Intent(this, LoginScreenActivity.class);
+			startActivity(mIntent);
+			finish();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

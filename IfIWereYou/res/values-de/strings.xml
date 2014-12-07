@@ -15,6 +15,8 @@
     <string name="action_new_challenge">Neue Challenge</string>
     <string name="action_profile">Profil</string>
     <string name="action_settings">Einstellungen</string>
+    <string name="action_delete_account">Account löschen</string>
+    <string name="action_logout">Logout</string>
     
     <!-- Activity Names -->
     <string name="title_add_contact">Kontakt hinzufügen</string>
@@ -50,5 +52,11 @@
     <string name="add_contact_add_button_label">Hinzufügen</string>
     <string name="add_contact_email_not_valid_message">Die eingegebene E-Mail Adresse ist ungültig.</string>
     <string name="add_contact_fail_message">Es gibt keinen Benutzer mit der E-Mail Adresse %1$s.</string>
+    
+    <!-- Login Screen -->
+    <string name="welcome">Willkommen bei If I Were You</string>
+    <string name="loginEmail">Login mit E-Mail</string>
+    <string name="add_contact_success">Kontakt erfolgreich zur Kontaktliste hinzugefügt</string>
+    <string name="add_contact_already_exists">Kontakt befindet sich bereits in der Kontaktliste</string>
     
 </resources>

@@ -25,7 +25,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.facebook.Session;
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.provider.MainActivityFragmentPagerAdapter;
@@ -155,42 +154,64 @@ public class MainActivity extends FragmentActivity {
 		case R.id.action_settings:
 			return false;
 		case R.id.action_delete_account:
-			ServerFunctions server = new ServerFunctions();
-			if (server.deleteAccount()) {
-				Toast.makeText(this, "Account deleted", Toast.LENGTH_LONG)
-						.show();
-				Intent mIntent = new Intent(this, LoginScreenActivity.class);
-				startActivity(mIntent);
-				finish();
-			} else {
-				Toast.makeText(this, "Account could not be deleted",
-						Toast.LENGTH_LONG);
-			}
-		case R.id.action_logout:
-			final Session openSession = Session.getActiveSession();
-			if (openSession != null) {
-				String logout = getResources().getString(
-						R.string.com_facebook_loginview_log_out_action);
-				String cancel = getResources().getString(
-						R.string.com_facebook_loginview_cancel_action);
-
-				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage("Do you really want to log out?")
-						.setCancelable(true)
-						.setPositiveButton(logout,
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int which) {
-										openSession
-												.closeAndClearTokenInformation();
-										Intent logoutIntent = new Intent(
+			final ServerFunctions server = new ServerFunctions();
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("Do you really want to delete your account?")
+					.setCancelable(true)
+					.setPositiveButton("Delete",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int which) {
+									if (server.deleteAccount()) {
+										Intent mIntent = new Intent(
 												MainActivity.this,
 												LoginScreenActivity.class);
-										startActivity(logoutIntent);
+										startActivity(mIntent);
+										finish();
+									} else {
+										Toast.makeText(MainActivity.this,
+												"Account could not be deleted",
+												Toast.LENGTH_LONG).show();
 									}
-								}).setNegativeButton(cancel, null);
-				builder.create().show();
-			}
+								}
+							}).setNegativeButton("Cancel", null);
+			builder.create().show();
+			return true;
+			// if (server.deleteAccount()) {
+			// Toast.makeText(this, "Account deleted", Toast.LENGTH_LONG)
+			// .show();
+			// Intent mIntent = new Intent(this, LoginScreenActivity.class);
+			// startActivity(mIntent);
+			// finish();
+			// } else {
+			// Toast.makeText(this, "Account could not be deleted",
+			// Toast.LENGTH_LONG).show();
+			// }
+		case R.id.action_logout:
+			// final Session openSession = Session.getActiveSession();
+			// if (openSession != null) {
+			// String logout = getResources().getString(
+			// R.string.com_facebook_loginview_log_out_action);
+			// String cancel = getResources().getString(
+			// R.string.com_facebook_loginview_cancel_action);
+			//
+			// AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			// builder.setMessage("Do you really want to log out?")
+			// .setCancelable(true)
+			// .setPositiveButton(logout,
+			// new DialogInterface.OnClickListener() {
+			// public void onClick(DialogInterface dialog,
+			// int which) {
+			// openSession
+			// .closeAndClearTokenInformation();
+			// Intent logoutIntent = new Intent(
+			// MainActivity.this,
+			// LoginScreenActivity.class);
+			// startActivity(logoutIntent);
+			// }
+			// }).setNegativeButton(cancel, null);
+			// builder.create().show();
+			// }
 			SessionData.getInstance().endSession();
 			Intent mIntent = new Intent(this, LoginScreenActivity.class);
 			startActivity(mIntent);

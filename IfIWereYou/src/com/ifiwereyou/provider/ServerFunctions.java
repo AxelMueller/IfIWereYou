@@ -66,7 +66,7 @@ public class ServerFunctions {
 			if (json.getString(KEY_SUCCESS) == null)
 				return false;
 			if (json.getString(KEY_ERROR) != null
-					&& json.getString(KEY_ERROR).equals("2")) {
+					&& json.getString(KEY_ERROR).equals("1")) {
 				throw new Exception("Incorrect email or password");
 			} else {
 				JSONObject json_user = json.getJSONObject("user");

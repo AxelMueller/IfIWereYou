@@ -51,7 +51,8 @@ public class AddContactFragment extends Fragment {
 					if (server.addFriend(getActivity(), email)) {
 						Toast.makeText(
 								getActivity(),
-								"Contact successfully added to your friend list",
+								getActivity().getResources().getString(
+										R.string.add_contact_success),
 								Toast.LENGTH_LONG).show();
 					}
 				} catch (Exception e) {
@@ -67,8 +68,10 @@ public class AddContactFragment extends Fragment {
 														R.string.add_contact_fail_message),
 										email), Toast.LENGTH_LONG).show();
 					} else {
-						Toast.makeText(getActivity().getApplicationContext(),
-								"Error occured while adding contact",
+						Toast.makeText(
+								getActivity().getApplicationContext(),
+								getActivity().getResources().getString(
+										R.string.add_contact_already_exists),
 								Toast.LENGTH_LONG).show();
 					}
 				}

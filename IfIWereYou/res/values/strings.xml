@@ -67,5 +67,12 @@
     <string name="add_contact_add_button_label">Add</string>
     <string name="add_contact_email_not_valid_message">The email address you entered is not valid.</string>
     <string name="add_contact_fail_message">A user with the email address %1$s does not exist.</string>
+    
+    <!-- Login Screen -->
+    <string name="welcome">Welcome to If I Were You</string>
+    <string name="loginEmail">Login with E-Mail</string>
+    <string name="add_contact_success">Contact successfully added to your friend list</string>
+    <string name="add_contact_already_exists">The contact is already in your contact list</string>
+    
 
 </resources>

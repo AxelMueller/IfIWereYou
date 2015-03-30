@@ -1,0 +1,6 @@
+C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\classes\debug
+C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-a9c628a789fc80c15afd3b8385fccd3de6421fe9.jar
+C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-a0e06d7c7ee386a12e0078f6460b14c29034e2d7.jar
+C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-1a8c9abacd82b29ffdab8997329faec93ef8e144.jar
+C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\classes-4084f38db96b76b2cbd1bdcfca27b2925480dcff.jar
+C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\classes-ae0b48d5499dc2b551941f28356bbf409f7cf611.jar

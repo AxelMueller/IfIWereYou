@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <!--   View Title Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:text="@string/registerlUppercase"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <!--   Email Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/registerEmail"
+            android:text="@string/email" />
+
+        <!--   Email TextField -->
+
+        <EditText
+            android:id="@+id/registerEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+        <!--   Password Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:labelFor="@+id/registerPassword"
+            android:text="@string/password" />
+
+        <!--   Password TextField -->
+
+        <EditText
+            android:id="@+id/registerPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <!--   Confirm Password Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:labelFor="@+id/registerPasswordConfirm"
+            android:text="@string/confirmPassword" />
+
+        <!--   Password TextField -->
+
+        <EditText
+            android:id="@+id/registerPasswordConfirm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+        <!--   First Name Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:labelFor="@+id/registerFirstname"
+            android:text="@string/firstName" />
+
+        <!--   First Name TextField -->
+
+        <EditText
+            android:id="@+id/registerFirstname"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+        <!--   Last Name Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:labelFor="@+id/registerLastname"
+            android:text="@string/lastName" />
+
+        <!--   Last Name TextField -->
+
+        <EditText
+            android:id="@+id/registerLastname"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+        <!--   Phonenumber Label -->
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:labelFor="@+id/registerPhonenumber"
+            android:text="@string/phoneNumber" />
+
+        <!--   Last Name TextField -->
+
+        <EditText
+            android:id="@+id/registerPhonenumber"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <!--   Error message -->
+
+        <TextView
+            android:id="@+id/register_error"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:textColor="#e30000"
+            android:textStyle="bold" />
+
+        <!--   Login Button -->
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:text="@string/register" />
+
+        <!--   Link to Login Screen -->
+
+    </LinearLayout>
+
+</ScrollView><!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/src/main/res/layout/register.xml -->

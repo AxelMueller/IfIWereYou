@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/IfIWereYouAS.iml" filepath="$PROJECT_DIR$/IfIWereYouAS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ifIWereYou/ifIWereYou.iml" filepath="$PROJECT_DIR$/ifIWereYou/ifIWereYou.iml" />
+    </modules>
+  </component>
+</project>
+

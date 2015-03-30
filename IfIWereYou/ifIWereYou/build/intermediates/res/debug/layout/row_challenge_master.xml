@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView android:id="@+id/row_challenge_master_nameTextView"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/challenges_master_row_marginStart"
+        android:singleLine="true"/> <!-- TODO: The name should always be complete and not cut anywhere -->
+
+    <TextView android:id="@+id/row_challenge_master_challengeTextView"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/challenges_master_row_marginStart"
+        android:singleLine="true"/>
+
+</LinearLayout><!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/src/main/res/layout/row_challenge_master.xml -->

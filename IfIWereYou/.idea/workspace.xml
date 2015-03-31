@@ -107,16 +107,16 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ifIWereYou/src/main/java/com/ifiwereyou/activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6956522" vertical-offset="2354" max-vertical-offset="4318">
-              <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.9026087" vertical-offset="2252" max-vertical-offset="4369">
+              <caret line="163" column="70" selection-start-line="163" selection-start-column="70" selection-end-line="163" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2093#2560#0" expanded="true" />
                 <element signature="e#2541#2542#0" expanded="true" />
-                <element signature="e#5922#6300#0" expanded="true" />
-                <element signature="e#6285#6286#0" expanded="true" />
-                <element signature="e#7433#8583#0" expanded="true" />
-                <element signature="e#8548#8549#0" expanded="true" />
+                <element signature="e#5922#6543#0" expanded="true" />
+                <element signature="e#6528#6529#0" expanded="true" />
+                <element signature="e#7676#8826#0" expanded="true" />
+                <element signature="e#8791#8792#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1158,7 +1158,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1662,16 +1662,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ifIWereYou/src/main/java/com/ifiwereyou/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6956522" vertical-offset="2354" max-vertical-offset="4318">
-          <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.9026087" vertical-offset="2252" max-vertical-offset="4369">
+          <caret line="163" column="70" selection-start-line="163" selection-start-column="70" selection-end-line="163" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2093#2560#0" expanded="true" />
             <element signature="e#2541#2542#0" expanded="true" />
-            <element signature="e#5922#6300#0" expanded="true" />
-            <element signature="e#6285#6286#0" expanded="true" />
-            <element signature="e#7433#8583#0" expanded="true" />
-            <element signature="e#8548#8549#0" expanded="true" />
+            <element signature="e#5922#6543#0" expanded="true" />
+            <element signature="e#6528#6529#0" expanded="true" />
+            <element signature="e#7676#8826#0" expanded="true" />
+            <element signature="e#8791#8792#0" expanded="true" />
           </folding>
         </state>
       </provider>

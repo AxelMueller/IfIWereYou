@@ -2,39 +2,46 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-1a8c9abacd82b29ffdab8997329faec93ef8e144.jar" />
-    </item>
-    <item
-        jar="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.19.0\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="347db16fd3571d7eec0482232e9c363f839e27d7">
-        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\classes-4084f38db96b76b2cbd1bdcfca27b2925480dcff.jar" />
-    </item>
-    <item
-        jar="C:\Users\d060670\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
+        revision="21.0.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-a9c628a789fc80c15afd3b8385fccd3de6421fe9.jar" />
+        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-ff2d7f5022b5a92fc988e7ecf40140c2621ade2e.jar" />
     </item>
     <item
-        jar="C:\Users\d060670\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.2\91c20388c9a45f62b5ed8fe0502bb76ff6251fc7\bolts-android-1.1.2.jar"
+        jar="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\libs\Parse-1.9.0.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
-        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-a0e06d7c7ee386a12e0078f6460b14c29034e2d7.jar" />
+        revision="21.0.2"
+        sha1="5811138d4e6cb9d45030e133ef1a61b935154c3a">
+        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\pre-dexed\debug\Parse-1.9.0-62ae16b4e1af3bf030060579f57ab5d49d5b6231.jar" />
     </item>
     <item
-        jar="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.19.0\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
+        revision="21.0.2"
+        sha1="347db16fd3571d7eec0482232e9c363f839e27d7">
+        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\pre-dexed\debug\classes-ebfa9e8f53e2ffcbc319689d13e34f6edc49bfbe.jar" />
+    </item>
+    <item
+        jar="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-2f1047f0549af56e1b81f1c4725ebdc6f50d3f28.jar" />
+    </item>
+    <item
+        jar="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYouAS\ifIWereYou\build\intermediates\pre-dexed\debug\classes-ae0b48d5499dc2b551941f28356bbf409f7cf611.jar" />
+        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\pre-dexed\debug\classes-344b59227784e64b313a46a6570eaf1a2478722b.jar" />
+    </item>
+    <item
+        jar="C:\Users\d060670\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="C:\Users\d060670\Documents\Studium\if-i-were-you\IfIWereYou\ifIWereYou\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-da5c4b0ca87f7cb97afc5f43b443a87054d7f56c.jar" />
     </item>
 
 </items>

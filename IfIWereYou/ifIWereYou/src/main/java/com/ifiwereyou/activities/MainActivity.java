@@ -20,198 +20,230 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.model.GraphUser;
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.provider.MainActivityFragmentPagerAdapter;
 import com.ifiwereyou.provider.ServerFunctions;
 import com.parse.ParseException;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
 public class MainActivity extends FragmentActivity {
 
-	// Request codes for startActivityForResult
-	private static final int REQUEST_NEW_CONTACT = 0;
+    // Request codes for startActivityForResult
+    private static final int REQUEST_NEW_CONTACT = 0;
 
-	FragmentPagerAdapter mPagerAdapter;
-	ViewPager mViewPager;
+    FragmentPagerAdapter mPagerAdapter;
+    ViewPager mViewPager;
 
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    String userName;
 
-		setContentView(R.layout.activity_main);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		final ActionBar actionBar = getActionBar();
+        setContentView(R.layout.activity_main);
 
-		// ViewPager and its adapters use support library
-		// fragments, so use getSupportFragmentManager.
-		mViewPager = (ViewPager) findViewById(R.id.mainViewPager);
-		mPagerAdapter = new MainActivityFragmentPagerAdapter(
-				getSupportFragmentManager());
-		mViewPager.setAdapter(mPagerAdapter);
-		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						// When swiping between pages, select the corresponding
-						// tab. This is necessary because the pages are not
-						// linked to the tabs by default.
-						getActionBar().setSelectedNavigationItem(position);
-					}
-				});
+        final ActionBar actionBar = getActionBar();
 
-		// Specify that tabs should be displayed in the action bar.
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        // ViewPager and its adapters use support library
+        // fragments, so use getSupportFragmentManager.
+        mViewPager = (ViewPager) findViewById(R.id.mainViewPager);
+        mPagerAdapter = new MainActivityFragmentPagerAdapter(
+                getSupportFragmentManager());
+        mViewPager.setAdapter(mPagerAdapter);
+        mViewPager
+                .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        // When swiping between pages, select the corresponding
+                        // tab. This is necessary because the pages are not
+                        // linked to the tabs by default.
+                        getActionBar().setSelectedNavigationItem(position);
+                    }
+                });
 
-		actionBar.setIcon(new ColorDrawable(getResources().getColor(
-				android.R.color.transparent))); // FIXME: Later this should not
-												// be in the source code.
+        // Specify that tabs should be displayed in the action bar.
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		// Create a tab listener that is called when the user changes tabs.
-		ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-			@Override
-			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				// show the given tab
-				// When the tab is selected, switch to the
-				// corresponding page in the ViewPager.
-				mViewPager.setCurrentItem(tab.getPosition());
-			}
+        actionBar.setIcon(new ColorDrawable(getResources().getColor(
+                android.R.color.transparent))); // FIXME: Later this should not
+        // be in the source code.
 
-			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				// hide the given tab
-			}
+        // Create a tab listener that is called when the user changes tabs.
+        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+            @Override
+            public void onTabSelected(Tab tab, FragmentTransaction ft) {
+                // TODO Auto-generated method stub
+                // show the given tab
+                // When the tab is selected, switch to the
+                // corresponding page in the ViewPager.
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
 
-			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				// probably ignore this event
-			}
-		};
+            @Override
+            public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+                // TODO Auto-generated method stub
+                // hide the given tab
+            }
 
-		// Add 4 tabs to the action bar and specify the tab's text and
-		// TabListener
-		// TODO: Decide whether to use fixed tabs or scrollable tabs:
-		// http://developer.android.com/design/building-blocks/tabs.html
-		for (int i = 0; i < mPagerAdapter.getCount(); i++) {
-			actionBar.addTab(actionBar.newTab()
-					.setText(mPagerAdapter.getPageTitle(i))
-					.setTabListener(tabListener));
-		}
+            @Override
+            public void onTabReselected(Tab tab, FragmentTransaction ft) {
+                // TODO Auto-generated method stub
+                // probably ignore this event
+            }
+        };
 
-		try {
-			Method setHasEmbeddedTabsMethod = actionBar.getClass()
-					.getDeclaredMethod("setHasEmbeddedTabs", boolean.class);
-			setHasEmbeddedTabsMethod.setAccessible(true);
-			setHasEmbeddedTabsMethod.invoke(actionBar, false);
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        // Add 4 tabs to the action bar and specify the tab's text and
+        // TabListener
+        // TODO: Decide whether to use fixed tabs or scrollable tabs:
+        // http://developer.android.com/design/building-blocks/tabs.html
+        for (int i = 0; i < mPagerAdapter.getCount(); i++) {
+            actionBar.addTab(actionBar.newTab()
+                    .setText(mPagerAdapter.getPageTitle(i))
+                    .setTabListener(tabListener));
+        }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu items for use in the action bar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.main_activity_menu, menu);
-		menu.findItem(R.id.action_profile).setTitle(ParseUser.getCurrentUser().get("firstname").toString());
-		return super.onCreateOptionsMenu(menu);
-	}
+        try {
+            Method setHasEmbeddedTabsMethod = actionBar.getClass()
+                    .getDeclaredMethod("setHasEmbeddedTabs", boolean.class);
+            setHasEmbeddedTabsMethod.setAccessible(true);
+            setHasEmbeddedTabsMethod.invoke(actionBar, false);
+        } catch (NoSuchMethodException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle presses on the action bar items
-		Intent intent;
-		switch (item.getItemId()) {
-		case R.id.action_new_challenge:
-			intent = new Intent(this, NewChallengeActivity.class);
-			startActivity(intent);
-			return true;
-		case R.id.action_add_contact:
-			intent = new Intent(this, AddContactActivity.class);
-			startActivityForResult(intent, REQUEST_NEW_CONTACT);
-			return true;
-		case R.id.action_profile:
-			return false;
-		case R.id.action_settings:
-			return false;
-		case R.id.action_delete_account:
-			final ServerFunctions server = new ServerFunctions();
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage("Do you really want to delete your account?")
-					.setCancelable(true)
-					.setPositiveButton("Delete",
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int which) {
-                                    try {
-                                        ParseUser.getCurrentUser().delete();
-                                        Intent mIntent = new Intent(
-                                                MainActivity.this,
-                                                LoginScreenActivity.class);
-                                        startActivity(mIntent);
-                                        finish();
-                                    } catch (ParseException e) {
-                                        e.printStackTrace();
-                                        Toast.makeText(MainActivity.this,
-                                                "Account could not be deleted",
-                                                Toast.LENGTH_LONG).show();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_activity_menu, menu);
+        getUserFirstName();
+        String userNameToDisplay = userName!=null ? userName : "Can't find username";
+        menu.findItem(R.id.action_profile).setTitle(userNameToDisplay);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void getUserFirstName() {
+        Object user = ParseUser.getCurrentUser().get("firstname");
+        if (user != null) {
+            userName = user.toString();
+            return;
+        }
+        if (ParseFacebookUtils.getSession().isOpened())
+        {
+            Request.executeMeRequestAsync(ParseFacebookUtils.getSession(), new Request.GraphUserCallback()
+            {
+                @Override
+                public void onCompleted(GraphUser user, Response response)
+                {
+                    if (user != null)
+                    {
+                        userName = user.getName();
+                        invalidateOptionsMenu();
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_new_challenge:
+                intent = new Intent(this, NewChallengeActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_add_contact:
+                intent = new Intent(this, AddContactActivity.class);
+                startActivityForResult(intent, REQUEST_NEW_CONTACT);
+                return true;
+            case R.id.action_profile:
+                return false;
+            case R.id.action_settings:
+                return false;
+            case R.id.action_delete_account:
+                final ServerFunctions server = new ServerFunctions();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Do you really want to delete your account?")
+                        .setCancelable(true)
+                        .setPositiveButton("Delete",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        try {
+                                            ParseUser.getCurrentUser().delete();
+                                            Intent mIntent = new Intent(
+                                                    MainActivity.this,
+                                                    LoginScreenActivity.class);
+                                            startActivity(mIntent);
+                                            finish();
+                                        } catch (ParseException e) {
+                                            e.printStackTrace();
+                                            Toast.makeText(MainActivity.this,
+                                                    "Account could not be deleted",
+                                                    Toast.LENGTH_LONG).show();
+                                        }
                                     }
-								}
-							}).setNegativeButton("Cancel", null);
-			builder.create().show();
-			return true;
-			// if (server.deleteAccount()) {
-			// Toast.makeText(this, "Account deleted", Toast.LENGTH_LONG)
-			// .show();
-			// Intent mIntent = new Intent(this, LoginScreenActivity.class);
-			// startActivity(mIntent);
-			// finish();
-			// } else {
-			// Toast.makeText(this, "Account could not be deleted",
-			// Toast.LENGTH_LONG).show();
-			// }
-		case R.id.action_logout:
-            ParseUser.logOut();
-			Intent mIntent = new Intent(this, LoginScreenActivity.class);
-			startActivity(mIntent);
-			finish();
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
+                                }).setNegativeButton("Cancel", null);
+                builder.create().show();
+                return true;
+            // if (server.deleteAccount()) {
+            // Toast.makeText(this, "Account deleted", Toast.LENGTH_LONG)
+            // .show();
+            // Intent mIntent = new Intent(this, LoginScreenActivity.class);
+            // startActivity(mIntent);
+            // finish();
+            // } else {
+            // Toast.makeText(this, "Account could not be deleted",
+            // Toast.LENGTH_LONG).show();
+            // }
+            case R.id.action_logout:
+                ParseUser.logOut();
+                Intent mIntent = new Intent(this, LoginScreenActivity.class);
+                startActivity(mIntent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
 
-		switch (requestCode) {
-		case REQUEST_NEW_CONTACT:
-			if (resultCode == RESULT_OK) {
-				// Update View because a new user was added
-			}
-			break;
+        switch (requestCode) {
+            case REQUEST_NEW_CONTACT:
+                if (resultCode == RESULT_OK) {
+                    // Update View because a new user was added
+                }
+                break;
 
-		default:
-			break;
-		}
-	}
+            default:
+                break;
+        }
+    }
 }

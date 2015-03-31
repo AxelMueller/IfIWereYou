@@ -19,14 +19,16 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/authButton"
-        android:layout_alignLeft="@+id/authButton"
-        android:layout_alignRight="@+id/authButton"
+        android:layout_above="@+id/facebookLogin"
+        android:layout_alignLeft="@+id/facebookLogin"
+        android:layout_alignRight="@+id/facebookLogin"
         android:layout_marginBottom="16dp"
         android:text="Log in with E-Mail" />
 
-    <com.facebook.widget.LoginButton
-        android:id="@+id/authButton"
+    <Button
+        android:id="@+id/facebookLogin"
+        style="@style/com_facebook_loginview_default_style"
+        android:text="Log In With Facebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

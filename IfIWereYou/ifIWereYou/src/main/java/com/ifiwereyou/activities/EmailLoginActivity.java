@@ -76,22 +76,6 @@ public class EmailLoginActivity extends Activity {
                 }
             }
         });
-		/*ServerFunctions server = new ServerFunctions();
-		try {
-			if (server.loginUser(this, email, password)) {
-				Intent intent = new Intent(this, MainActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		} catch (Exception e) {
-			if (e.getMessage().equals("Incorrect email or password")) {
-				Toast.makeText(this, R.string.incorrectLoginData,
-						Toast.LENGTH_LONG).show();
-			} else {
-				Toast.makeText(this, R.string.unknownError, Toast.LENGTH_LONG)
-						.show();
-			}
-		}*/
 	}
 
 	private void register() {

@@ -158,7 +158,10 @@ public class MainActivity extends FragmentActivity {
                 {
                     if (user != null)
                     {
-                        userName = user.getName();
+                        userName = user.getFirstName();
+                        ParseUser.getCurrentUser().put("firstname", userName);
+                        ParseUser.getCurrentUser().put("lastname", user.getLastName());
+                        ParseUser.getCurrentUser().saveInBackground();
                         invalidateOptionsMenu();
                     }
                 }

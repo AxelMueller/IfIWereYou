@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.0/res/values/values.xml -->
     <eat-comment/>
     <color name="com_facebook_blue">#3B5998</color>
     <color name="com_facebook_likeboxcountview_border_color">#6a7180</color>
@@ -19,10 +19,10 @@
     <declare-styleable name="com_facebook_picker_fragment"><attr format="boolean" name="show_pictures"/><attr format="string" name="extra_fields"/><attr format="boolean" name="show_title_bar"/><attr format="string" name="title_text"/><attr format="string" name="done_button_text"/><attr format="reference" name="title_bar_background"/><attr format="reference" name="done_button_background"/></declare-styleable>
     <declare-styleable name="com_facebook_place_picker_fragment"><attr format="integer" name="radius_in_meters"/><attr format="integer" name="results_limit"/><attr format="string" name="search_text"/><attr format="boolean" name="show_search_box"/></declare-styleable>
     <declare-styleable name="com_facebook_profile_picture_view"><attr name="preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="is_cropped"/></declare-styleable>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/src/main/res/values/dimen.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/src/main/res/values/dimen.xml -->
     <eat-comment/>
     <dimen name="challenges_master_row_marginStart">5dp</dimen>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
     <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
@@ -53,7 +53,7 @@
     <dimen name="com_facebook_usersettingsfragment_profile_picture_height">64dp</dimen>
     <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64dp</dimen>
     <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_add_contact">Add Contact</string>
     <string name="action_delete_account">Delete account</string>
@@ -71,7 +71,7 @@
     <string name="app_name">If I Were You</string>
     <string name="challangesPageTitle">Challanges</string>
     <string name="challenges_master_no_challenges">You have currently no challenges</string>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.0/res/values/values.xml -->
     <eat-comment/>
     <string name="com_facebook_choose_friends">Choose Friends</string>
     <string name="com_facebook_dialogloginactivity_ok_button">OK</string>
@@ -101,7 +101,7 @@
     <string name="com_facebook_usersettingsfragment_log_in_button">Log in…</string>
     <string name="com_facebook_usersettingsfragment_logged_in">Logged in</string>
     <string name="com_facebook_usersettingsfragment_not_logged_in">Not logged in</string>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="confirmPassword">Confirm password</string>
     <string name="email">Email</string>
@@ -132,7 +132,7 @@
     <string name="toplistPageTitle">Top List</string>
     <string name="unknownError">An unknown error occurred. Please try again later.</string>
     <string name="welcome">Welcome to If I Were You</string>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
@@ -144,7 +144,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.19.0/res/values/values.xml -->
     <eat-comment/>
     <style name="com_facebook_loginview_default_style" parent="@android:style/Widget.Button">
         <item name="android:layout_width">wrap_content</item>

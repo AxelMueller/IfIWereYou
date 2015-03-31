@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import com.ifiwereyou.objects.ChallengeFlow;
 
+@Deprecated
 public class ChallengeFlowComperator implements Comparator<ChallengeFlow> {
 
 	private int order;

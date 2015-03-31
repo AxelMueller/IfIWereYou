@@ -8,7 +8,7 @@ public class UserInputCheck {
 	 * Checks whether the given email address complies with the pattern for
 	 * email addresses.
 	 * 
-	 * @param mailaddress
+	 * @param mailAddress
 	 *            the email address to check
 	 * @return true if the email address is valid
 	 */

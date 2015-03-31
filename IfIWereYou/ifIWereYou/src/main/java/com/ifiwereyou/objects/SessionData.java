@@ -7,6 +7,7 @@ import android.content.Context;
 
 import com.ifiwereyou.provider.DataProvider;
 
+@Deprecated //!!!!!!!!!!!
 public class SessionData {
 
 	private static SessionData instance;

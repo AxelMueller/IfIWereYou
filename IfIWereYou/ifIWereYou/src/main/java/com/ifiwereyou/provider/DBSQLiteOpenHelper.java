@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBSQLiteOpenHelper extends SQLiteOpenHelper {
+public class DBSQLiteOpenHelper extends SQLiteOpenHelper { // todo might be deprecated, check later
 
 	// All Static variables
 	// Database Version

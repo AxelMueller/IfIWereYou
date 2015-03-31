@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.ifiwereyou.utils.ChallengeComperator;
 
+@Deprecated
 public class ChallengeFlow {
 
 	public static final int DATE = 0;

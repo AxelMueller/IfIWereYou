@@ -1,5 +1,6 @@
 package com.ifiwereyou.objects;
 
+@Deprecated
 public class Challenge {
 
 	public static final int DATE = 0;

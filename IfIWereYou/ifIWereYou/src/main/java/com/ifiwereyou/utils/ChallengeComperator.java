@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import com.ifiwereyou.objects.Challenge;
 
+@Deprecated
 public class ChallengeComperator implements Comparator<Challenge> {
 
 	private int order;

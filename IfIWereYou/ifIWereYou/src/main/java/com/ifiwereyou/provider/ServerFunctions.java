@@ -15,6 +15,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.objects.User;
 
+@Deprecated
 public class ServerFunctions {
 
 	private JSONParser jsonParser;

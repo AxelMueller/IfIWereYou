@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 import org.apache.http.NameValuePair;
 import org.json.JSONObject;
 
+@Deprecated
 public class JSONParser {
 
 	// constructor

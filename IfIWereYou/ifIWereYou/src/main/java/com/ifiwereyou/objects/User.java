@@ -1,5 +1,6 @@
 package com.ifiwereyou.objects;
 
+@Deprecated
 public class User {
 
 	public static final int FIRSTNAME = 0;

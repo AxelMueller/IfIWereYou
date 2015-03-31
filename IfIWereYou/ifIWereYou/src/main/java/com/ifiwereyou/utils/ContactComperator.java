@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import com.ifiwereyou.objects.User;
 
+@Deprecated
 public class ContactComperator implements Comparator<User> {
 
 	private int order;

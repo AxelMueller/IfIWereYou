@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYouAS/ifIWereYou/src/main/res/values-v14/styles.xml -->
+    <!-- From: file:/C:/Users/d060670/Documents/Studium/if-i-were-you/IfIWereYou/ifIWereYou/src/main/res/values-v14/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- API 14 theme customizations can go here. -->

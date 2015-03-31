@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 'Google Inc.:Google APIs:21'
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "21.0.2"
 
     defaultConfig {
         applicationId "com.ifiwereyou"
@@ -21,4 +21,7 @@ android {
 dependencies {
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.facebook.android:facebook-android-sdk:3.19.0'
+    compile 'com.parse.bolts:bolts-android:1.2.0'
+    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+
 }

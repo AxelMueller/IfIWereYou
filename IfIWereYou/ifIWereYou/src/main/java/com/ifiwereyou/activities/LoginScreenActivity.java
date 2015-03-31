@@ -16,6 +16,7 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LoginButton;
 import com.ifiwereyou.R;
+import com.parse.ParseObject;
 
 public class LoginScreenActivity extends Activity {
 

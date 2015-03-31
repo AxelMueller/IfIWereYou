@@ -29,6 +29,8 @@ import com.ifiwereyou.R;
 import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.provider.MainActivityFragmentPagerAdapter;
 import com.ifiwereyou.provider.ServerFunctions;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 public class MainActivity extends FragmentActivity {
 
@@ -37,12 +39,9 @@ public class MainActivity extends FragmentActivity {
 
 	FragmentPagerAdapter mPagerAdapter;
 	ViewPager mViewPager;
-	SessionData profile;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		profile = SessionData.getInstance();
 
 		setContentView(R.layout.activity_main);
 
@@ -131,8 +130,7 @@ public class MainActivity extends FragmentActivity {
 		// Inflate the menu items for use in the action bar
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main_activity_menu, menu);
-		menu.findItem(R.id.action_profile).setTitle(
-				profile.getUser().getFirstName());
+		menu.findItem(R.id.action_profile).setTitle(ParseUser.getCurrentUser().get("firstname").toString());
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -162,17 +160,19 @@ public class MainActivity extends FragmentActivity {
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int which) {
-									if (server.deleteAccount()) {
-										Intent mIntent = new Intent(
-												MainActivity.this,
-												LoginScreenActivity.class);
-										startActivity(mIntent);
-										finish();
-									} else {
-										Toast.makeText(MainActivity.this,
-												"Account could not be deleted",
-												Toast.LENGTH_LONG).show();
-									}
+                                    try {
+                                        ParseUser.getCurrentUser().delete();
+                                        Intent mIntent = new Intent(
+                                                MainActivity.this,
+                                                LoginScreenActivity.class);
+                                        startActivity(mIntent);
+                                        finish();
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                        Toast.makeText(MainActivity.this,
+                                                "Account could not be deleted",
+                                                Toast.LENGTH_LONG).show();
+                                    }
 								}
 							}).setNegativeButton("Cancel", null);
 			builder.create().show();
@@ -188,31 +188,7 @@ public class MainActivity extends FragmentActivity {
 			// Toast.LENGTH_LONG).show();
 			// }
 		case R.id.action_logout:
-			// final Session openSession = Session.getActiveSession();
-			// if (openSession != null) {
-			// String logout = getResources().getString(
-			// R.string.com_facebook_loginview_log_out_action);
-			// String cancel = getResources().getString(
-			// R.string.com_facebook_loginview_cancel_action);
-			//
-			// AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			// builder.setMessage("Do you really want to log out?")
-			// .setCancelable(true)
-			// .setPositiveButton(logout,
-			// new DialogInterface.OnClickListener() {
-			// public void onClick(DialogInterface dialog,
-			// int which) {
-			// openSession
-			// .closeAndClearTokenInformation();
-			// Intent logoutIntent = new Intent(
-			// MainActivity.this,
-			// LoginScreenActivity.class);
-			// startActivity(logoutIntent);
-			// }
-			// }).setNegativeButton(cancel, null);
-			// builder.create().show();
-			// }
-			SessionData.getInstance().endSession();
+            ParseUser.logOut();
 			Intent mIntent = new Intent(this, LoginScreenActivity.class);
 			startActivity(mIntent);
 			finish();

@@ -1,5 +1,6 @@
 package com.ifiwereyou.fragments;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
@@ -18,10 +19,8 @@ public class TopListFragment extends ListFragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		List<Challenge> challengeFlows = SessionData.getInstance()
-				.getTopChallengesList();
 		ArrayAdapter<Challenge> mAdapter = new ToplistAdapter(getActivity(),
-				challengeFlows);
+				new ArrayList<Challenge>());
 		setListAdapter(mAdapter);
 		setEmptyText(getActivity().getResources().getString(
 				R.string.top_challenges_master_no_entries));

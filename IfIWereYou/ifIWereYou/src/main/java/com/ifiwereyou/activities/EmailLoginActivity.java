@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.provider.ServerFunctions;
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 public class EmailLoginActivity extends Activity {
 
@@ -59,7 +62,21 @@ public class EmailLoginActivity extends Activity {
 					.show();
 			return;
 		}
-		ServerFunctions server = new ServerFunctions();
+
+        ParseUser.logInInBackground(email, password, new LogInCallback() {
+            public void done(ParseUser user, ParseException e) {
+                if (user != null) {
+                    // Hooray! The user is logged in.
+                    Intent intent = new Intent(EmailLoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    // Signup failed. Look at the ParseException to see what happened.
+                    Toast.makeText(EmailLoginActivity.this, R.string.incorrectLoginData, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+		/*ServerFunctions server = new ServerFunctions();
 		try {
 			if (server.loginUser(this, email, password)) {
 				Intent intent = new Intent(this, MainActivity.class);
@@ -74,7 +91,7 @@ public class EmailLoginActivity extends Activity {
 				Toast.makeText(this, R.string.unknownError, Toast.LENGTH_LONG)
 						.show();
 			}
-		}
+		}*/
 	}
 
 	private void register() {

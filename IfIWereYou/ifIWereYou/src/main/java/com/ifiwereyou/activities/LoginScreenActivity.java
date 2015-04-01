@@ -22,6 +22,8 @@ public class LoginScreenActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        if (ParseUser.getCurrentUser() != null)
+            goToMainActivity();
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login_screen);
         ButterKnife.inject(this);

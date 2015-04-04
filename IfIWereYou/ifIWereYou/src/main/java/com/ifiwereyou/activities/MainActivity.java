@@ -187,7 +187,6 @@ public class MainActivity extends FragmentActivity {
             case R.id.action_settings:
                 return false;
             case R.id.action_delete_account:
-                final ServerFunctions server = new ServerFunctions();
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setMessage("Do you really want to delete your account?")
                         .setCancelable(true)
@@ -212,16 +211,6 @@ public class MainActivity extends FragmentActivity {
                                 }).setNegativeButton("Cancel", null);
                 builder.create().show();
                 return true;
-            // if (server.deleteAccount()) {
-            // Toast.makeText(this, "Account deleted", Toast.LENGTH_LONG)
-            // .show();
-            // Intent mIntent = new Intent(this, LoginScreenActivity.class);
-            // startActivity(mIntent);
-            // finish();
-            // } else {
-            // Toast.makeText(this, "Account could not be deleted",
-            // Toast.LENGTH_LONG).show();
-            // }
             case R.id.action_logout:
                 ParseUser.logOut();
                 Intent mIntent = new Intent(this, LoginScreenActivity.class);

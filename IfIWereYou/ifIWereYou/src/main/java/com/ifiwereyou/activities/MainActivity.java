@@ -51,7 +51,10 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        setupTabs();
+    }
 
+    private void setupTabs() {
         final ActionBar actionBar = getActionBar();
 
         // ViewPager and its adapters use support library
@@ -75,8 +78,7 @@ public class MainActivity extends FragmentActivity {
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         actionBar.setIcon(new ColorDrawable(getResources().getColor(
-                android.R.color.transparent))); // FIXME: Later this should not
-        // be in the source code.
+                android.R.color.transparent))); // FIXME: Later this should not be in the source code.
 
         // Create a tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
@@ -144,6 +146,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void getUserFirstName() {
+        // todo refactor
         Object user = ParseUser.getCurrentUser().get("firstname");
         if (user != null) {
             userName = user.toString();
@@ -198,7 +201,7 @@ public class MainActivity extends FragmentActivity {
                                             ParseUser.getCurrentUser().delete();
                                             Intent mIntent = new Intent(
                                                     MainActivity.this,
-                                                    LoginScreenActivity.class);
+                                                    LoginActivity.class);
                                             startActivity(mIntent);
                                             finish();
                                         } catch (ParseException e) {
@@ -213,7 +216,7 @@ public class MainActivity extends FragmentActivity {
                 return true;
             case R.id.action_logout:
                 ParseUser.logOut();
-                Intent mIntent = new Intent(this, LoginScreenActivity.class);
+                Intent mIntent = new Intent(this, LoginActivity.class);
                 startActivity(mIntent);
                 finish();
                 return true;

@@ -29,8 +29,7 @@ public class ChallengesMasterFragment extends ListFragment {
 				getActivity(), new ArrayList<ChallengeFlow>() {
         });
 		setListAdapter(mAdapter);
-		setEmptyText(getActivity().getResources().getString(
-				R.string.challenges_master_no_challenges));
+		setEmptyText(getActivity().getResources().getString(R.string.challenges_master_no_challenges));
 	}
 
 }

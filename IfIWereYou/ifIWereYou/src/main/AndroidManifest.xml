@@ -18,18 +18,14 @@
         android:theme="@style/AppTheme"
         android:name=".IfIWereYouApplication">
         <activity
-            android:name="com.ifiwereyou.activities.LoginScreenActivity"
-            android:label="@string/app_name" >
+            android:name="com.ifiwereyou.activities.LoginActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.ifiwereyou.activities.EmailLoginActivity" />
-        <activity
-            android:name="com.ifiwereyou.activities.RegisterActivity" />
         <activity
             android:name="com.ifiwereyou.activities.MainActivity"
             android:label="@string/app_name" />

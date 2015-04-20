@@ -11,19 +11,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.provider.ServerFunctions;
 import com.ifiwereyou.utils.UserInputCheck;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import bolts.Task;
 
 public class AddContactFragment extends Fragment {
 
@@ -70,18 +65,19 @@ public class AddContactFragment extends Fragment {
                         }else {
                             ParseUser currentUser = ParseUser.getCurrentUser();
                             ParseUser friend = objects.get(0);
-                            ParseQuery<ParseObject> friendQuery = ParseQuery.getQuery("Friendship");
-                            query.whereEqualTo("friendA",currentUser);
-                            query.whereEqualTo("friendB",friend);
+                            ParseQuery<ParseUser> friendQuery = ParseQuery.getQuery("Friendship");
+                            friendQuery.whereEqualTo("friendA",currentUser);
+                            friendQuery.whereEqualTo("friendB",friend);
 
                             boolean friendshipExists = false;
+
                             try {
-                                friendshipExists = friendQuery.count()  > 0;
+                                friendshipExists = friendQuery.count() > 0;
                                 if(!friendshipExists){
-                                    ParseQuery<ParseObject> friendQuery2 = ParseQuery.getQuery("Friendship");
-                                    query.whereEqualTo("friendA",friend);
-                                    query.whereEqualTo("friendB",currentUser);
-                                    friendshipExists = friendQuery2.count()  > 0;
+                                    ParseQuery<ParseUser> friendQuery2 = ParseQuery.getQuery("Friendship");
+                                    friendQuery2.whereEqualTo("friendA",friend);
+                                    friendQuery2.whereEqualTo("friendB",currentUser);
+                                    friendshipExists = friendQuery2.count() > 0;
                                 }
                             } catch (ParseException e1) {
                                 //TODO

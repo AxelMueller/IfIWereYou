@@ -11,10 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ifiwereyou.R;
+import com.ifiwereyou.objects.Friendship;
 import com.ifiwereyou.utils.UserInputCheck;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -90,7 +90,7 @@ public class AddContactFragment extends Fragment {
                                                 email), Toast.LENGTH_LONG).show();
                             } else {
                                 // the query was successful
-                                ParseObject friendshipA = new ParseObject("Friendship");
+                                Friendship friendshipA = new Friendship();
                                 friendshipA.put("friendA", currentUser);
                                 friendshipA.put("friendB", friend);
                                 friendshipA.saveInBackground();
@@ -103,38 +103,9 @@ public class AddContactFragment extends Fragment {
                         }
                     }
                 });
-
-               /* ServerFunctions server = new ServerFunctions();
-                try {
-                    if (server.addFriend(getActivity(), email)) {
-                        Toast.makeText(
-                                getActivity(),
-                                getActivity().getResources().getString(
-                                        R.string.add_contact_success),
-                                Toast.LENGTH_LONG).show();
-                    }
-                } catch (Exception e) {
-                    if (e.getMessage() != null
-                            && e.getMessage().equals(
-                            "No user with the given mail address")) {
-                        Toast.makeText(
-                                getActivity().getApplicationContext(),
-                                String.format(
-                                        getActivity()
-                                                .getResources()
-                                                .getString(
-                                                        R.string.add_contact_fail_message),
-                                        email), Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(
-                                getActivity().getApplicationContext(),
-                                getActivity().getResources().getString(
-                                        R.string.add_contact_already_exists),
-                                Toast.LENGTH_LONG).show();
-                    }
-                }*/
             }
         });
+
         return rootView;
     }
 }

@@ -22,7 +22,7 @@ import android.util.Log;
 
 @Deprecated //fixme do not use this crappy code!!!
 public class URLTask extends AsyncTask<String, Void, JSONObject> {
-    // never use a AsyncTask for performing REST API calls, for reference look at Google IO presentation (2010)
+    // never use a AsyncTask for performing REST API calls, for reference look at Google IO presentation (2010)u
 
 	static InputStream is = null;
 	static JSONObject jObj = null;

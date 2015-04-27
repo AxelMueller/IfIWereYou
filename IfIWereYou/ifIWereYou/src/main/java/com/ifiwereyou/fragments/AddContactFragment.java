@@ -11,10 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.provider.ServerFunctions;
 import com.ifiwereyou.utils.UserInputCheck;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -32,7 +32,7 @@ public class AddContactFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_add_contact,
+        final View rootView = inflater.inflate(R.layout.fragment_add_contact,
                 container, false);
         emailEditText = (EditText) rootView
                 .findViewById(R.id.add_contact_emailEditText);
@@ -52,7 +52,7 @@ public class AddContactFragment extends Fragment {
                     return;
                 }
 
-                ParseQuery<ParseUser> query = ParseUser.getQuery();
+                final ParseQuery<ParseUser> query = ParseUser.getQuery();
                 query.whereEqualTo("email", email);
                 query.findInBackground(new FindCallback<ParseUser>() {
                     public void done(List<ParseUser> objects, ParseException e) {
@@ -62,14 +62,49 @@ public class AddContactFragment extends Fragment {
                                     String.format(
                                             getString(R.string.add_contact_fail_message),
                                             email), Toast.LENGTH_LONG).show();
-                        } else {
-                            // the query was successful
+                        }else {
+                            ParseUser currentUser = ParseUser.getCurrentUser();
+                            ParseUser friend = objects.get(0);
+                            ParseQuery<ParseUser> friendQuery = ParseQuery.getQuery("Friendship");
+                            friendQuery.whereEqualTo("friendA",currentUser);
+                            friendQuery.whereEqualTo("friendB",friend);
 
+                            boolean friendshipExists = false;
+
+                            try {
+                                friendshipExists = friendQuery.count() > 0;
+                                if(!friendshipExists){
+                                    ParseQuery<ParseUser> friendQuery2 = ParseQuery.getQuery("Friendship");
+                                    friendQuery2.whereEqualTo("friendA",friend);
+                                    friendQuery2.whereEqualTo("friendB",currentUser);
+                                    friendshipExists = friendQuery2.count() > 0;
+                                }
+                            } catch (ParseException e1) {
+                                //TODO
+                            }
+                            if(friendshipExists){
+                                Toast.makeText(
+                                        getActivity().getApplicationContext(),
+                                        String.format(
+                                                getString(R.string.add_contact_already_exists),
+                                                email), Toast.LENGTH_LONG).show();
+                            } else {
+                                // the query was successful
+                                ParseObject friendshipA = new ParseObject("Friendship");
+                                friendshipA.put("friendA", currentUser);
+                                friendshipA.put("friendB", friend);
+                                friendshipA.saveInBackground();
+                                Toast.makeText(
+                                        getActivity().getApplicationContext(),
+                                        String.format(
+                                                getString(R.string.add_contact_success),
+                                                email), Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                 });
 
-                ServerFunctions server = new ServerFunctions();
+               /* ServerFunctions server = new ServerFunctions();
                 try {
                     if (server.addFriend(getActivity(), email)) {
                         Toast.makeText(
@@ -97,7 +132,7 @@ public class AddContactFragment extends Fragment {
                                         R.string.add_contact_already_exists),
                                 Toast.LENGTH_LONG).show();
                     }
-                }
+                }*/
             }
         });
         return rootView;

@@ -1,8 +1,5 @@
 package com.ifiwereyou.provider;
 
-import java.util.Collections;
-import java.util.List;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,24 +8,32 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.User;
 import com.ifiwereyou.utils.ContactComperator;
+import com.parse.ParseUser;
 
-public class ContactListAdapter extends ArrayAdapter<User> {
+import java.util.Collections;
+import java.util.List;
+
+public class ContactListAdapter extends ArrayAdapter<ParseUser> {
 
 	private final Activity context;
-	private List<User> contacts;
+	private List<ParseUser> contacts;
+
+    //TODO write class inheriting from ParseUser ?
+    public static final int FIRSTNAME = 0;
+    public static final int LASTNAME = 1;
+    public static final int SCORE = 2;
 
 	static class ViewHolder {
 		public TextView contactNameTextView;
 	}
 
-	public ContactListAdapter(Activity context, List<User> contacts) {
+	public ContactListAdapter(Activity context, List<ParseUser> contacts) {
 		super(context, R.layout.row_contact_list, contacts);
 		this.context = context;
 		this.contacts = contacts;
 		Collections.sort(this.contacts,
-				new ContactComperator(User.FIRSTNAME));
+				new ContactComperator(ContactListAdapter.FIRSTNAME));
 	}
 
 	@Override
@@ -47,8 +52,10 @@ public class ContactListAdapter extends ArrayAdapter<User> {
 
 		// fill data
 		ViewHolder holder = (ViewHolder) rowView.getTag();
-		holder.contactNameTextView.setText(contacts.get(position)
-				.getName());
+        String firstname = (String) contacts.get(position).get("firstname");
+        String lastname = (String)contacts.get(position).get("lastname");
+        String fullName = firstname+" "+lastname;
+		holder.contactNameTextView.setText(fullName);
 
 		return rowView;
 	}

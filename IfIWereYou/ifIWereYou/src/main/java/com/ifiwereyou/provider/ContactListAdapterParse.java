@@ -23,7 +23,7 @@ import butterknife.InjectView;
  */
 public class ContactListAdapterParse extends ParseQueryAdapter<Friendship> {
 
-//    private final Activity context;
+    private final Activity context;
     //private List<ParseUser> contacts;
 //    ParseQueryAdapter.QueryFactory<Friendship> factory;
 
@@ -33,11 +33,9 @@ public class ContactListAdapterParse extends ParseQueryAdapter<Friendship> {
 
     public ContactListAdapterParse(Activity context, ParseQueryAdapter.QueryFactory<Friendship> factory) {
         super(context, factory);
-//        this.context = context;
-//        this.factory = factory;
-        //this.contacts = contacts;
+        this.context = context;
         // Collections.sort(this.contacts,
-        //         new ContactComperator(ContactListAdapter.FIRSTNAME));
+        // new ContactComperator(ContactListAdapter.FIRSTNAME));
     }
 
     @Override
@@ -53,41 +51,32 @@ public class ContactListAdapterParse extends ParseQueryAdapter<Friendship> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-//        holder.title.setText
-        // reuse views
-//        if (rowView == null) {
-//            LayoutInflater inflater = context.getLayoutInflater();
-//            rowView = inflater.inflate(R.layout.row_contact_list, null);
-//            // configure view holder
-//            ViewHolder viewHolder = new ViewHolder();
-//            viewHolder.contactNameTextView = (TextView) rowView
-//                    .findViewById(R.id.row_contact_list_contactNameTextView);
-//            rowView.setTag(viewHolder);
-//        }
-//
-//        // fill data
-//        ViewHolder holder = (ViewHolder) rowView.getTag();
-//        String firstname = (String) ((ParseUser)object.get(object.getFriendB())).get("firstname");
-//        String lastname = (String) ((ParseUser)object.get(object.getFriendB())).get("lastname");
-//        String fullName = firstname+" "+lastname;
-//        holder.contactNameTextView.setText(fullName);
-
-//        String firstname = (String) ((ParseUser)object.get(object.getFriendB())).get("firstname");
-//        String lastname = (String) ((ParseUser)object.get(object.getFriendB())).get("lastname");
-
-        setTextKey("friendB");
-        ParseUser user = (ParseUser) object.get("friendB");
-        String userName = "";
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        ParseUser userA = (ParseUser) object.get("friendA");
         //why does fetchIfNeeded not work?
-        user.fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-            @Override
-            public void done(ParseObject parseObject, ParseException e) {
-                ParseUser myUser = (ParseUser) parseObject;
-                String firstname = myUser.getString("firstname");
-                String lastname = myUser.getString("lastname");
-                holder.contactList.setText(firstname+" "+lastname);
-            }
-        });
+        if(currentUser != userA) {
+            userA.fetchIfNeededInBackground(new GetCallback<ParseObject>() {
+                @Override
+                public void done(ParseObject parseObject, ParseException e) {
+                    ParseUser myUser = (ParseUser) parseObject;
+                    String firstname = myUser.getString("firstname");
+                    String lastname = myUser.getString("lastname");
+                    holder.contactList.setText(firstname + " " + lastname);
+                }
+            });
+        } else {
+            ParseUser userB = (ParseUser) object.get("friendB");
+            //why does fetchIfNeeded not work?
+            userB.fetchIfNeededInBackground(new GetCallback<ParseObject>() {
+                @Override
+                public void done(ParseObject parseObject, ParseException e) {
+                    ParseUser myUser = (ParseUser) parseObject;
+                    String firstname = myUser.getString("firstname");
+                    String lastname = myUser.getString("lastname");
+                    holder.contactList.setText(firstname + " " + lastname);
+                }
+            });
+        }
 
         return convertView;
     }
@@ -96,7 +85,6 @@ public class ContactListAdapterParse extends ParseQueryAdapter<Friendship> {
         //@InjectView(android.R.id.text1) TextView title;
         @InjectView(R.id.row_contact_list_contactNameTextView)
         TextView contactList;
-
 
         public ViewHolder(View view) {
             ButterKnife.inject(this, view);

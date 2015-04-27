@@ -11,10 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ifiwereyou.R;
+import com.ifiwereyou.objects.Friendship;
 import com.ifiwereyou.utils.UserInputCheck;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -90,7 +90,7 @@ public class AddContactFragment extends Fragment {
                                                 email), Toast.LENGTH_LONG).show();
                             } else {
                                 // the query was successful
-                                ParseObject friendshipA = new ParseObject("Friendship");
+                                Friendship friendshipA = new Friendship();
                                 friendshipA.put("friendA", currentUser);
                                 friendshipA.put("friendB", friend);
                                 friendshipA.saveInBackground();

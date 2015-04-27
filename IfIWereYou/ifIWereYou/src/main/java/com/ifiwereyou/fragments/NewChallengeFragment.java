@@ -18,13 +18,14 @@ public class NewChallengeFragment extends ListFragment {
     public int getFooterViewsCount() {
         return getListView().getFooterViewsCount();
     }
+
     ParseQueryAdapter.QueryFactory<Friendship> factory;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final List<ParseQuery<Friendship>> queryList= new ArrayList<>();
+        final List<ParseQuery<Friendship>> queryList = new ArrayList<>();
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 
@@ -37,71 +38,24 @@ public class NewChallengeFragment extends ListFragment {
         queryList.add(contactsQueryB);
 
         final List<String> columnNames = new ArrayList<String>();
-        //columnNames.add("friendA");
-        columnNames.add("friendB");
 
         factory = new ParseQueryAdapter.QueryFactory<Friendship>() {
             @Override
             public ParseQuery<Friendship> create() {
                 ParseQuery<Friendship> orStatement = ParseQuery.or(queryList);
-               // orStatement.selectKeys(columnNames);
-               return orStatement;
+                return orStatement;
             }
         };
-
-
-        //orStatement.selectKeys(columnNames);
-
-//       orStatement.findInBackground(new FindCallback<ParseUser>() {
-//            @Override
-//            public void done(List<ParseUser> parseUsers, ParseException e) {
-//                if (e == null) {
-//                    parseContacts.addAll(parseUsers);
-//                    // for (ParseUser obj : parseUsers) {
-//                    //     parseContacts.add(obj);
-//                    //}
-//                }
-//            }
-//        });
     }
 
     @Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-
-        //List<String> columnNames = new ArrayList<String>();
-        //columnNames.add("friendB");
-
-        //contactsQuery.selectKeys(columnNames);
-        //contactsQuery = null;
-        //contactsQuery = ParseQuery.getQuery("Friendship");
-        //contactsQuery.whereEqualTo("friendB", currentUser);
-        //columnNames.clear();
-        //columnNames.add("friendA");
-        //contactsQuery.selectKeys(columnNames);
-        /*contactsQuery.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> parseUsers, ParseException e) {
-                if(e==null) {
-                    //parseContacts.addAll(parseUsers);
-                    for(ParseObject obj: parseUsers){
-                        parseContacts.add((ParseUser) obj);
-                    }
-                }
-            }
-        });*/
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         ContactListAdapterParse mAdapter = new ContactListAdapterParse(getActivity(), factory);
-
-//        ParseQueryAdapter<Friendship> mAdapter = new ParseQueryAdapter<Friendship>(getActivity(), "Friendship");
-
-//        mAdapter.setTextKey("friendB");
-
-		setListAdapter(mAdapter);
-		//getListView().setFastScrollEnabled(true);
+        setListAdapter(mAdapter);
         setEmptyText(getActivity().getResources().getString(
-                    R.string.new_challenge_no_contacts));
-	}
+                R.string.new_challenge_no_contacts));
+    }
 
 }

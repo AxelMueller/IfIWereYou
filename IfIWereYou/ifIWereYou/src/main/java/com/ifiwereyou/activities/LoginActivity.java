@@ -1,13 +1,13 @@
 package com.ifiwereyou.activities;
 
-import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.provider.LoginFragmentPagerAdapter;
@@ -23,7 +23,7 @@ import butterknife.InjectView;
 /**
  * Created by D060336 on 13.04.2015.
  */
-public class LoginActivity extends FragmentActivity{
+public class LoginActivity extends ActionBarActivity{
 
     FragmentPagerAdapter mPagerAdapter;
     @InjectView(R.id.loginViewPager) ViewPager mViewPager;
@@ -40,7 +40,7 @@ public class LoginActivity extends FragmentActivity{
     }
 
     private void setupTabs() {
-        final ActionBar actionBar = getActionBar();
+        final ActionBar actionBar = getSupportActionBar();
 
         // ViewPager and its adapters use support library
         // fragments, so use getSupportFragmentManager.
@@ -53,7 +53,7 @@ public class LoginActivity extends FragmentActivity{
                         // When swiping between pages, select the corresponding
                         // tab. This is necessary because the pages are not
                         // linked to the tabs by default.
-                        getActionBar().setSelectedNavigationItem(position);
+                        actionBar.setSelectedNavigationItem(position);
                     }
                 });
 
@@ -66,24 +66,18 @@ public class LoginActivity extends FragmentActivity{
         // Create a tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
             @Override
-            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // TODO Auto-generated method stub
-                // show the given tab
-                // When the tab is selected, switch to the
-                // corresponding page in the ViewPager.
+            public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
                 mViewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
-            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // TODO Auto-generated method stub
-                // hide the given tab
+            public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+
             }
 
             @Override
-            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // TODO Auto-generated method stub
-                // probably ignore this event
+            public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+
             }
         };
 

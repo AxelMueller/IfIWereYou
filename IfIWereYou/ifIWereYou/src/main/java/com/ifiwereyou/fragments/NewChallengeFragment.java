@@ -1,9 +1,13 @@
 package com.ifiwereyou.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.View;
+import android.widget.ListView;
 
 import com.ifiwereyou.R;
+import com.ifiwereyou.activities.ChallengeActivity;
 import com.ifiwereyou.objects.Friendship;
 import com.ifiwereyou.provider.ContactListAdapterParse;
 import com.parse.ParseQuery;
@@ -56,6 +60,20 @@ public class NewChallengeFragment extends ListFragment {
         setListAdapter(mAdapter);
         setEmptyText(getActivity().getResources().getString(
                 R.string.new_challenge_no_contacts));
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        ContactListAdapterParse adapter = (ContactListAdapterParse) getListAdapter();
+        Friendship friendship = adapter.getItem(position);
+        ParseUser friend = friendship.getFriend();
+
+        Intent intent = new Intent(getActivity(), ChallengeActivity.class);
+        intent.putExtra(ChallengeActivity.KEY_OPPONENT, friend.getString("firstname") + " " + friend.getString("lastname"));
+        intent.putExtra(ChallengeActivity.KEY_OPPONENT_USER_ID, friend.getObjectId());
+        startActivity(intent);
+
+        getActivity().finish();
     }
 
 }

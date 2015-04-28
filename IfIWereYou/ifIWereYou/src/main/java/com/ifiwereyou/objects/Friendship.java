@@ -24,8 +24,8 @@ public class Friendship extends ParseObject{
 
     public ParseUser getFriend() {
         String currentUserId = ParseUser.getCurrentUser().getObjectId();
-        return (getParseObject(KEY_FRIENDA).getObjectId().equals(currentUserId) && !getParseObject(KEY_FRIENDB).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_FRIENDA)
-                : (getParseObject(KEY_FRIENDB).getObjectId().equals(currentUserId) && !getParseObject(KEY_FRIENDA).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_FRIENDB)
+        return (getParseObject(KEY_FRIENDA).getObjectId().equals(currentUserId) && !getParseObject(KEY_FRIENDB).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_FRIENDB)
+                : (getParseObject(KEY_FRIENDB).getObjectId().equals(currentUserId) && !getParseObject(KEY_FRIENDA).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_FRIENDA)
                     : null;
     }
 

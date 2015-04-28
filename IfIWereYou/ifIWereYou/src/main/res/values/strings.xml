@@ -35,6 +35,7 @@
     <!-- Activity Names -->
     <string name="title_add_contact">Add Contact</string>
     <string name="title_new_challenge">New Challenge</string>
+    <string name="title_challenge">Challenge</string>
     
     <!-- Email Login Activity -->
     <string name="noAccountButton">I don\'t have an account. Register me!</string>

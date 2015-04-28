@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MessageBubble.Left">
+
+        <TextView
+            android:id="@+id/challenge_content"
+            android:text="Wenn ich Du wäre, würde ich diese App allen meinen Freunden zeigen!"
+            style="@style/MessageText" />
+
+    </LinearLayout>
+</RelativeLayout>

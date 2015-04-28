@@ -22,13 +22,13 @@ public class AddContactActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_contact);
-		getActionBar().setIcon(
+		getSupportActionBar().setIcon(
 				new ColorDrawable(getResources().getColor(
 						android.R.color.transparent))); // FIXME: Later this
 														// should probably not
 														// be in the source
 														// code.
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.addContactContainer, new AddContactFragment())

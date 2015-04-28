@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.Challenge;
-import com.ifiwereyou.utils.ChallengeComperator;
 
 public class ToplistAdapter extends ArrayAdapter<Challenge> {
 
@@ -27,8 +26,8 @@ public class ToplistAdapter extends ArrayAdapter<Challenge> {
 		super(context, android.R.layout.simple_list_item_1, challenges);
 		this.context = context;
 		this.challenges = challenges;
-		Collections.sort(this.challenges, new ChallengeComperator(
-				Challenge.RATING));
+//		Collections.sort(this.challenges, new ChallengeComperator(
+//				Challenge.RATING));
 	}
 
 	@Override
@@ -46,8 +45,8 @@ public class ToplistAdapter extends ArrayAdapter<Challenge> {
 		}
 
 		// fill data
-		ViewHolder holder = (ViewHolder) rowView.getTag();
-		holder.challengeText.setText(challenges.get(position).getText());
+//		ViewHolder holder = (ViewHolder) rowView.getTag();
+//		holder.challengeText.setText(challenges.get(position).getText());
 
 		return rowView;
 	}

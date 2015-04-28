@@ -33,6 +33,7 @@ public class ChallengeActivity extends ActionBarActivity {
 
             Bundle args = new Bundle();
             args.putString(ChallengeFragment.KEY_OPPONENT_USER_ID, extras.getString(KEY_OPPONENT_USER_ID));
+            fragment.setArguments(args);
 
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, fragment, TAG_CHALLENGE_FRAGMENT)

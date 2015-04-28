@@ -20,11 +20,11 @@ import com.ifiwereyou.activities.MainActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import butterknife.ButterKnife;
@@ -66,6 +66,10 @@ public class LoginFragment extends Fragment {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // Hooray! The user is logged in.
+                    //TODO move to registration later!!
+                    ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                    installation.put("username",ParseUser.getCurrentUser().getUsername());
+                    installation.saveInBackground();
                     goToMainActivity();
                 } else {
                     // Signup failed. Look at the ParseException to see what happened.
@@ -108,9 +112,11 @@ public class LoginFragment extends Fragment {
             public void onCompleted(GraphUser user, Response response) {
                 Log.d("meRequest", "Me Request complete");
                 if (user != null) {
-                    ParseUser.getCurrentUser().put("firstname", user.getFirstName());
-                    ParseUser.getCurrentUser().put("lastname", user.getLastName());
-                    ParseUser.getCurrentUser().put("email", (String) user.asMap().get("email"));
+                    final ParseUser currentUser = ParseUser.getCurrentUser();
+
+                    currentUser.put("firstname", user.getFirstName());
+                    currentUser.put("lastname", user.getLastName());
+                    currentUser.put("email", (String) user.asMap().get("email"));
                     Log.d("email", (String) user.asMap().get("email"));
                     ParseUser.getCurrentUser().saveInBackground(new SaveCallback() {
                         @Override

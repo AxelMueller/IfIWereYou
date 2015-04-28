@@ -15,6 +15,8 @@ import com.ifiwereyou.objects.Friendship;
 import com.ifiwereyou.utils.UserInputCheck;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -62,27 +64,27 @@ public class AddContactFragment extends Fragment {
                                     String.format(
                                             getString(R.string.add_contact_fail_message),
                                             email), Toast.LENGTH_LONG).show();
-                        }else {
+                        } else {
                             ParseUser currentUser = ParseUser.getCurrentUser();
                             ParseUser friend = objects.get(0);
                             ParseQuery<ParseUser> friendQuery = ParseQuery.getQuery("Friendship");
-                            friendQuery.whereEqualTo("friendA",currentUser);
-                            friendQuery.whereEqualTo("friendB",friend);
+                            friendQuery.whereEqualTo("friendA", currentUser);
+                            friendQuery.whereEqualTo("friendB", friend);
 
                             boolean friendshipExists = false;
 
                             try {
                                 friendshipExists = friendQuery.count() > 0;
-                                if(!friendshipExists){
+                                if (!friendshipExists) {
                                     ParseQuery<ParseUser> friendQuery2 = ParseQuery.getQuery("Friendship");
-                                    friendQuery2.whereEqualTo("friendA",friend);
-                                    friendQuery2.whereEqualTo("friendB",currentUser);
+                                    friendQuery2.whereEqualTo("friendA", friend);
+                                    friendQuery2.whereEqualTo("friendB", currentUser);
                                     friendshipExists = friendQuery2.count() > 0;
                                 }
                             } catch (ParseException e1) {
                                 //TODO
                             }
-                            if(friendshipExists){
+                            if (friendshipExists) {
                                 Toast.makeText(
                                         getActivity().getApplicationContext(),
                                         String.format(
@@ -94,6 +96,14 @@ public class AddContactFragment extends Fragment {
                                 friendshipA.put("friendA", currentUser);
                                 friendshipA.put("friendB", friend);
                                 friendshipA.saveInBackground();
+                                ParsePush parsePush = new ParsePush();
+                                ParseQuery<ParseInstallation> pQuery = ParseInstallation.getQuery();
+                                pQuery.whereEqualTo("username", friend.getUsername());
+                                parsePush.setQuery(pQuery);
+//                                parsePush.setChannel("");
+                                parsePush.setMessage("Endlich angekommen??");
+                                parsePush.sendInBackground();
+
                                 Toast.makeText(
                                         getActivity().getApplicationContext(),
                                         String.format(

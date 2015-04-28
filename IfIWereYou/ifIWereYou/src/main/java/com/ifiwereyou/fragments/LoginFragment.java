@@ -17,10 +17,15 @@ import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.ifiwereyou.R;
 import com.ifiwereyou.activities.MainActivity;
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
+<<<<<<< HEAD
 import com.parse.ParseInstallation;
+=======
+import com.parse.ParseQuery;
+>>>>>>> 74faab8... Better error handling for login
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -109,7 +114,7 @@ public class LoginFragment extends Fragment {
     private void initializeNewFacebookAccount() {
         Request request = Request.newMeRequest(ParseFacebookUtils.getSession(), new Request.GraphUserCallback() {
             @Override
-            public void onCompleted(GraphUser user, Response response) {
+            public void onCompleted(final GraphUser user, Response response) {
                 Log.d("meRequest", "Me Request complete");
                 if (user != null) {
                     final ParseUser currentUser = ParseUser.getCurrentUser();
@@ -124,8 +129,12 @@ public class LoginFragment extends Fragment {
                             Log.d("Save", "Parse user saveInBackground complete");
                             if (e == null) {
                                 goToMainActivity();
+                            } else if (e.getCode() == ParseException.EMAIL_TAKEN) {
+                                Toast.makeText(getActivity(), "You are already registered with that email address", Toast.LENGTH_LONG).show();
                             }
                             else {
+                                Log.d("E Code", String.valueOf(e.getCode()));
+                                Log.d("E Message", e.getMessage());
                                 Toast.makeText(getActivity(), "Login failed, try again", Toast.LENGTH_LONG).show();
                             }
                         }

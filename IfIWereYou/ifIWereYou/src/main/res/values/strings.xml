@@ -52,6 +52,10 @@
     <!-- Challenges Master View -->
     <string name="challenges_master_no_challenges">You have currently no challenges</string>
 
+    <!-- Challenge Detail -->
+    <string name="action_send_challenge">Send Challenge</string>
+    <string name="message_challenge_input_hint">Send a Challenge</string>
+
     <!-- Highscore Master View -->
     <string name="highscore_master_no_entries">There is currently no highscore list available</string>
 

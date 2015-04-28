@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/message_new"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="#FFFFFF"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/message_field_padding_left" >
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="0px"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/message_text_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:ems="10"
+            android:hint="@string/message_challenge_input_hint"
+            android:minHeight="@dimen/message_field_input_min_height"
+            android:nextFocusLeft="@id/message_text_input"
+            android:nextFocusUp="@id/message_text_input" >
+
+            <requestFocus />
+        </EditText>
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/action_send_location"-->
+            <!--style="?android:attr/borderlessButtonStyle"-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:clickable="true"-->
+            <!--android:contentDescription="@string/action_send_location"-->
+            <!--android:src="@drawable/ic_btn_location" />-->
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/action_send_photo"-->
+            <!--style="?android:attr/borderlessButtonStyle"-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:clickable="true"-->
+            <!--android:contentDescription="@string/action_send_photo"-->
+            <!--android:src="@drawable/ic_btn_photo" />-->
+
+        <ImageButton
+            android:id="@+id/action_send_message"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:clickable="true"
+            android:contentDescription="@string/action_send_challenge"
+            android:src="@drawable/ic_action_send_now" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/message_new"
+        android:layout_alignParentLeft="true"
+        android:divider="@null"
+        android:cacheColorHint="@android:color/transparent"
+        android:scrollingCache="false"
+        android:alwaysDrawnWithCache="false"
+        android:persistentDrawingCache="none"
+        android:listSelector="@android:color/transparent"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal" >
+    </ListView>
+
+</RelativeLayout>

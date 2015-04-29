@@ -11,25 +11,24 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.ChallengeFlow;
-import com.ifiwereyou.utils.ChallengeFlowComperator;
+import com.ifiwereyou.objects.Challenge;
 
-public class ChallengeFlowAdapter extends ArrayAdapter<ChallengeFlow> {
+public class ChallengeFlowAdapter extends ArrayAdapter<Challenge> {
 
 	private final Activity context;
-	private List<ChallengeFlow> challenges;
+	private List<Challenge> challenges;
 
 	static class ViewHolder {
 		public TextView challengerTextView;
 		public TextView challengeTextView;
 	}
 
-	public ChallengeFlowAdapter(Activity context, List<ChallengeFlow> challenges) {
+	public ChallengeFlowAdapter(Activity context, List<Challenge> challenges) {
 		super(context, R.layout.row_challenge_master, challenges);
 		this.context = context;
 		this.challenges = challenges;
-		Collections.sort(this.challenges, new ChallengeFlowComperator(
-				ChallengeFlow.DATE));
+//		Collections.sort(this.challenges, new ChallengeFlowComperator(
+//				ChallengeFlow.DATE));
 	}
 
 	@Override
@@ -50,10 +49,10 @@ public class ChallengeFlowAdapter extends ArrayAdapter<ChallengeFlow> {
 
 		// fill data
 		ViewHolder holder = (ViewHolder) rowView.getTag();
-		holder.challengerTextView.setText(challenges.get(position)
-				.getChallenger().getName());
-		holder.challengeTextView.setText(challenges.get(position)
-				.getLatestChallenge().getText());
+//		holder.challengerTextView.setText(challenges.get(position)
+//				.getChallenger().getName());
+//		holder.challengeTextView.setText(challenges.get(position)
+//				.getLatestChallenge().getText());
 
 		return rowView;
 	}

@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.fragments.AddContactFragment;
 
-public class AddContactActivity extends FragmentActivity {
+public class AddContactActivity extends ActionBarActivity {
 
 	// TODO: Set ResultOK or ResultCanceled at the end so the MainActivity knows
 	// whether to update the view
@@ -21,13 +22,13 @@ public class AddContactActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_contact);
-		getActionBar().setIcon(
+		getSupportActionBar().setIcon(
 				new ColorDrawable(getResources().getColor(
 						android.R.color.transparent))); // FIXME: Later this
 														// should probably not
 														// be in the source
 														// code.
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.addContactContainer, new AddContactFragment())

@@ -41,6 +41,13 @@ public class Challenge extends ParseObject{
         return getParseUser(KEY_CHALLENGED);
     }
 
+    public ParseUser getMyOpponent() {
+        String currentUserId = ParseUser.getCurrentUser().getObjectId();
+        return (getParseObject(KEY_CHALLENGER).getObjectId().equals(currentUserId) && !getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_CHALLENGED)
+                : (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId) && !getParseObject(KEY_CHALLENGER).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_CHALLENGER)
+                : null;
+    };
+
     public Type getType() {
         String currentUserId = ParseUser.getCurrentUser().getObjectId();
         return (getChallenger().getObjectId().equals(currentUserId) && !getChallenged().getObjectId().equals(currentUserId)) ? Type.OUTGOING

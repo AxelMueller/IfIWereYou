@@ -1,9 +1,13 @@
 package com.ifiwereyou.provider;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ifiwereyou.R;
@@ -47,8 +51,27 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
     public View getItemView(Challenge challenge, View v, ViewGroup parent) {
         View view = newView(challenge, parent);
 
-        TextView challengeTextView = (TextView) view.findViewById(R.id.challenge_content);
+        final TextView challengeTextView = (TextView) view.findViewById(R.id.challenge_content);
         challengeTextView.setText(challenge.getChallengeText());
+        final LinearLayout buttonContainer = (LinearLayout) view.findViewById(R.id.buttonContainer);
+        if (buttonContainer != null) {
+            final Button confirm = (Button) view.findViewById(R.id.confirm);
+            final Button decline = (Button) view.findViewById(R.id.decline);
+            view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    int textWidth = challengeTextView.getMeasuredWidth();
+                    int containerWidth = buttonContainer.getMeasuredWidth();
+
+                    if (containerWidth < textWidth) {
+                        buttonContainer.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                        confirm.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 0.5f));
+                        decline.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 0.5f));
+                    }
+                }
+            });
+
+        }
 
         return view;
     }
@@ -67,9 +90,12 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
 
     private int getItemViewType(Challenge challenge) {
         switch (challenge.getType()) {
-            case OUTGOING: return ViewTypes.OUTGOING_CHALLENGE;
-            case INCOMING: return ViewTypes.INCOMING_CHALLENGE;
-            default: throw new IllegalArgumentException("Could not find a view type for " + challenge.getType());
+            case OUTGOING:
+                return ViewTypes.OUTGOING_CHALLENGE;
+            case INCOMING:
+                return ViewTypes.INCOMING_CHALLENGE;
+            default:
+                throw new IllegalArgumentException("Could not find a view type for " + challenge.getType());
         }
     }
 

@@ -17,15 +17,10 @@ import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.ifiwereyou.R;
 import com.ifiwereyou.activities.MainActivity;
-import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
-<<<<<<< HEAD
 import com.parse.ParseInstallation;
-=======
-import com.parse.ParseQuery;
->>>>>>> 74faab8... Better error handling for login
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 

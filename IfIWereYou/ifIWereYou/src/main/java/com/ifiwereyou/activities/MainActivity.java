@@ -6,17 +6,10 @@ package com.ifiwereyou.activities;
 
 // Navigation implemented with: http://developer.android.com/training/implementing-navigation/lateral.html
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,7 +20,7 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.ifiwereyou.R;
-import com.ifiwereyou.provider.MainActivityFragmentPagerAdapter;
+import com.ifiwereyou.fragments.ChallengesMasterFragment;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
@@ -37,8 +30,7 @@ public class MainActivity extends ActionBarActivity {
     // Request codes for startActivityForResult
     private static final int REQUEST_NEW_CONTACT = 0;
 
-    FragmentPagerAdapter mPagerAdapter;
-    ViewPager mViewPager;
+    private static final String TAG_MASTER_FRAGMENT = "master_fragment";
 
     String userName;
 
@@ -46,81 +38,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        setupTabs();
-    }
-
-    private void setupTabs() {
-        final ActionBar actionBar = getSupportActionBar();
-
-        // ViewPager and its adapters use support library
-        // fragments, so use getSupportFragmentManager.
-        mViewPager = (ViewPager) findViewById(R.id.mainViewPager);
-        mPagerAdapter = new MainActivityFragmentPagerAdapter(
-                getSupportFragmentManager());
-        mViewPager.setAdapter(mPagerAdapter);
-        mViewPager
-                .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-                    @Override
-                    public void onPageSelected(int position) {
-                        // When swiping between pages, select the corresponding
-                        // tab. This is necessary because the pages are not
-                        // linked to the tabs by default.
-                        actionBar.setSelectedNavigationItem(position);
-                    }
-                });
-
-        // Specify that tabs should be displayed in the action bar.
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        actionBar.setIcon(new ColorDrawable(getResources().getColor(
-                android.R.color.transparent))); // FIXME: Later this should not be in the source code.
-
-        // Create a tab listener that is called when the user changes tabs.
-        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-            @Override
-            public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
-
-                mViewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
-
-            }
-
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
-
-            }
-        };
-
-        // Add 4 tabs to the action bar and specify the tab's text and
-        // TabListener
-        // TODO: Decide whether to use fixed tabs or scrollable tabs:
-        // http://developer.android.com/design/building-blocks/tabs.html
-        for (int i = 0; i < mPagerAdapter.getCount(); i++) {
-            actionBar.addTab(actionBar.newTab()
-                    .setText(mPagerAdapter.getPageTitle(i))
-                    .setTabListener(tabListener));
-        }
-
-        try {
-            Method setHasEmbeddedTabsMethod = actionBar.getClass()
-                    .getDeclaredMethod("setHasEmbeddedTabs", boolean.class);
-            setHasEmbeddedTabsMethod.setAccessible(true);
-            setHasEmbeddedTabsMethod.invoke(actionBar, false);
-        } catch (NoSuchMethodException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.challenge_master_container, new ChallengesMasterFragment(), TAG_MASTER_FRAGMENT)
+                    .commit();
         }
     }
 

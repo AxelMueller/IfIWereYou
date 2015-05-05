@@ -1,5 +1,7 @@
 package com.ifiwereyou.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
@@ -19,6 +21,7 @@ import com.parse.SaveCallback;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by D060670 on 28.04.2015.
@@ -62,6 +65,21 @@ public class ChallengeFragment extends ListFragment {
 
     @OnClick(R.id.action_send_challenge)
     public void sendChallenge() {
+        if (!mAdapter.canCurrentUserSendNewChallenge()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage(getString(R.string.only_one_outgoing_challenge));
+            builder.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {}
+            });
+            builder.show();
+            return;
+        }
+        final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.setTitleText("Sending");
+        pDialog.setCancelable(false);
+        pDialog.show();
+
         Challenge challenge = new Challenge();
         challenge.setChallenger(ParseUser.getCurrentUser());
         challenge.setChallenged(mOpponent);
@@ -71,6 +89,7 @@ public class ChallengeFragment extends ListFragment {
         challenge.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
+                pDialog.cancel();
                 if (e == null) {
                     challenge_text_input.setText("");
                     mAdapter.loadObjects();

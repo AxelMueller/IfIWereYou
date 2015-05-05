@@ -58,5 +58,22 @@
     <string name="loginEmail">Login mit E-Mail</string>
     <string name="add_contact_success">Kontakt erfolgreich zur Kontaktliste hinzugefügt</string>
     <string name="add_contact_already_exists">Kontakt befindet sich bereits in der Kontaktliste</string>
-    
+    <string name="action_send_challenge">Challenge senden</string>
+    <string name="challengesPageTitle">Challenges</string>
+    <string name="loginUppercase">LOGIN</string>
+    <string name="message_challenge_input_hint">Sende eine Challenge</string>
+    <string name="login">Login</string>
+    <string name="highscorePageTitle">Highscore</string>
+    <string name="feedPageTitle">Feed</string>
+    <string name="title_challenge">Challenge</string>
+    <string name="toplistPageTitle">Top Liste</string>
+    <string name="cancel_challenge">Abbrechen</string>
+    <string name="cancelled">Abgebrochen</string>
+    <string name="declined">Abgelehnt</string>
+    <string name="fulfill_challenge">Abschließen</string>
+    <string name="fulfilled">Erfolgreich abgeschlossen</string>
+    <string name="no_answer_yet">Noch keine Antwort</string>
+    <string name="only_one_outgoing_challenge">Du kannst an jeden Gegner nur eine Challenge auf einmal senden</string>
+    <string name="accepted">Akzeptiert</string>
+
 </resources>

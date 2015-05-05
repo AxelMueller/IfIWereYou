@@ -1,8 +1,5 @@
 package com.ifiwereyou.provider;
 
-import java.util.Collections;
-import java.util.List;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +9,14 @@ import android.widget.TextView;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.Challenge;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class ChallengeFlowAdapter extends ArrayAdapter<Challenge> {
 
@@ -19,16 +24,18 @@ public class ChallengeFlowAdapter extends ArrayAdapter<Challenge> {
 	private List<Challenge> challenges;
 
 	static class ViewHolder {
-		public TextView challengerTextView;
-		public TextView challengeTextView;
+		@InjectView(R.id.opponent) TextView opponentTextView;
+		@InjectView(R.id.last_challenge_preview) TextView challengePreviewTextView;
+
+        public ViewHolder(View view) {
+            ButterKnife.inject(this, view);
+        }
 	}
 
 	public ChallengeFlowAdapter(Activity context, List<Challenge> challenges) {
 		super(context, R.layout.row_challenge_master, challenges);
 		this.context = context;
 		this.challenges = challenges;
-//		Collections.sort(this.challenges, new ChallengeFlowComperator(
-//				ChallengeFlow.DATE));
 	}
 
 	@Override
@@ -37,23 +44,31 @@ public class ChallengeFlowAdapter extends ArrayAdapter<Challenge> {
 		// reuse views
 		if (rowView == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
-			rowView = inflater.inflate(R.layout.row_challenge_master, null);
+			rowView = inflater.inflate(R.layout.row_challenge_master, parent, false);
 			// configure view holder
-			ViewHolder viewHolder = new ViewHolder();
-			viewHolder.challengerTextView = (TextView) rowView
-					.findViewById(R.id.row_challenge_master_nameTextView);
-			viewHolder.challengeTextView = (TextView) rowView
-					.findViewById(R.id.row_challenge_master_challengeTextView);
+			ViewHolder viewHolder = new ViewHolder(rowView);
 			rowView.setTag(viewHolder);
 		}
 
 		// fill data
+        final Challenge challenge = challenges.get(position);
 		ViewHolder holder = (ViewHolder) rowView.getTag();
-//		holder.challengerTextView.setText(challenges.get(position)
-//				.getChallenger().getName());
-//		holder.challengeTextView.setText(challenges.get(position)
-//				.getLatestChallenge().getText());
+        try {
+            ParseQuery<ParseUser> opponentDetailsQuery = ParseUser.getQuery();
+            ParseUser opponentUser = opponentDetailsQuery.get(challenge.getMyOpponent().getObjectId());
+            String opponentName = getParseUserFullName(opponentUser);
+            holder.opponentTextView.setText(opponentName);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            holder.opponentTextView.setText("Name not found");
+        }
+        holder.challengePreviewTextView.setText(challenge.getChallengeText());
 
 		return rowView;
 	}
+
+    private static String getParseUserFullName(ParseUser user) {
+        return user.get("firstname") + " " + user.get("lastname");
+    }
+
 }

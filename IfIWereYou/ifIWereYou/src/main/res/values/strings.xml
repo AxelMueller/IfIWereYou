@@ -4,12 +4,12 @@
 
 
     <!-- Language codes of languages where the string is not translated to as comment after each string. -->
-    <string name="app_name">If I Were You</string> <!-- de -->
-    <string name="facebook_app_id">1543123995900304</string>
+    <string name="app_name" translatable="false">If I Were You</string> <!-- de -->
+    <string name="facebook_app_id" translatable="false">1543123995900304</string>
 
     <!-- Page Titles (Currently not used) NOT TRANSLATED -->
     <string name="feedPageTitle">Feed</string>
-    <string name="challangesPageTitle">Challanges</string>
+    <string name="challengesPageTitle">Challenges</string>
     <string name="toplistPageTitle">Top List</string>
     <string name="highscorePageTitle">Highscore</string>
 
@@ -56,6 +56,14 @@
     <!-- Challenge Detail -->
     <string name="action_send_challenge">Send Challenge</string>
     <string name="message_challenge_input_hint">Send a Challenge</string>
+    <string name="fulfill_challenge">Fulfill</string>
+    <string name="cancel_challenge">Cancel</string>
+    <string name="no_answer_yet">No answer yet</string>
+    <string name="accepted">Accepted</string>
+    <string name="declined">Declined</string>
+    <string name="fulfilled">Fulfilled</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="only_one_outgoing_challenge">You can only send one challenge per opponent at a time</string>
 
     <!-- Highscore Master View -->
     <string name="highscore_master_no_entries">There is currently no highscore list available</string>

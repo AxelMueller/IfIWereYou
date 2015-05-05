@@ -10,8 +10,20 @@
 
         <TextView
             android:id="@+id/challenge_content"
-            android:text="Wenn ich Du wäre, würde ich diese App allen meinen Freunden zeigen!"
+            android:text="(Dummy text) Wenn ich Du wäre, würde ich diese App allen meinen Freunden zeigen!"
             style="@style/MessageText" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/challenge_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
+
 </RelativeLayout>

@@ -24,8 +24,8 @@ public class ChallengeFlowAdapter extends ArrayAdapter<Challenge> {
 	private List<Challenge> challenges;
 
 	static class ViewHolder {
-		@InjectView(R.id.row_challenge_master_nameTextView) TextView opponentTextView;
-		@InjectView(R.id.row_challenge_master_challengeTextView) TextView challengeTextView;
+		@InjectView(R.id.opponent) TextView opponentTextView;
+		@InjectView(R.id.last_challenge_preview) TextView challengePreviewTextView;
 
         public ViewHolder(View view) {
             ButterKnife.inject(this, view);
@@ -44,7 +44,7 @@ public class ChallengeFlowAdapter extends ArrayAdapter<Challenge> {
 		// reuse views
 		if (rowView == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
-			rowView = inflater.inflate(R.layout.row_challenge_master, null);
+			rowView = inflater.inflate(R.layout.row_challenge_master, parent, false);
 			// configure view holder
 			ViewHolder viewHolder = new ViewHolder(rowView);
 			rowView.setTag(viewHolder);
@@ -62,7 +62,7 @@ public class ChallengeFlowAdapter extends ArrayAdapter<Challenge> {
             e.printStackTrace();
             holder.opponentTextView.setText("Name not found");
         }
-        holder.challengeTextView.setText(challenge.getChallengeText());
+        holder.challengePreviewTextView.setText(challenge.getChallengeText());
 
 		return rowView;
 	}

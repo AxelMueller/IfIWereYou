@@ -6,12 +6,18 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/MessageBubble.Right">
+        style="@style/MessageBubble.Left">
 
         <TextView
             android:id="@+id/challenge_content"
             android:text="Wenn ich Du wäre, würde ich diese App allen meinen Freunden zeigen!"
             style="@style/MessageText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray" />
 
         <LinearLayout
             android:id="@+id/buttonContainer"
@@ -35,5 +41,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
 </RelativeLayout>

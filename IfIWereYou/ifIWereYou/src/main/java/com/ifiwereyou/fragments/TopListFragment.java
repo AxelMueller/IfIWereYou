@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.Challenge;
-import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.provider.ToplistAdapter;
 
 public class TopListFragment extends ListFragment {

@@ -1,8 +1,5 @@
 package com.ifiwereyou.provider;
 
-import java.util.Collections;
-import java.util.List;
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +10,21 @@ import android.widget.TextView;
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.User;
 import com.ifiwereyou.utils.ContactComperator;
+import com.parse.ParseUser;
 
-public class HighscoreAdapter extends ArrayAdapter<User> {
+import java.util.Collections;
+import java.util.List;
+
+public class HighscoreAdapter extends ArrayAdapter<ParseUser> {
 
 	private final Activity context;
-	private List<User> contacts;
+	private List<ParseUser> contacts;
 
 	static class ViewHolder {
 		public TextView nameTextView;
 	}
 
-	public HighscoreAdapter(Activity context, List<User> challenges) {
+	public HighscoreAdapter(Activity context, List<ParseUser> challenges) {
 		super(context, android.R.layout.simple_list_item_1, challenges);
 		this.context = context;
 		this.contacts = challenges;
@@ -46,7 +47,10 @@ public class HighscoreAdapter extends ArrayAdapter<User> {
 
 		// fill data
 		ViewHolder holder = (ViewHolder) rowView.getTag();
-		holder.nameTextView.setText(contacts.get(position).getName());
+        String firstname = (String) contacts.get(position).get("firstname");
+        String lastname = (String)contacts.get(position).get("lastname");
+        String fullName = firstname+" "+lastname;
+		holder.nameTextView.setText(fullName);
 
 		return rowView;
 	}

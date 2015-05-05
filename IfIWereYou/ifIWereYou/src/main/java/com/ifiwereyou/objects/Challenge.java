@@ -1,54 +1,55 @@
 package com.ifiwereyou.objects;
 
-@Deprecated
-public class Challenge {
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
-	public static final int DATE = 0;
-	public static final int RATING = 1;
+@ParseClassName("Challenge")
+public class Challenge extends ParseObject{
 
-	private boolean incoming;
-	private String text;
-	private long timestampInMillis;
-	private static final int maxRating = 5;
-	private double rating; // Overall rating on server
-	private int ratingCount;
-	private double userRating = -1; // negative if the user has not voted for
-									// this challenge yet.
+    public static final String KEY_CHALLENGE_TEXT = "challenge_text";
+    public static final String KEY_CHALLENGER = "challenger";
+    public static final String KEY_CHALLENGED = "challenged";
 
-	public Challenge(boolean incoming, String text, long timestampInMillis) {
-		super();
-		this.incoming = incoming;
-		this.text = text;
-		this.timestampInMillis = timestampInMillis;
-	}
+    public enum Type {
+        OUTGOING,
+        INCOMING
+    }
 
-	public String getText() {
-		return text;
-	}
+    public void setChallengeText(String challengeText) {
+        put(KEY_CHALLENGE_TEXT, challengeText);
+    }
 
-	public boolean isIncoming() {
-		return incoming;
-	}
+    public String getChallengeText() {
+        return getString(KEY_CHALLENGE_TEXT);
+    }
 
-	public boolean isOutgoing() {
-		return !incoming;
-	}
+    public void setChallenger(ParseUser challenger) {
+        put(KEY_CHALLENGER, challenger);
+    }
 
-	public long getTimestampInMillis() {
-		return timestampInMillis;
-	}
+    public ParseUser getChallenger() {
+        return getParseUser(KEY_CHALLENGER);
+    }
 
-	public boolean rate(int rate) {
-		if (rate < 0 || rate > maxRating) {
-			return false;
-		}
-		// TODO: Work with server as soon as available
-		rating = (rating * ratingCount + rate) / ratingCount + 1;
-		ratingCount++;
-		return true;
-	}
+    public void setChallenged(ParseUser challenged) {
+        put(KEY_CHALLENGED, challenged);
+    }
 
-	public double getRating() {
-		return rating;
-	}
+    public ParseUser getChallenged() {
+        return getParseUser(KEY_CHALLENGED);
+    }
+
+    public Type getType() {
+        String currentUserId = ParseUser.getCurrentUser().getObjectId();
+        return (getChallenger().getObjectId().equals(currentUserId) && !getChallenged().getObjectId().equals(currentUserId)) ? Type.OUTGOING
+                : (getChallenged().getObjectId().equals(currentUserId) && !getChallenger().getObjectId().equals(currentUserId)) ? Type.INCOMING
+                : null;
+    }
+
+    public static ParseQuery<Challenge> getQuery() {
+        return ParseQuery.getQuery(Challenge.class);
+    }
+
 }

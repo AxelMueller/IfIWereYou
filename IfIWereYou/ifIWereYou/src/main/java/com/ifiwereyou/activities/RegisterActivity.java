@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.provider.ServerFunctions;
 import com.ifiwereyou.utils.UserInputCheck;
 import com.parse.ParseException;
 import com.parse.ParseUser;

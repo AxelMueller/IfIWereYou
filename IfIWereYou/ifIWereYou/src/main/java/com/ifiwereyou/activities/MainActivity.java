@@ -9,18 +9,15 @@ package com.ifiwereyou.activities;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
 import android.app.AlertDialog;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,14 +27,12 @@ import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.SessionData;
 import com.ifiwereyou.provider.MainActivityFragmentPagerAdapter;
-import com.ifiwereyou.provider.ServerFunctions;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
 
     // Request codes for startActivityForResult
     private static final int REQUEST_NEW_CONTACT = 0;
@@ -55,7 +50,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void setupTabs() {
-        final ActionBar actionBar = getActionBar();
+        final ActionBar actionBar = getSupportActionBar();
 
         // ViewPager and its adapters use support library
         // fragments, so use getSupportFragmentManager.
@@ -70,7 +65,7 @@ public class MainActivity extends FragmentActivity {
                         // When swiping between pages, select the corresponding
                         // tab. This is necessary because the pages are not
                         // linked to the tabs by default.
-                        getActionBar().setSelectedNavigationItem(position);
+                        actionBar.setSelectedNavigationItem(position);
                     }
                 });
 
@@ -83,24 +78,19 @@ public class MainActivity extends FragmentActivity {
         // Create a tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
             @Override
-            public void onTabSelected(Tab tab, FragmentTransaction ft) {
-                // TODO Auto-generated method stub
-                // show the given tab
-                // When the tab is selected, switch to the
-                // corresponding page in the ViewPager.
+            public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+
                 mViewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
-            public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-                // TODO Auto-generated method stub
-                // hide the given tab
+            public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+
             }
 
             @Override
-            public void onTabReselected(Tab tab, FragmentTransaction ft) {
-                // TODO Auto-generated method stub
-                // probably ignore this event
+            public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+
             }
         };
 

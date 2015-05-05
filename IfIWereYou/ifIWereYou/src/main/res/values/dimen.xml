@@ -5,4 +5,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="challenges_master_row_marginStart">5dp</dimen>
+
+    <dimen name="message_field_padding_left">16dp</dimen>
+    <dimen name="message_field_input_min_height">48dp</dimen>
+    <dimen name="message_send_icon_height">48dp</dimen>
+    <dimen name="message_send_extra_icon_padding">8dp</dimen>
+
 </resources>

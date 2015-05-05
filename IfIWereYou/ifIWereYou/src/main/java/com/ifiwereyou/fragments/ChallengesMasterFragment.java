@@ -12,8 +12,8 @@ import android.support.v4.app.ListFragment;
 import android.widget.ArrayAdapter;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.ChallengeFlow;
-import com.ifiwereyou.objects.SessionData;
+//import com.ifiwereyou.objects.ChallengeFlow;
+import com.ifiwereyou.objects.Challenge;
 import com.ifiwereyou.provider.ChallengeFlowAdapter;
 
 public class ChallengesMasterFragment extends ListFragment {
@@ -25,8 +25,8 @@ public class ChallengesMasterFragment extends ListFragment {
 		super.onActivityCreated(savedInstanceState);
 //		List<ChallengeFlow> challengeFlows = SessionData.getInstance()
 //				.getChallengeFlows();
-		ArrayAdapter<ChallengeFlow> mAdapter = new ChallengeFlowAdapter(
-				getActivity(), new ArrayList<ChallengeFlow>() {
+		ArrayAdapter<Challenge> mAdapter = new ChallengeFlowAdapter(
+				getActivity(), new ArrayList<Challenge>() {
         });
 		setListAdapter(mAdapter);
 		setEmptyText(getActivity().getResources().getString(R.string.challenges_master_no_challenges));

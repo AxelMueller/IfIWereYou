@@ -1,0 +1,10 @@
+﻿Feature: View Challenge
+	As a logged in user
+	I want to view a Challenge
+	So that I can see all details
+
+	Scenario: View Challenge
+		Given I am logged in
+		And I am in the Challenge Master screen
+		And I select a specific Challenge Detail Entry
+		And I wait up to 30 seconds for the Challange Details to be displayed

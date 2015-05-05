@@ -1,0 +1,11 @@
+﻿Feature: Create a Challenge
+	As a logged in user
+	I want to create a Challenge
+	So that the Challenge will be send out to the Oponent
+
+	Scenario: Create a Challenge
+		Given I am in the Challenge Details screen
+		When I enter a Challenge Description
+		And I press "Send Challenge"
+		Then I wait for the Challanged to be displayed in the History
+

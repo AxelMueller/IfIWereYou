@@ -1,0 +1,17 @@
+﻿Feature: Answer Challenge
+	As a logged in user
+	I want to Answer a Challenge
+	So that the challnged will be accepted or declined
+
+	Scenario: Decline Challenge
+		Given I am in the Challenge Master screen
+		When I Open the Challenge Details screen
+		And I select decline for a specific Challnege
+		Then I wait up to 30 seconds for the Challange to be removed
+		
+	Scenario: Acept Challenge
+		Given I am in the Challenge Master screen
+		When I Open the Challenge Details screen
+		And I select accept for a specific Challnege
+		Then I wait up to 30 seconds for the Challange to be displayed accepted
+		And I have the possibility to fulfill the Challenge

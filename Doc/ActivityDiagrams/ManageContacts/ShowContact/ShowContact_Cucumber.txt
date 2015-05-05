@@ -1,0 +1,9 @@
+﻿Feature: Show Contact
+	As a logged in user
+	I want to view the contact list
+	So that I can see all my contacts
+
+	Scenario: Show Contact success
+		Given I am logged in
+		And I open the contact list
+		And I wait up to 30 seconds for the contact list to be displayed

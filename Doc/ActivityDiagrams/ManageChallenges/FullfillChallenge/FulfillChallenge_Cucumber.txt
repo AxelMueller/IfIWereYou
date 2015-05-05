@@ -1,0 +1,16 @@
+﻿Feature: Fulfill Challenge
+	As a logged in user
+	I want to fulfill a Challenge
+	So that the Challenge is completed
+
+	Scenario: Fulfill Challenge Upload Photo
+		Given I am in the Challenge Details screen
+		When I select "Complete Challenge" for a specific Challenge
+		And I upload a Photo to proove the completion
+		And I press "Complete Challange"
+		Then I wait for the Challanged to be displayed as completed
+
+	Scenario Fulfill Challenge without Proof
+		Given I am in the Challenge Details screen
+		When I select "Complete Challenge" for a specific Challenge
+		Then I wait for the Challanged to be displayed as completed

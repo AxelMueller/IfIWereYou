@@ -1,0 +1,11 @@
+﻿Feature: Delete Contact
+	As a logged in user
+	I want to delete a contact
+	So that he is no longer in my contact list
+
+	Scenario: Delete Contact success
+		Given I am logged in
+		And I open the contact list
+		And I press "Delete" on a contact
+		And I wait up to 30 seconds for the contact to be removed
+

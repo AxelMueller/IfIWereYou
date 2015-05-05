@@ -110,6 +110,7 @@ public class MainActivity extends ActionBarActivity {
                                                         int which) {
                                         try {
                                             ParseUser.getCurrentUser().delete();
+                                            ParseUser.getCurrentUser().logOut();
                                             Intent mIntent = new Intent(
                                                     MainActivity.this,
                                                     LoginActivity.class);

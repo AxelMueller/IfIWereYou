@@ -8,6 +8,7 @@ import com.ifiwereyou.IfIWereYouApplication;
 /**
  * Created by D060670 on 01.04.2015.
  */
+// NOT USED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 public class IfIWereYouAccountUtil {
 
     /*

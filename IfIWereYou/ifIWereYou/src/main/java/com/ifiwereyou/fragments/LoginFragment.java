@@ -66,10 +66,6 @@ public class LoginFragment extends Fragment {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     // Hooray! The user is logged in.
-                    //TODO move to registration later!!
-                    ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-                    installation.put("username",ParseUser.getCurrentUser().getUsername());
-                    installation.saveInBackground();
                     goToMainActivity();
                 } else {
                     // Signup failed. Look at the ParseException to see what happened.
@@ -101,6 +97,11 @@ public class LoginFragment extends Fragment {
     }
 
     private void goToMainActivity() {
+        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+        installation.put("username",ParseUser.getCurrentUser().getUsername());
+        installation.put("userID", ParseUser.getCurrentUser().getObjectId());
+        installation.saveEventually();
+
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();

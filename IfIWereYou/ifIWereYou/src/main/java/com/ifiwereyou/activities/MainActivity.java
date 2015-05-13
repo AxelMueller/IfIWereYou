@@ -25,6 +25,7 @@ import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
+// todo MainActivity should be single top (or better: use ParsePushBroadcastReceiver)
 public class MainActivity extends ActionBarActivity {
 
     // Request codes for startActivityForResult
@@ -36,6 +37,12 @@ public class MainActivity extends ActionBarActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // To be honest this is just because I'm unsure what will happen if you click on a push notification but are not logged in anymore
+        // So in order to avoid unpredictable behavior, just check if a user is logged in
+        if (ParseUser.getCurrentUser() == null) {
+            goToLogin();
+        }
 
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
@@ -111,11 +118,7 @@ public class MainActivity extends ActionBarActivity {
                                         try {
                                             ParseUser.getCurrentUser().delete();
                                             ParseUser.getCurrentUser().logOut();
-                                            Intent mIntent = new Intent(
-                                                    MainActivity.this,
-                                                    LoginActivity.class);
-                                            startActivity(mIntent);
-                                            finish();
+                                            goToLogin();
                                         } catch (ParseException e) {
                                             e.printStackTrace();
                                             Toast.makeText(MainActivity.this,
@@ -128,13 +131,17 @@ public class MainActivity extends ActionBarActivity {
                 return true;
             case R.id.action_logout:
                 ParseUser.logOut();
-                Intent mIntent = new Intent(this, LoginActivity.class);
-                startActivity(mIntent);
-                finish();
+                goToLogin();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void goToLogin() {
+        Intent mIntent = new Intent(this, LoginActivity.class);
+        startActivity(mIntent);
+        finish();
     }
 
     @Override

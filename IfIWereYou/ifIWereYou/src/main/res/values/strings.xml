@@ -44,7 +44,7 @@
     
     <!-- Registration Activity -->
     <string name="emailAlreadyInUse">This email address is already in use. Please login.</string>
-    <string name="passwordNoMatch">The passwords don\' match.</string>
+    <string name="passwordNoMatch">The passwords don\'t match.</string>
     <string name="registerlUppercase">REGISTER</string>
     <string name="confirmPassword">Confirm password</string>
     <string name="register">Register</string>

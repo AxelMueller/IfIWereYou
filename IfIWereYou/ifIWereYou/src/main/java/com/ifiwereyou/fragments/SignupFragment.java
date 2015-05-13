@@ -100,7 +100,7 @@ public class SignupFragment extends Fragment {
                     installation.put("username",ParseUser.getCurrentUser().getUsername());
                     installation.put("userID", ParseUser.getCurrentUser().getObjectId());
                     installation.saveEventually();
-                    
+
                     // Hooray! Let them use the app now.
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);

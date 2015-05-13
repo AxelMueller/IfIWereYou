@@ -85,6 +85,7 @@
     <string name="welcome">Welcome to If I Were You</string>
     <string name="loginEmail">Login with E-Mail</string>
     <string name="add_contact_success">Contact successfully added to your friend list</string>
+    <string name="add_contact_failure">There was a problem with saving your friendship</string>
     <string name="add_contact_already_exists">The contact is already in your contact list</string>
     
 

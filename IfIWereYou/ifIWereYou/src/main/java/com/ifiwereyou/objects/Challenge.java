@@ -2,7 +2,6 @@ package com.ifiwereyou.objects;
 
 import android.widget.TextView;
 
-import com.ifiwereyou.R;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -18,6 +17,8 @@ public class Challenge extends ParseObject {
     public static final String KEY_DECLINED = "declined";
     public static final String KEY_FULFILLED = "fulfilled";
     public static final String KEY_CANCELED = "canceled";
+
+    private ChallengeState challengeState = new NewChallenge();
 
     public enum Type {
         OUTGOING,
@@ -40,6 +41,10 @@ public class Challenge extends ParseObject {
         return getParseUser(KEY_CHALLENGER);
     }
 
+    public ChallengeState getChallengeState(){
+        return challengeState;
+    }
+
     public void setChallenged(ParseUser challenged) {
         put(KEY_CHALLENGED, challenged);
     }
@@ -55,6 +60,7 @@ public class Challenge extends ParseObject {
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
             put(KEY_ACCEPTED, true);
             put(KEY_DECLINED, false);
+            challengeState = new AcceptedChallenge();
         }
     }
 
@@ -65,6 +71,7 @@ public class Challenge extends ParseObject {
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
             put(KEY_DECLINED, true);
             put(KEY_ACCEPTED, false);
+            challengeState = new DeclinedChallenge();
         }
     }
 
@@ -88,6 +95,7 @@ public class Challenge extends ParseObject {
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
             put(KEY_FULFILLED, true);
             put(KEY_CANCELED, false);
+            challengeState = new FulfilledChallenge();
         }
     }
 
@@ -98,19 +106,8 @@ public class Challenge extends ParseObject {
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
             put(KEY_CANCELED, true);
             put(KEY_FULFILLED, false);
+            challengeState = new CanceledChallenge();
         }
-    }
-
-    public boolean isFulfilled() {
-        return getBoolean(KEY_FULFILLED);
-    }
-
-    public boolean isCancelled() {
-        return getBoolean(KEY_CANCELED);
-    }
-
-    public boolean isOpen() {
-        return isAccepted() && (!isFulfilled()) && (!isCancelled());
     }
 
     public ParseUser getMyOpponent() {
@@ -128,19 +125,7 @@ public class Challenge extends ParseObject {
     }
 
     public void printStatus(TextView statusTextView) {
-        if (isNew()) {
-            statusTextView.setText(R.string.no_answer_yet);
-        } else if (isDeclined()) {
-            statusTextView.setText(R.string.declined);
-        } else if (isOpen()) {
-            statusTextView.setText(R.string.accepted);
-        } else {
-            if (isFulfilled()) {
-                statusTextView.setText(R.string.fulfilled);
-            } else if (isCancelled()) {
-                statusTextView.setText(R.string.cancelled);
-            }
-        }
+        challengeState.printStatus(statusTextView);
     }
 
     public static ParseQuery<Challenge> getQuery() {

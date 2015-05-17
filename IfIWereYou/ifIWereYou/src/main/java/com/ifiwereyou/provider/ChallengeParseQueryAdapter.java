@@ -11,7 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ifiwereyou.R;
+import com.ifiwereyou.objects.AcceptedChallenge;
 import com.ifiwereyou.objects.Challenge;
+import com.ifiwereyou.objects.NewChallenge;
+import com.ifiwereyou.objects.ViewTypes;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -164,12 +167,7 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
             case OUTGOING:
                 return ViewTypes.OUTGOING_CHALLENGE;
             case INCOMING:
-                if (challenge.isNew())
-                    return ViewTypes.NEW_INCOMING_CHALLENGE;
-                if (challenge.isOpen()) {
-                    return ViewTypes.OPEN_INCOMING_CHALLENGE;
-                }
-                return ViewTypes.CLOSED_INCOMING_CHALLENGE;
+                return challenge.getChallengeState().getIncomingViewType();
         }
         throw new IllegalArgumentException("Could not find a view type for " + challenge.getType());
     }
@@ -177,7 +175,8 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
     public boolean canCurrentUserSendNewChallenge() {
         for (int i = 0; i < getCount(); i++) {
             Challenge challenge = getItem(i);
-            if (challenge.getType() == Challenge.Type.OUTGOING && challenge.isNew() && (!challenge.isOpen())) {
+            //TODO implement isOpen behaviour
+            if (challenge.getType() == Challenge.Type.OUTGOING && challenge.getChallengeState() instanceof NewChallenge && (!(challenge.getChallengeState() instanceof AcceptedChallenge))) {
                 return false;
             }
         }
@@ -199,13 +198,6 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
                 loadObjects();
             }
         });
-    }
-
-    interface ViewTypes {
-        static final int OUTGOING_CHALLENGE = 1;
-        static final int NEW_INCOMING_CHALLENGE = 2; // new incoming, user has to decide whether to accept or decline the challenge
-        static final int OPEN_INCOMING_CHALLENGE = 3; // accepted, but not completed
-        static final int CLOSED_INCOMING_CHALLENGE = 4;
     }
 
 }

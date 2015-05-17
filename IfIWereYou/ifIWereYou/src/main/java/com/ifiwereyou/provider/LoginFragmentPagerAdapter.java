@@ -4,10 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.ifiwereyou.fragments.ChallengesMasterFragment;
 import com.ifiwereyou.fragments.LoginFragment;
 import com.ifiwereyou.fragments.SignupFragment;
-import com.ifiwereyou.fragments.TopListFragment;
 
 public class LoginFragmentPagerAdapter extends FragmentPagerAdapter {
 

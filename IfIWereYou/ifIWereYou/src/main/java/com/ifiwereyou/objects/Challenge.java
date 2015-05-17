@@ -3,13 +3,14 @@ package com.ifiwereyou.objects;
 import android.widget.TextView;
 
 import com.ifiwereyou.R;
+import com.ifiwereyou.provider.ChallengeFacade;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 @ParseClassName("Challenge")
-public class Challenge extends ParseObject {
+public class Challenge extends ParseObject implements ChallengeFacade{
 
     public static final String KEY_CHALLENGE_TEXT = "challenge_text";
     public static final String KEY_CHALLENGER = "challenger";
@@ -120,6 +121,7 @@ public class Challenge extends ParseObject {
                 : null;
     }
 
+    //differentiating between incoming and outgoing challenges
     public Type getType() {
         String currentUserId = ParseUser.getCurrentUser().getObjectId();
         return (getChallenger().getObjectId().equals(currentUserId) && !getChallenged().getObjectId().equals(currentUserId)) ? Type.OUTGOING

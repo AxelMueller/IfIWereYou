@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.ifiwereyou.fragments.ChallengesMasterFragment;
 
+//TODO not used!!!
 public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
 
 	public MainActivityFragmentPagerAdapter(FragmentManager fm) {

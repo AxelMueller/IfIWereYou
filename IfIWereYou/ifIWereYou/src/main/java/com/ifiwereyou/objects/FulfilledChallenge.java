@@ -17,4 +17,9 @@ public class FulfilledChallenge extends AcceptedChallenge {
     public int getIncomingViewType() {
         return ViewTypes.CLOSED_INCOMING_CHALLENGE;
     }
+
+    @Override
+    public state getState() {
+        return state.FULFILLED;
+    }
 }

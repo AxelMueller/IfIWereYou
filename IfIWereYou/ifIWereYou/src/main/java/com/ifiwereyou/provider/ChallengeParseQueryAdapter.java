@@ -11,9 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.objects.AcceptedChallenge;
 import com.ifiwereyou.objects.Challenge;
-import com.ifiwereyou.objects.NewChallenge;
+import com.ifiwereyou.objects.ChallengeState;
 import com.ifiwereyou.objects.ViewTypes;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -175,8 +174,7 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
     public boolean canCurrentUserSendNewChallenge() {
         for (int i = 0; i < getCount(); i++) {
             Challenge challenge = getItem(i);
-            //TODO implement isOpen behaviour
-            if (challenge.getType() == Challenge.Type.OUTGOING && challenge.getChallengeState() instanceof NewChallenge && (!(challenge.getChallengeState() instanceof AcceptedChallenge))) {
+            if (challenge.getType() == Challenge.Type.OUTGOING && challenge.getChallengeState().getState() == ChallengeState.state.NEW && (!(challenge.getChallengeState().getState() == ChallengeState.state.ACCEPTED))) {
                 return false;
             }
         }

@@ -9,4 +9,10 @@ public abstract class ChallengeState {
     public abstract void printStatus(TextView statusTextView);
 
     public abstract int getIncomingViewType();
+
+    public abstract state getState();
+
+    public enum state{
+        NEW, ACCEPTED, CANCELED, DECLINED, FULFILLED;
+    }
 }

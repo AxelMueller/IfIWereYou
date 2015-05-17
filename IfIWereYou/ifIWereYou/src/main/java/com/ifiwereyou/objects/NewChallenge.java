@@ -17,4 +17,9 @@ public class NewChallenge extends ChallengeState {
     public int getIncomingViewType() {
         return ViewTypes.NEW_INCOMING_CHALLENGE;
     }
+
+    @Override
+    public state getState() {
+        return state.NEW;
+    }
 }

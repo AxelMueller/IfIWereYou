@@ -17,4 +17,9 @@ public class AcceptedChallenge extends ChallengeState {
     public int getIncomingViewType() {
         return ViewTypes.OPEN_INCOMING_CHALLENGE;
     }
+
+    @Override
+    public state getState() {
+        return state.ACCEPTED;
+    }
 }

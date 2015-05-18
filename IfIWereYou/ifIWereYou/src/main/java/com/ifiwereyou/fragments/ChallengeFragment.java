@@ -5,18 +5,24 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ifiwereyou.IfIWereYouApplication;
 import com.ifiwereyou.R;
 import com.ifiwereyou.objects.Challenge;
 import com.ifiwereyou.provider.ChallengeParseQueryAdapter;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SendCallback;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -80,7 +86,7 @@ public class ChallengeFragment extends ListFragment {
         pDialog.setCancelable(false);
         pDialog.show();
 
-        Challenge challenge = new Challenge();
+        final Challenge challenge = new Challenge();
         challenge.setChallenger(ParseUser.getCurrentUser());
         challenge.setChallenged(mOpponent);
         String challengeText = challenge_text_input.getText().toString();
@@ -93,8 +99,29 @@ public class ChallengeFragment extends ListFragment {
                 if (e == null) {
                     challenge_text_input.setText("");
                     mAdapter.loadObjects();
+                    pushChallengeToOpponent(challenge);
                 } else {
                     Toast.makeText(getActivity(), "Error while sending challenge", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private void pushChallengeToOpponent(Challenge challenge) {
+        ParseQuery<ParseInstallation> pushQuery = ParseInstallation.getQuery();
+        pushQuery.whereEqualTo("userID", getArguments().getString(KEY_OPPONENT_USER_ID));
+
+        ParsePush push = new ParsePush();
+        push.setChannel(IfIWereYouApplication.PARSE_CHANNEL_CHALLENGES);
+        push.setMessage(challenge.getChallengeText());
+        push.setQuery(pushQuery);
+        push.sendInBackground(new SendCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Log.d("Push", "Push successful");
+                } else {
+                    Log.d("PushException", e.getMessage());
                 }
             }
         });

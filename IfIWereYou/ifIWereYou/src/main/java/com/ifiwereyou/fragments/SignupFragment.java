@@ -14,6 +14,7 @@ import com.ifiwereyou.R;
 import com.ifiwereyou.activities.MainActivity;
 import com.ifiwereyou.utils.UserInputCheck;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -95,6 +96,11 @@ public class SignupFragment extends Fragment {
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
+                    ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+                    installation.put("username",ParseUser.getCurrentUser().getUsername());
+                    installation.put("userID", ParseUser.getCurrentUser().getObjectId());
+                    installation.saveEventually();
+
                     // Hooray! Let them use the app now.
                     Intent intent = new Intent(getActivity(), MainActivity.class);
                     startActivity(intent);

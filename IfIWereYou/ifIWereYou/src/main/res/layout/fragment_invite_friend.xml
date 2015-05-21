@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="23dp"
-        android:text="Invite"
+        android:text="@string/title_invite_friend"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -27,7 +27,7 @@
     <!--   Email TextField -->
 
     <EditText
-        android:id="@+id/loginEmail"
+        android:id="@+id/inviteFriend_email_edit_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
@@ -48,13 +48,13 @@
         android:id="@+id/TextView01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/loginEmail"
-        android:layout_below="@+id/loginEmail"
+        android:layout_alignLeft="@+id/inviteFriend_email_edit_text"
+        android:layout_below="@+id/inviteFriend_email_edit_text"
         android:layout_marginTop="20dp"
         android:text="Message" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/inviteFriend_invitationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/TextView01"
@@ -72,9 +72,9 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignLeft="@+id/inviteFriend_invitationText"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/editText1"
+        android:layout_alignRight="@+id/inviteFriend_invitationText"
         android:layout_marginBottom="30dp"
         android:text="Invite" />
 

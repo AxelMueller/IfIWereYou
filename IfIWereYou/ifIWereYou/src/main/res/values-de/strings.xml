@@ -75,5 +75,6 @@
     <string name="no_answer_yet">Noch keine Antwort</string>
     <string name="only_one_outgoing_challenge">Du kannst an jeden Gegner nur eine Challenge auf einmal senden</string>
     <string name="accepted">Akzeptiert</string>
+    <string name="title_invite_friend">Freund einladen</string>
 
 </resources>

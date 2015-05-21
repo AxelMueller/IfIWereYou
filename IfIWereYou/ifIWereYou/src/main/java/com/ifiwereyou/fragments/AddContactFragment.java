@@ -27,7 +27,10 @@ import butterknife.OnClick;
 
 public class AddContactFragment extends Fragment {
 
-    @InjectView(R.id.add_contact_emailEditText) EditText emailEditText;
+    public static final String PAGE_TITLE = "Add Contact";
+
+    @InjectView(R.id.add_contact_emailEditText)
+    EditText emailEditText;
 
     public AddContactFragment() {
 
@@ -43,7 +46,7 @@ public class AddContactFragment extends Fragment {
     }
 
     @OnClick(R.id.add_contact_addButton)
-    public void add(){
+    public void add() {
         final String email = emailEditText.getText().toString();
 
         if(!isValidEmail(email)){
@@ -73,7 +76,7 @@ public class AddContactFragment extends Fragment {
                     } catch (ParseException e1) {
                         //TODO
                     }
-                    
+
                     if (friendshipExists) {
                         outputToastMessage(R.string.add_contact_already_exists);
                     } else {
@@ -104,7 +107,7 @@ public class AddContactFragment extends Fragment {
         friendshipA.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if(e == null){
+                if (e == null) {
                     outputToastMessage(R.string.add_contact_success);
                 } else {
                     outputToastMessage(R.string.add_contact_failure);
@@ -120,7 +123,7 @@ public class AddContactFragment extends Fragment {
         return friendQuery;
     }
 
-    public boolean isValidEmail(String email){
+    public boolean isValidEmail(String email) {
         if (!UserInputCheck.isValidEmail(email)) {
             Toast.makeText(
                     getActivity().getApplicationContext(),
@@ -134,7 +137,7 @@ public class AddContactFragment extends Fragment {
         return true;
     }
 
-    public void outputToastMessage(int resId, Object...formatArgs ){
+    public void outputToastMessage(int resId, Object... formatArgs) {
         Toast.makeText(
                 getActivity().getApplicationContext(),
                 String.format(

@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.ifiwereyou.fragments.ChallengesMasterFragment;
-import com.ifiwereyou.fragments.TopListFragment;
 
 public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
 
@@ -21,8 +20,8 @@ public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
 		// return new FeedFragment();
 		case 0:
 			return new ChallengesMasterFragment();
-		case 1:
-			return new TopListFragment();
+//		case 1:
+//			return new TopListFragment();
 			// case 2:
 			// return new HighScoreFragment();
 		}
@@ -43,8 +42,8 @@ public class MainActivityFragmentPagerAdapter extends FragmentPagerAdapter {
 		// return FeedFragment.pageTitle;
 		case 0:
 			return ChallengesMasterFragment.pageTitle;
-		case 1:
-			return TopListFragment.pageTitle;
+//		case 1:
+//			return TopListFragment.pageTitle;
 			// case 2:
 			// return HighScoreFragment.pageTitle;
 		}

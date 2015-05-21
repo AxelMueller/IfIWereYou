@@ -4,12 +4,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.ifiwereyou.fragments.LoginFragment;
-import com.ifiwereyou.fragments.SignupFragment;
+import com.ifiwereyou.fragments.AddContactFragment;
+import com.ifiwereyou.fragments.InviteFriendFragment;
 
-public class LoginFragmentPagerAdapter extends FragmentPagerAdapter {
+public class AddFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    public LoginFragmentPagerAdapter(FragmentManager fm) {
+    public AddFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -17,9 +17,9 @@ public class LoginFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new LoginFragment();
+                return new AddContactFragment();
             case 1:
-                return new SignupFragment();
+                return new InviteFriendFragment();
         }
         return null;
     }
@@ -33,9 +33,9 @@ public class LoginFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return LoginFragment.PAGE_TITLE;
+                return AddContactFragment.PAGE_TITLE;
             case 1:
-                return SignupFragment.PAGE_TITLE;
+                return InviteFriendFragment.PAGE_TITLE;
         }
         return null;
     }

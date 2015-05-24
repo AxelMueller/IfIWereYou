@@ -80,6 +80,8 @@
     <string name="add_contact_email_label">Email</string>
     <string name="add_contact_add_button_label">Add</string>
     <string name="add_contact_email_not_valid_message">The email address you entered is not valid.</string>
+    <string name="invite_friend_already_exists_message"> An account with the email address you entered already exists.</string>
+    <string name="invite_friend_email_sent_message"> An invitation email has been sent.</string>
     <string name="add_contact_fail_message">A user with the email address %1$s does not exist.</string>
     
     <!-- Login Screen -->

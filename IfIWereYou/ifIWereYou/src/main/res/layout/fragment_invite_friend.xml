@@ -62,11 +62,11 @@
         android:layout_below="@+id/TextView01"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="Hi\nDo you already know the &apos;If I Were You&apos; App?\nNo?\nGet it NOW\nKind regards,\nMax"
         android:textSize="14dp" >
 
         <requestFocus />
     </EditText>
+    <!--android:hint="Hi\nDo you already know the &apos;If I Were You&apos; App?\nNo?\nGet it NOW\nKind regards,\nMax" -->
 
     <Button
         android:id="@+id/button1"

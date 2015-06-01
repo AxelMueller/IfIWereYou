@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.ifiwereyou.IfIWereYouApplication;
 import com.ifiwereyou.R;
+import com.ifiwereyou.network.ChallengeBroadcastReceiver;
 import com.ifiwereyou.objects.Challenge;
 import com.ifiwereyou.provider.ChallengeParseQueryAdapter;
 import com.parse.ParseException;
@@ -23,6 +24,9 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SendCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -113,8 +117,8 @@ public class ChallengeFragment extends ListFragment {
 
         ParsePush push = new ParsePush();
         push.setChannel(IfIWereYouApplication.PARSE_CHANNEL_CHALLENGES);
-        push.setMessage(challenge.getChallengeText());
         push.setQuery(pushQuery);
+        push.setData(getJSONDataMessageForPushIntent(challenge));
         push.sendInBackground(new SendCallback() {
             @Override
             public void done(ParseException e) {
@@ -125,6 +129,19 @@ public class ChallengeFragment extends ListFragment {
                 }
             }
         });
+    }
+
+    private JSONObject getJSONDataMessageForPushIntent(Challenge challenge) {
+        JSONObject data = new JSONObject();
+        try {
+            data.put("action", ChallengeBroadcastReceiver.ACTION);
+            data.put(ChallengeBroadcastReceiver.SENDER_KEY, ParseUser.getCurrentUser().get("firstname") + " " + ParseUser.getCurrentUser().getString("lastname"));
+            data.put(ChallengeBroadcastReceiver.CHALLENGE_ACTION_KEY, ChallengeBroadcastReceiver.ChallengeActions.SEND_NEW);
+            data.put(ChallengeBroadcastReceiver.CHALLENGE_TEXT_KEY, challenge.getChallengeText());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return data;
     }
 
 }

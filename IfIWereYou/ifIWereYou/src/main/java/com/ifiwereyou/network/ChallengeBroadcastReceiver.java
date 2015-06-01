@@ -21,6 +21,7 @@ public class ChallengeBroadcastReceiver extends BroadcastReceiver {
     public static final String PARSE_EXTRA_DATA_KEY = "com.parse.Data";
 
     public static final String SENDER_KEY = "sender";
+    public static final String SENDER_ID = "sender_id";
     public static final String CHALLENGE_TEXT_KEY = "challenge_text";
     public static final String CHALLENGE_ACTION_KEY = "challenge_action";
 
@@ -30,6 +31,7 @@ public class ChallengeBroadcastReceiver extends BroadcastReceiver {
         int DECLINE = 3;
         int FULFILL = 4;
         int CANCEL = 5;
+        int NEW_FRIEND = 6;
     }
 
     @Override
@@ -40,11 +42,14 @@ public class ChallengeBroadcastReceiver extends BroadcastReceiver {
         try {
             JSONObject json = new JSONObject(extras.getString(PARSE_EXTRA_DATA_KEY));
 
-            String senderName = json.getString(SENDER_KEY);
+            String sender_name = json.getString(SENDER_KEY);
+            String sender_id = json.getString(SENDER_ID);
 
+            NotificationHelper notificationHelper = NotificationHelper.getInstance();
             switch (json.getInt(CHALLENGE_ACTION_KEY)) {
                 case ChallengeActions.SEND_NEW:
                     String challengeText = json.getString(CHALLENGE_TEXT_KEY);
+                    notificationHelper.newChallenge(sender_name, sender_id, challengeText);
                     break;
             }
             Iterator<String> iterator = json.keys();
@@ -54,6 +59,7 @@ public class ChallengeBroadcastReceiver extends BroadcastReceiver {
             }
         } catch (JSONException e) {
             e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 }

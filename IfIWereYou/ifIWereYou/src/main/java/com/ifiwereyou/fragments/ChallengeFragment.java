@@ -136,6 +136,7 @@ public class ChallengeFragment extends ListFragment {
         try {
             data.put("action", ChallengeBroadcastReceiver.ACTION);
             data.put(ChallengeBroadcastReceiver.SENDER_KEY, ParseUser.getCurrentUser().get("firstname") + " " + ParseUser.getCurrentUser().getString("lastname"));
+            data.put(ChallengeBroadcastReceiver.SENDER_ID, ParseUser.getCurrentUser().getObjectId());
             data.put(ChallengeBroadcastReceiver.CHALLENGE_ACTION_KEY, ChallengeBroadcastReceiver.ChallengeActions.SEND_NEW);
             data.put(ChallengeBroadcastReceiver.CHALLENGE_TEXT_KEY, challenge.getChallengeText());
         } catch (JSONException e) {

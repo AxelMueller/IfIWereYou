@@ -40,6 +40,31 @@ public class NotificationHelper {
         return instance;
     }
 
+    public void newChallenge(String sender_name, String sender_id, String message) {
+        databaseHelper.insertNewChallenge(sender_name, sender_id, message);
+        buildNotification();
+    }
+
+    public void acceptedChallenge(String sender_name, String sender_id) {
+        databaseHelper.insertChallengeAccepted(sender_name, sender_id);
+        buildNotification();
+    }
+
+    public void declinedChallenge(String sender_name, String sender_id) {
+        databaseHelper.insertChallengeDeclined(sender_name, sender_id);
+        buildNotification();
+    }
+
+    public void fulfilledChallenge(String sender_name, String sender_id) {
+        databaseHelper.insertChallengeFulfilled(sender_name, sender_id);
+        buildNotification();
+    }
+
+    public void canceledChallenge(String sender_name, String sender_id) {
+        databaseHelper.insertChallengeCanceled(sender_name, sender_id);
+        buildNotification();
+    }
+
     public void buildNotification() {
         Cursor notifications = databaseHelper.getAllNotifications();
         if (1 == notifications.getCount()) {

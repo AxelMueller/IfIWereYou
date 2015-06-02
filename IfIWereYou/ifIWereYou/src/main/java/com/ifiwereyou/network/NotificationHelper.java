@@ -238,6 +238,10 @@ public class NotificationHelper {
         private void dismissAll() {
             getWritableDatabase().delete(TABLE_NOTIFICATION, null, null);
         }
+
+        private void dismissSingle(String sender_id) {
+            getWritableDatabase().delete(TABLE_NOTIFICATION, KEY_SENDER_ID + "=?", new String[] {sender_id});
+        }
     }
 
     private static interface NOTIFICATION_TYPES {

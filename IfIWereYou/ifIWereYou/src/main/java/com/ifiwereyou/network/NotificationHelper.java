@@ -65,6 +65,11 @@ public class NotificationHelper {
         buildNotification();
     }
 
+    public void newFriend(String sender_name, String sender_id) {
+        databaseHelper.insertNewFriend(sender_name, sender_id);
+        buildNotification();
+    }
+
     public void buildNotification() {
         Cursor notifications = databaseHelper.getAllNotifications();
         if (1 == notifications.getCount()) {

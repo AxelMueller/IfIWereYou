@@ -70,6 +70,10 @@ public class NotificationHelper {
         buildNotification();
     }
 
+    public void dismissAll() {
+        databaseHelper.dismissAll();
+    }
+
     public void buildNotification() {
         Cursor notifications = databaseHelper.getAllNotifications();
         if (1 == notifications.getCount()) {
@@ -229,6 +233,10 @@ public class NotificationHelper {
         private Cursor getAllNotifications() {
             String[] columns = new String[]{KEY_NOTIFICATION_TYPE, KEY_SENDER_NAME, KEY_SENDER_ID, KEY_MESSAGE};
             return getReadableDatabase().query(TABLE_NOTIFICATION, columns, null, null, null, null, BaseColumns._ID + " ASC");
+        }
+
+        private void dismissAll() {
+            getWritableDatabase().delete(TABLE_NOTIFICATION, null, null);
         }
     }
 

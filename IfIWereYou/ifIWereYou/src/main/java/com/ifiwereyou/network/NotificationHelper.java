@@ -74,6 +74,10 @@ public class NotificationHelper {
         databaseHelper.dismissAll();
     }
 
+    public void dismissSingle(String sender_id) {
+        databaseHelper.dismissSingle(sender_id);
+    }
+
     public void buildNotification() {
         Cursor notifications = databaseHelper.getAllNotifications();
         if (1 == notifications.getCount()) {

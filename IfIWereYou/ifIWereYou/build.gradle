@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'sonar-runner'
 
 android {
     compileSdkVersion 'Google Inc.:Google APIs:21'
@@ -15,6 +16,22 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+}
+
+sonarRunner {
+    sonarProperties {
+        property "sonar.login", "admin"
+        property "sonar.password", "admin"
+        property "sonar.jdbc.password", "sonar"
+        property "sonar.jdbc.password", "sonar"
+        property "sonar.projectKey", "test"
+        property "sonar.projectName", "If I Were You"
+        property "sonar.projectVersion", "V1.0"
+        property "sonar.language", "java"
+        property "sonar.sources", "src/main/java"
+        property "sonar.language", "java"
+        property "sonar.sourceEncoding", "UTF-8"
     }
 }
 

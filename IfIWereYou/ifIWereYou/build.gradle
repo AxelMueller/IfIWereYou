@@ -2,13 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'sonar-runner'
 
 android {
-    compileSdkVersion 'Google Inc.:Google APIs:21'
-    buildToolsVersion "21.0.2"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.ifiwereyou"
         minSdkVersion 17
-        targetSdkVersion 21
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
@@ -36,8 +38,8 @@ sonarRunner {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:21.0.3'
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.android.support:support-v4:22.0.0'
     compile 'com.facebook.android:facebook-android-sdk:3.23.1'
     compile 'com.parse.bolts:bolts-android:1.2.0'
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')

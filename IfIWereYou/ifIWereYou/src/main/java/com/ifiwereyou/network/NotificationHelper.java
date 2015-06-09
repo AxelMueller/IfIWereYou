@@ -14,6 +14,7 @@ import android.support.v4.app.NotificationCompat;
 import com.ifiwereyou.IfIWereYouApplication;
 import com.ifiwereyou.R;
 import com.ifiwereyou.activities.ChallengeActivity;
+import com.ifiwereyou.activities.MainActivity;
 
 import java.security.InvalidParameterException;
 
@@ -136,6 +137,17 @@ public class NotificationHelper {
                         : notificationText);
         } while (notifications.moveToNext());
         mBuilder.setStyle(inboxStyle);
+
+        Intent resultIntent = new Intent(IfIWereYouApplication.getContext(), MainActivity.class);
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        mContext,
+                        notificationID,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+        mBuilder.setContentIntent(resultPendingIntent);
+
         issueNotification(mBuilder);
     }
 

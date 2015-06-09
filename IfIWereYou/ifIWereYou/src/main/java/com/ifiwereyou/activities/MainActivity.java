@@ -21,6 +21,7 @@ import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.ifiwereyou.R;
 import com.ifiwereyou.fragments.ChallengesMasterFragment;
+import com.ifiwereyou.network.NotificationHelper;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
@@ -50,6 +51,18 @@ public class MainActivity extends ActionBarActivity {
                     .replace(R.id.challenge_master_container, new ChallengesMasterFragment(), TAG_MASTER_FRAGMENT)
                     .commit();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Thread dismissNotificationThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NotificationHelper.getInstance().dismissAll();
+            }
+        });
+        dismissNotificationThread.start();
     }
 
     @Override

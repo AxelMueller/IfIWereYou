@@ -1,10 +1,9 @@
 package com.ifiwereyou.activities;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -23,10 +22,11 @@ import butterknife.InjectView;
 /**
  * Created by D060336 on 13.04.2015.
  */
-public class LoginActivity extends ActionBarActivity{
+public class LoginActivity extends ActionBarActivity {
 
     FragmentPagerAdapter mPagerAdapter;
-    @InjectView(R.id.loginViewPager) ViewPager mViewPager;
+    @InjectView(R.id.loginViewPager)
+    ViewPager mViewPager;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,17 +36,16 @@ public class LoginActivity extends ActionBarActivity{
 
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
-        setupTabs();
+        mPagerAdapter = new LoginFragmentPagerAdapter(getSupportFragmentManager());
+        setupTabs(mPagerAdapter, mViewPager, getSupportActionBar());
     }
 
-    private void setupTabs() {
-        final ActionBar actionBar = getSupportActionBar();
+    public static void setupTabs(PagerAdapter pagerAdapter, final ViewPager viewPager, final ActionBar actionBar) {
 
         // ViewPager and its adapters use support library
         // fragments, so use getSupportFragmentManager.
-        mPagerAdapter = new LoginFragmentPagerAdapter(getSupportFragmentManager());
-        mViewPager.setAdapter(mPagerAdapter);
-        mViewPager
+        viewPager.setAdapter(pagerAdapter);
+        viewPager
                 .setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
                     @Override
                     public void onPageSelected(int position) {
@@ -60,14 +59,15 @@ public class LoginActivity extends ActionBarActivity{
         // Specify that tabs should be displayed in the action bar.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        actionBar.setIcon(new ColorDrawable(getResources().getColor(
-                android.R.color.transparent))); // FIXME: Later this should not be in the source code.
+        //TODO: probably uncomment
+//        actionBar.setIcon(new ColorDrawable(getResources().getColor(
+//                android.R.color.transparent))); // FIXME: Later this should not be in the source code.
 
         // Create a tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
             @Override
             public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
-                mViewPager.setCurrentItem(tab.getPosition());
+                viewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
@@ -83,11 +83,11 @@ public class LoginActivity extends ActionBarActivity{
 
         // Add 4 tabs to the action bar and specify the tab's text and
         // TabListener
-        // TODO: Decide whether to use fixed tabs or scrollable tabs:
+        //  Decide whether to use fixed tabs or scrollable tabs:
         // http://developer.android.com/design/building-blocks/tabs.html
-        for (int i = 0; i < mPagerAdapter.getCount(); i++) {
+        for (int i = 0; i < pagerAdapter.getCount(); i++) {
             actionBar.addTab(actionBar.newTab()
-                    .setText(mPagerAdapter.getPageTitle(i))
+                    .setText(pagerAdapter.getPageTitle(i))
                     .setTabListener(tabListener));
         }
 

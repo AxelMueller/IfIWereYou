@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.fragments.ChallengeFragment;
+import com.ifiwereyou.network.NotificationHelper;
 
 /**
  * Created by D060670 on 28.04.2015.
@@ -41,6 +42,18 @@ public class ChallengeActivity extends ActionBarActivity {
 
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Thread dismissNotificationThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NotificationHelper.getInstance().dismissSingle(getIntent().getExtras().getString(KEY_OPPONENT_USER_ID));
+            }
+        });
+        dismissNotificationThread.start();
     }
 
 }

@@ -7,13 +7,13 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 
 import com.ifiwereyou.R;
 import com.ifiwereyou.provider.LoginFragmentPagerAdapter;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import butterknife.ButterKnife;
@@ -96,18 +96,8 @@ public class LoginActivity extends ActionBarActivity {
                     .getDeclaredMethod("setHasEmbeddedTabs", boolean.class);
             setHasEmbeddedTabsMethod.setAccessible(true);
             setHasEmbeddedTabsMethod.invoke(actionBar, false);
-        } catch (NoSuchMethodException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        } catch (Exception e) {
+            Log.e("LoginActivity", e.toString());
         }
     }
 

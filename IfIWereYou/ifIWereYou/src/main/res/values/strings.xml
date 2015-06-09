@@ -48,6 +48,7 @@
     <string name="registerlUppercase">REGISTER</string>
     <string name="confirmPassword">Confirm password</string>
     <string name="register">Register</string>
+
     <string name="registrationNameMissing">Please enter your name to complete the registration.</string>
 
     <!-- Challenges Master View -->
@@ -79,6 +80,8 @@
     <string name="add_contact_email_label">Email</string>
     <string name="add_contact_add_button_label">Add</string>
     <string name="add_contact_email_not_valid_message">The email address you entered is not valid.</string>
+    <string name="invite_friend_already_exists_message"> An account with the email address you entered already exists.</string>
+    <string name="invite_friend_email_sent_message"> An invitation email has been sent.</string>
     <string name="add_contact_fail_message">A user with the email address %1$s does not exist.</string>
     
     <!-- Login Screen -->
@@ -87,6 +90,6 @@
     <string name="add_contact_success">Contact successfully added to your friend list</string>
     <string name="add_contact_failure">There was a problem with saving your friendship</string>
     <string name="add_contact_already_exists">The contact is already in your contact list</string>
-    
+    <string name="title_invite_friend">Invite Friend</string>
 
 </resources>

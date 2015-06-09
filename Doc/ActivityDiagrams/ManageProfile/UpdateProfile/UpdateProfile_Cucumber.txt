@@ -1,0 +1,12 @@
+﻿Feature: Update Profile
+	As a logge in user
+	I want to update my profile
+	So that my profile data will be changed
+
+	Scenario: Update data
+		Given I am logged in
+		And I am on the "Profile" screen
+		When I insert new profile data
+		And I press "Update Profile"
+		Then I wait up to 30 seconds to see my updated Profile
+

@@ -14,6 +14,10 @@ public class Challenge extends ParseObject {
     public static final String KEY_CHALLENGER = "challenger";
     public static final String KEY_CHALLENGED = "challenged";
 
+    String currentUserId = ParseUser.getCurrentUser().getObjectId();
+    String challengerObjectId = getParseUserObjectId(getChallenger());
+    String challengedObjectId = getParseUserObjectId(getChallenged());
+
     private ChallengeState challengeState = new NewChallenge();
 
     public enum Type {
@@ -85,18 +89,36 @@ public class Challenge extends ParseObject {
         }
     }
 
+    public String getParseUserObjectId(ParseUser parseUser){
+        return parseUser.getObjectId();
+    }
+
+    public boolean currentUserIsChallenger(){
+        return challengerObjectId.equals(currentUserId) && !challengedObjectId.equals(currentUserId);
+    }
+
+    public boolean currentUserIsChallenged(){
+        return challengedObjectId.equals(currentUserId) && !challengerObjectId.equals(currentUserId);
+    }
+
     public ParseUser getMyOpponent() {
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
-        return (getParseObject(KEY_CHALLENGER).getObjectId().equals(currentUserId) && !getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_CHALLENGED)
-                : (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId) && !getParseObject(KEY_CHALLENGER).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_CHALLENGER)
-                : null;
+        if(currentUserIsChallenger()){
+            return (ParseUser) getParseObject(KEY_CHALLENGED);
+        } else if(currentUserIsChallenged()){
+            return getChallenger();
+        }
+        return null;
     }
 
     public Type getType() {
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
-        return (getChallenger().getObjectId().equals(currentUserId) && !getChallenged().getObjectId().equals(currentUserId)) ? Type.OUTGOING
-                : (getChallenged().getObjectId().equals(currentUserId) && !getChallenger().getObjectId().equals(currentUserId)) ? Type.INCOMING
-                : null;
+        if(currentUserIsChallenger()){
+            return Type.OUTGOING;
+        } else {
+            if(currentUserIsChallenged()){
+                return Type.INCOMING;
+            }
+            return null;
+        }
     }
 
     public void printStatus(TextView statusTextView) {

@@ -3,13 +3,11 @@ package com.ifiwereyou;
 import android.app.Application;
 import android.content.Context;
 
-import com.ifiwereyou.activities.MainActivity;
 import com.ifiwereyou.objects.Challenge;
 import com.ifiwereyou.objects.Friendship;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
-import com.parse.PushService;
 
 /**
  * Created by D060670 on 31.03.2015.

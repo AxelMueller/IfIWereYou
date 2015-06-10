@@ -1,8 +1,7 @@
 package com.example.myapplication;
 
-
 import com.ifiwereyou.BuildConfig;
-import com.ifiwereyou.activities.MainActivity;
+import com.ifiwereyou.activities.AddContactActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,17 +16,18 @@ import static org.junit.Assert.assertNotNull;
  * Created by D060426 on 08.06.2015.
  */
 @RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class, manifest = "build/intermediates/manifests/debug/AndroidManifest.xml", resourceDir = "../../../../build/intermediates/res/debug")
-public class FirstTestCase {
+@Config(constants = BuildConfig.class, manifest = "build/intermediates/manifests/debug/AndroidManifest.xml", resourceDir = "../../../../build/intermediates/res/debug" , emulateSdk = 18, reportSdk = 18)
+public class AddContactActivityTest {
 
-    private MainActivity activity;
+    private AddContactActivity activity;
+
     @Before
     public void setup() {
-        activity = Robolectric.buildActivity(MainActivity.class).create().get();
+        activity = Robolectric.buildActivity(AddContactActivity.class).create().get();
     }
 
     @Test
-    public void checkActivityNotNull() throws Exception {
+    public void checkNextActivityNotNull() throws Exception {
         assertNotNull(activity);
     }
 

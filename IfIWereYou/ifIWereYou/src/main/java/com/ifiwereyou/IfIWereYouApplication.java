@@ -26,15 +26,15 @@ public class IfIWereYouApplication extends Application {
         super.onCreate();
 
         // Initialize Parse
-        Parse.enableLocalDatastore(this);
+//        Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Challenge.class);
         ParseObject.registerSubclass(Friendship.class);
         Parse.initialize(this, PARSE_APPLICATION_ID, PARSE_CLIENT_KEY);
         ParseFacebookUtils.initialize();
 
         // Enable Parse to receive push //todo later we might use ParsePushBroadcastReceiver
-        PushService.setDefaultPushCallback(this, MainActivity.class);
-        PushService.subscribe(this.getApplicationContext(), PARSE_CHANNEL_CHALLENGES, MainActivity.class);
+//        PushService.setDefaultPushCallback(this, MainActivity.class);
+//        PushService.subscribe(this.getApplicationContext(), PARSE_CHANNEL_CHALLENGES, MainActivity.class);
 
         sContext = this;
     }

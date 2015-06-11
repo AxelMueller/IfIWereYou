@@ -23,7 +23,9 @@ public class AddContactActivityTest {
 
     @Before
     public void setup() {
-        activity = Robolectric.buildActivity(AddContactActivity.class).create().get();
+        activity = Robolectric.buildActivity(AddContactActivity.class).create()
+                .start().resume()
+                .get();
     }
 
     @Test

@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.content.Intent;
+
 import com.ifiwereyou.BuildConfig;
+import com.ifiwereyou.activities.ChallengeActivity;
 import com.ifiwereyou.activities.MainActivity;
 
 import org.junit.Before;
@@ -8,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertNotNull;
@@ -17,15 +21,17 @@ import static org.junit.Assert.assertNotNull;
  */
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, manifest = "build/intermediates/manifests/debug/AndroidManifest.xml", resourceDir = "../../../../build/intermediates/res/debug" , emulateSdk = 18, reportSdk = 18)
-public class MainActivityTest {
+public class ChallengeActivityTest {
 
-    private MainActivity activity;
+    private ChallengeActivity activity;
 
     @Before
     public void setup() {
-        activity = Robolectric.buildActivity(MainActivity.class).create()
-                //.start()
-                //.resume()
+        Intent intent = new Intent(RuntimeEnvironment.application, ChallengeActivity.class);
+        intent.putExtra(ChallengeActivity.KEY_OPPONENT, "Simon Tenbeitel");
+        activity = Robolectric.buildActivity(ChallengeActivity.class).withIntent(intent).create()
+                .start()
+                .resume()
                 .get();
     }
 
@@ -33,5 +39,6 @@ public class MainActivityTest {
     public void checkNextActivityNotNull() throws Exception {
         assertNotNull(activity);
     }
+
 
 }

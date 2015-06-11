@@ -24,7 +24,9 @@ public class NewChallengeActivityTest {
 
     @Before
     public void setup() {
-        activity = Robolectric.buildActivity(NewChallengeActivity.class).create().get();
+        activity = Robolectric.buildActivity(NewChallengeActivity.class).create()
+                .start().resume()
+                .get();
     }
 
     @Test

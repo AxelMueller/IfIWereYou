@@ -51,6 +51,21 @@ public class ChallengeBroadcastReceiver extends BroadcastReceiver {
                     String challengeText = json.getString(CHALLENGE_TEXT_KEY);
                     notificationHelper.newChallenge(sender_name, sender_id, challengeText);
                     break;
+                case ChallengeActions.ACCEPT:
+                    notificationHelper.acceptedChallenge(sender_name, sender_id);
+                    break;
+                case ChallengeActions.DECLINE:
+                    notificationHelper.declinedChallenge(sender_name, sender_id);
+                    break;
+                case ChallengeActions.FULFILL:
+                    notificationHelper.fulfilledChallenge(sender_name, sender_id);
+                    break;
+                case ChallengeActions.CANCEL:
+                    notificationHelper.canceledChallenge(sender_name, sender_id);
+                    break;
+                case ChallengeActions.NEW_FRIEND:
+                    notificationHelper.newFriend(sender_name, sender_id);
+                    break;
             }
             Iterator<String> iterator = json.keys();
             while (iterator.hasNext()) {

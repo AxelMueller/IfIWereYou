@@ -95,6 +95,12 @@
                 <category android:name="com.ifiwereyou" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".network.ChallengeBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.ifiwereyou.MessagePush" />
+            </intent-filter>
+            </receiver>
     </application>
 
 </manifest>

@@ -91,5 +91,11 @@
     <string name="add_contact_failure">There was a problem with saving your friendship</string>
     <string name="add_contact_already_exists">The contact is already in your contact list</string>
     <string name="title_invite_friend">Invite Friend</string>
+    <!-- Notifications -->
+    <string name="challenge_accepted">Accepted your challenge</string>
+    <string name="challenge_declined">Declined your challenge</string>
+    <string name="challenge_fulfilled">Fulfilled your challenge</string>
+    <string name="challenge_canceled">Canceled your challenge</string>
+    <string name="new_fried">Added you as a friend</string>
 
 </resources>

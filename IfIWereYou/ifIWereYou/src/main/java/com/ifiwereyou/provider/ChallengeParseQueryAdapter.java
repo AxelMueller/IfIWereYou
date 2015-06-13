@@ -1,6 +1,7 @@
 package com.ifiwereyou.provider;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +11,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ifiwereyou.IfIWereYouApplication;
 import com.ifiwereyou.R;
+import com.ifiwereyou.network.ChallengeBroadcastReceiver;
 import com.ifiwereyou.objects.Challenge;
 import com.ifiwereyou.objects.ChallengeState;
-import com.ifiwereyou.objects.ViewTypes;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.SendCallback;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,6 +103,7 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
                 public void onClick(View v) {
                     challenge.accept();
                     sendObjectToParse(challenge);
+                    pushAnswerToParse(challenge, ChallengeBroadcastReceiver.ChallengeActions.ACCEPT);
                 }
             });
             final Button decline = (Button) view.findViewById(R.id.decline);
@@ -103,6 +112,7 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
                 public void onClick(View v) {
                     challenge.decline();
                     sendObjectToParse(challenge);
+                    pushAnswerToParse(challenge, ChallengeBroadcastReceiver.ChallengeActions.DECLINE);
                 }
             });
             view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -133,6 +143,7 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
                 public void onClick(View v) {
                     challenge.fulfill();
                     sendObjectToParse(challenge);
+                    pushAnswerToParse(challenge, ChallengeBroadcastReceiver.ChallengeActions.FULFILL);
                 }
             });
             final Button cancel = (Button) view.findViewById(R.id.decline);
@@ -142,6 +153,7 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
                 public void onClick(View v) {
                     challenge.cancel();
                     sendObjectToParse(challenge);
+                    pushAnswerToParse(challenge, ChallengeBroadcastReceiver.ChallengeActions.CANCEL);
                 }
             });
             view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -196,6 +208,46 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
                 loadObjects();
             }
         });
+    }
+
+    private void pushAnswerToParse(Challenge challenge, int answer) {
+        ParseQuery<ParseInstallation> pushQuery = ParseInstallation.getQuery();
+        pushQuery.whereEqualTo("userID", challenge.getMyOpponent().getObjectId());
+
+        ParsePush push = new ParsePush();
+        push.setChannel(IfIWereYouApplication.PARSE_CHANNEL_CHALLENGES);
+        push.setQuery(pushQuery);
+        push.setData(getJSONDataMessageForPushIntent(answer));
+        push.sendInBackground(new SendCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Log.d("Push", "Push successful");
+                } else {
+                    Log.d("PushException", e.getMessage());
+                }
+            }
+        });
+    }
+
+    private JSONObject getJSONDataMessageForPushIntent(int answer) {
+        JSONObject data = new JSONObject();
+        try {
+            data.put("action", ChallengeBroadcastReceiver.ACTION);
+            data.put(ChallengeBroadcastReceiver.SENDER_KEY, ParseUser.getCurrentUser().get("firstname") + " " + ParseUser.getCurrentUser().getString("lastname"));
+            data.put(ChallengeBroadcastReceiver.SENDER_ID, ParseUser.getCurrentUser().getObjectId());
+            data.put(ChallengeBroadcastReceiver.CHALLENGE_ACTION_KEY, answer);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
+
+    interface ViewTypes {
+        static final int OUTGOING_CHALLENGE = 1;
+        static final int NEW_INCOMING_CHALLENGE = 2; // new incoming, user has to decide whether to accept or decline the challenge
+        static final int OPEN_INCOMING_CHALLENGE = 3; // accepted, but not completed
+        static final int CLOSED_INCOMING_CHALLENGE = 4;
     }
 
 }

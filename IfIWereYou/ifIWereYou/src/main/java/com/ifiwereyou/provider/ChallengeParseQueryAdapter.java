@@ -15,6 +15,7 @@ import com.ifiwereyou.IfIWereYouApplication;
 import com.ifiwereyou.R;
 import com.ifiwereyou.network.ChallengeBroadcastReceiver;
 import com.ifiwereyou.objects.Challenge;
+import com.ifiwereyou.objects.ChallengeState;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
@@ -177,12 +178,7 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
             case OUTGOING:
                 return ViewTypes.OUTGOING_CHALLENGE;
             case INCOMING:
-                if (challenge.isNew())
-                    return ViewTypes.NEW_INCOMING_CHALLENGE;
-                if (challenge.isOpen()) {
-                    return ViewTypes.OPEN_INCOMING_CHALLENGE;
-                }
-                return ViewTypes.CLOSED_INCOMING_CHALLENGE;
+                return challenge.getChallengeState().getIncomingViewType();
         }
         throw new IllegalArgumentException("Could not find a view type for " + challenge.getType());
     }
@@ -190,7 +186,7 @@ public class ChallengeParseQueryAdapter extends ParseQueryAdapter<Challenge> {
     public boolean canCurrentUserSendNewChallenge() {
         for (int i = 0; i < getCount(); i++) {
             Challenge challenge = getItem(i);
-            if (challenge.getType() == Challenge.Type.OUTGOING && challenge.isNew() && (!challenge.isOpen())) {
+            if (challenge.getType() == Challenge.Type.OUTGOING && challenge.getChallengeState().getState() == ChallengeState.state.NEW && (!(challenge.getChallengeState().getState() == ChallengeState.state.ACCEPTED))) {
                 return false;
             }
         }

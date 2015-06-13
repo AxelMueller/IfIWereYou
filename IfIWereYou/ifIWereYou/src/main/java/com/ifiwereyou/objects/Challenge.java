@@ -2,7 +2,6 @@ package com.ifiwereyou.objects;
 
 import android.widget.TextView;
 
-import com.ifiwereyou.R;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -14,10 +13,8 @@ public class Challenge extends ParseObject {
     public static final String KEY_CHALLENGE_TEXT = "challenge_text";
     public static final String KEY_CHALLENGER = "challenger";
     public static final String KEY_CHALLENGED = "challenged";
-    public static final String KEY_ACCEPTED = "accepted";
-    public static final String KEY_DECLINED = "declined";
-    public static final String KEY_FULFILLED = "fulfilled";
-    public static final String KEY_CANCELED = "canceled";
+
+    private ChallengeState challengeState = new NewChallenge();
 
     public enum Type {
         OUTGOING,
@@ -40,6 +37,10 @@ public class Challenge extends ParseObject {
         return getParseUser(KEY_CHALLENGER);
     }
 
+    public ChallengeState getChallengeState(){
+        return challengeState;
+    }
+
     public void setChallenged(ParseUser challenged) {
         put(KEY_CHALLENGED, challenged);
     }
@@ -49,98 +50,73 @@ public class Challenge extends ParseObject {
     }
 
     public void accept() {
-        if (!isNew())
+        if (!(challengeState.getState() == ChallengeState.state.NEW))
             return;
         String currentUserId = ParseUser.getCurrentUser().getObjectId();
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
-            put(KEY_ACCEPTED, true);
-            put(KEY_DECLINED, false);
+            challengeState = new AcceptedChallenge();
         }
     }
 
     public void decline() {
-        if (!isNew())
+        if (!(challengeState.getState() == ChallengeState.state.NEW))
             return;
         String currentUserId = ParseUser.getCurrentUser().getObjectId();
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
-            put(KEY_DECLINED, true);
-            put(KEY_ACCEPTED, false);
+            challengeState = new DeclinedChallenge();
         }
     }
 
-    public boolean isAccepted() {
-        return getBoolean(KEY_ACCEPTED);
-    }
-
-    public boolean isDeclined() {
-        return getBoolean(KEY_DECLINED);
-    }
-
-    // new challenge with no answer from opponent yet (accept or decline)
-    public boolean isNew() {
-        return (!getBoolean(KEY_ACCEPTED)) && (!getBoolean(KEY_DECLINED));
-    }
-
     public void fulfill() {
-        if (!isAccepted())
+        if (!(challengeState.getState() == ChallengeState.state.ACCEPTED))
             return;
         String currentUserId = ParseUser.getCurrentUser().getObjectId();
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
-            put(KEY_FULFILLED, true);
-            put(KEY_CANCELED, false);
+            challengeState = new FulfilledChallenge();
         }
     }
 
     public void cancel() {
-        if (!isAccepted())
+        if (!(challengeState.getState() == ChallengeState.state.ACCEPTED))
             return;
         String currentUserId = ParseUser.getCurrentUser().getObjectId();
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
-            put(KEY_CANCELED, true);
-            put(KEY_FULFILLED, false);
+            challengeState = new CanceledChallenge();
         }
     }
 
-    public boolean isFulfilled() {
-        return getBoolean(KEY_FULFILLED);
+    public String getCurrentUserId(){
+        return ParseUser.getCurrentUser().getObjectId();
     }
 
-    public boolean isCancelled() {
-        return getBoolean(KEY_CANCELED);
+    public String getParseUserObjectId(ParseUser parseUser){
+        return parseUser.getObjectId();
     }
 
-    public boolean isOpen() {
-        return isAccepted() && (!isFulfilled()) && (!isCancelled());
+    public boolean currentUserIsChallenger(){
+        String currentUserId = getCurrentUserId();
+        return getChallenger().getObjectId().equals(currentUserId) && !getChallenged().getObjectId().equals(currentUserId);
+    }
+
+    public boolean currentUserIsChallenged(){
+        String currentUserId = getCurrentUserId();
+        return getChallenged().getObjectId().equals(currentUserId) && !getChallenger().getObjectId().equals(currentUserId);
     }
 
     public ParseUser getMyOpponent() {
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
-        return (getParseObject(KEY_CHALLENGER).getObjectId().equals(currentUserId) && !getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_CHALLENGED)
-                : (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId) && !getParseObject(KEY_CHALLENGER).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_CHALLENGER)
+        return (currentUserIsChallenger()) ? getChallenged()
+                : (currentUserIsChallenged()) ? getChallenger()
                 : null;
     }
 
     public Type getType() {
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
-        return (getChallenger().getObjectId().equals(currentUserId) && !getChallenged().getObjectId().equals(currentUserId)) ? Type.OUTGOING
-                : (getChallenged().getObjectId().equals(currentUserId) && !getChallenger().getObjectId().equals(currentUserId)) ? Type.INCOMING
+        return (currentUserIsChallenger()) ? Type.OUTGOING
+                : (currentUserIsChallenged()) ? Type.INCOMING
                 : null;
     }
 
     public void printStatus(TextView statusTextView) {
-        if (isNew()) {
-            statusTextView.setText(R.string.no_answer_yet);
-        } else if (isDeclined()) {
-            statusTextView.setText(R.string.declined);
-        } else if (isOpen()) {
-            statusTextView.setText(R.string.accepted);
-        } else {
-            if (isFulfilled()) {
-                statusTextView.setText(R.string.fulfilled);
-            } else if (isCancelled()) {
-                statusTextView.setText(R.string.cancelled);
-            }
-        }
+        challengeState.printStatus(statusTextView);
     }
 
     public static ParseQuery<Challenge> getQuery() {

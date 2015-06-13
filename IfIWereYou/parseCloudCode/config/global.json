@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "If I Were You": {
+            "applicationId": "uahSAQ1KHf8VbW1gJ1hHcLTbJ3zgZqWO0mpGZRPR", 
+            "masterKey": "f3P93CnvZk5DYjUAg1F8dEJoGpvMCGvK5avo4ZW9"
+        }, 
+        "_default": {
+            "link": "If I Were You"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.4.2"
+    }
+}

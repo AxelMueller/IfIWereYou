@@ -85,17 +85,33 @@ public class Challenge extends ParseObject {
         }
     }
 
+    public String getCurrentUserId(){
+        return ParseUser.getCurrentUser().getObjectId();
+    }
+
+    public String getParseUserObjectId(ParseUser parseUser){
+        return parseUser.getObjectId();
+    }
+
+    public boolean currentUserIsChallenger(){
+        String currentUserId = getCurrentUserId();
+        return getChallenger().getObjectId().equals(currentUserId) && !getChallenged().getObjectId().equals(currentUserId);
+    }
+
+    public boolean currentUserIsChallenged(){
+        String currentUserId = getCurrentUserId();
+        return getChallenged().getObjectId().equals(currentUserId) && !getChallenger().getObjectId().equals(currentUserId);
+    }
+
     public ParseUser getMyOpponent() {
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
-        return (getParseObject(KEY_CHALLENGER).getObjectId().equals(currentUserId) && !getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_CHALLENGED)
-                : (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId) && !getParseObject(KEY_CHALLENGER).getObjectId().equals(currentUserId)) ? (ParseUser) getParseObject(KEY_CHALLENGER)
+        return (currentUserIsChallenger()) ? getChallenged()
+                : (currentUserIsChallenged()) ? getChallenger()
                 : null;
     }
 
     public Type getType() {
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
-        return (getChallenger().getObjectId().equals(currentUserId) && !getChallenged().getObjectId().equals(currentUserId)) ? Type.OUTGOING
-                : (getChallenged().getObjectId().equals(currentUserId) && !getChallenger().getObjectId().equals(currentUserId)) ? Type.INCOMING
+        return (currentUserIsChallenger()) ? Type.OUTGOING
+                : (currentUserIsChallenged()) ? Type.INCOMING
                 : null;
     }
 

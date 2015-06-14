@@ -20,7 +20,6 @@ import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowToast;
 
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
@@ -53,7 +52,7 @@ public class LoginActivityTest {
     @Test
     public void checkLoginErrorToast() throws NullPointerException {
 
-        Button btnLogin = (Button) LoginFragment.getView().findViewById(R.id.loginButton);;
+        Button btnLogin = (Button) LoginFragment.getView().findViewById(R.id.loginButton);
         btnLogin.performClick();
         assertThat(ShadowToast.getTextOfLatestToast(), equalTo("Your email address is missing. Please enter it and try again."));
     }

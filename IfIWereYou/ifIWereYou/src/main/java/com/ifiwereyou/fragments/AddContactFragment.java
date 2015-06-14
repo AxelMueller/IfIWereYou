@@ -27,8 +27,6 @@ import butterknife.OnClick;
 
 public class AddContactFragment extends Fragment {
 
-    public static final String PAGE_TITLE = "Add Contact";
-
     @InjectView(R.id.add_contact_emailEditText)
     EditText emailEditText;
 

@@ -48,6 +48,16 @@
                 android:value="com.ifiwereyou.activities.MainActivity" />
         </activity>
         <activity
+            android:name="com.ifiwereyou.activities.ProfileActivity"
+            android:label="@string/title_profile"
+            android:parentActivityName="com.ifiwereyou.activities.MainActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ifiwereyou.activities.MainActivity" />
+        </activity>
+        <activity
             android:name="com.ifiwereyou.activities.NewChallengeActivity"
             android:label="@string/title_new_challenge"
             android:parentActivityName="com.ifiwereyou.activities.MainActivity" >

@@ -52,7 +52,7 @@ public class Challenge extends ParseObject {
     public void accept() {
         if (!(challengeState.getState() == ChallengeState.state.NEW))
             return;
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
+        String currentUserId = getCurrentUserId();
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
             challengeState = new AcceptedChallenge();
         }
@@ -61,7 +61,7 @@ public class Challenge extends ParseObject {
     public void decline() {
         if (!(challengeState.getState() == ChallengeState.state.NEW))
             return;
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
+        String currentUserId = getCurrentUserId();
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
             challengeState = new DeclinedChallenge();
         }
@@ -70,7 +70,7 @@ public class Challenge extends ParseObject {
     public void fulfill() {
         if (!(challengeState.getState() == ChallengeState.state.ACCEPTED))
             return;
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
+        String currentUserId = getCurrentUserId();
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
             challengeState = new FulfilledChallenge();
         }
@@ -79,7 +79,7 @@ public class Challenge extends ParseObject {
     public void cancel() {
         if (!(challengeState.getState() == ChallengeState.state.ACCEPTED))
             return;
-        String currentUserId = ParseUser.getCurrentUser().getObjectId();
+        String currentUserId = getCurrentUserId();
         if (getParseObject(KEY_CHALLENGED).getObjectId().equals(currentUserId)) {
             challengeState = new CanceledChallenge();
         }

@@ -6,13 +6,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.ifiwereyou.R;
-import com.ifiwereyou.fragments.LoginFragment;
-import com.ifiwereyou.fragments.SignupFragment;
+import com.ifiwereyou.fragments.ProfileFragment;
+import com.ifiwereyou.fragments.StatisticsFragment;
 
-public class LoginFragmentPagerAdapter extends FragmentPagerAdapter {
+public class ProfileFragmentPagerAdapter extends FragmentPagerAdapter {
 
     Context context;
-    public LoginFragmentPagerAdapter(FragmentManager fm, Context context) {
+
+    public ProfileFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
     }
@@ -21,9 +22,9 @@ public class LoginFragmentPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new LoginFragment();
+                return new ProfileFragment();
             case 1:
-                return new SignupFragment();
+                return new StatisticsFragment();
         }
         return null;
     }
@@ -37,9 +38,9 @@ public class LoginFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return context.getString(R.string.login);
+                return context.getString(R.string.title_profile);
             case 1:
-                return context.getString(R.string.register);
+                return context.getString(R.string.title_statistics);
         }
         return null;
     }

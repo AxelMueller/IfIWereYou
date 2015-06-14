@@ -24,7 +24,7 @@ public class AddContactActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_contact);
-        mPagerAdapter = new AddFragmentPagerAdapter(getSupportFragmentManager());
+        mPagerAdapter = new AddFragmentPagerAdapter(getSupportFragmentManager(),this);
         ButterKnife.inject(this);
         LoginActivity.setupTabs(mPagerAdapter, mViewPager, getSupportActionBar());
 	}

@@ -98,4 +98,21 @@
     <string name="challenge_canceled">Canceled your challenge</string>
     <string name="new_fried">Added you as a friend</string>
 
+    <string name="title_profile">Profile</string>
+    <string name="button_save">Save</string>
+    <string name="save_profile">Profile changes successfully saved</string>
+
+    <string name="labelChallengesOverall">Overall challenges in If I Were you:</string>
+    <string name="labelChallengesIncoming">Incoming challenges:</string>
+    <string name="labelChallengesOutgoing">Outgoing challenges:</string>
+    <string name="labelChallengesOpen">Open challenges:</string>
+    <string name="labelChallengesAccepted">Accepted challenges:</string>
+    <string name="labelChallengesDeclined">Declined challenges:</string>
+    <string name="labelChallengesCanceled">Canceled challenges:</string>
+    <string name="labelChallengesFulfilled">Fulfilled challenges:</string>
+
+    <string name="addContact">Add Contact</string>
+    <string name="profile">Profile</string>
+    <string name="statistics">Statistics</string>
+
 </resources>

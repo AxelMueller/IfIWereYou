@@ -79,4 +79,20 @@
     <string name="invite_friend_already_exists_message"> Es existiert bereits ein Account mit der eingegebenen E-Mail Adresse</string>
     <string name="invite_friend_email_sent_message"> Eine Einladungsemail ist gesendet worden.</string>
 
+    <string name="title_profile">Profil</string>
+    <string name="save_profile">Profiländerungen erfolgreich gespeichert</string>
+    <string name="button_save">Speichern</string>
+
+    <string name="title_statistics">Statistiken</string>
+
+    <string name="labelChallengesOverall">Gesamtzahl aller Challenges:</string>
+    <string name="labelChallengesIncoming">Erhaltene Challenges:</string>
+    <string name="labelChallengesOutgoing">Gesendete Challenges:</string>
+    <string name="labelChallengesOpen">Offene challenges:</string>
+    <string name="labelChallengesAccepted">Akzeptierte challenges:</string>
+    <string name="labelChallengesDeclined">Abgelehnte challenges:</string>
+    <string name="labelChallengesCanceled">Abgebrochene challenges:</string>
+    <string name="labelChallengesFulfilled">Abgeschlossene challenges:</string>
+
+
 </resources>

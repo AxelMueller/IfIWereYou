@@ -117,7 +117,9 @@ public class MainActivity extends ActionBarActivity {
                 startActivityForResult(intent, REQUEST_NEW_CONTACT);
                 return true;
             case R.id.action_profile:
-                return false;
+                //TODO navigate to profile activity here!!!
+                intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
             case R.id.action_settings:
                 return false;
             case R.id.action_delete_account:

@@ -1,16 +1,20 @@
 package com.ifiwereyou.provider;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.ifiwereyou.R;
 import com.ifiwereyou.fragments.AddContactFragment;
 import com.ifiwereyou.fragments.InviteFriendFragment;
 
 public class AddFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    public AddFragmentPagerAdapter(FragmentManager fm) {
+    Context context;
+    public AddFragmentPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context = context;
     }
 
     @Override
@@ -33,9 +37,9 @@ public class AddFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return AddContactFragment.PAGE_TITLE;
+                return context.getResources().getString(R.string.title_add_contact);
             case 1:
-                return InviteFriendFragment.PAGE_TITLE;
+                return context.getResources().getString(R.string.title_invite_friend);
         }
         return null;
     }

@@ -34,9 +34,19 @@ public class LoginActivity extends ActionBarActivity {
         if (ParseUser.getCurrentUser() != null)
             goToMainActivity();
 
+        //TODO uncomment!!
+//        ParseQuery<ParseUser> parseQuery = ParseUser.getQuery();
+//        parseQuery.whereEqualTo("lastname", "Muelle");
+//        ParseUser first = null;
+//        parseQuery.findInBackground(new FindCallback<ParseUser>() {
+//            @Override
+//            public void done(List<ParseUser> parseUsers, ParseException e) {
+//                parseUsers.get(0).setPassword("1234");
+//            }
+//        });
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
-        mPagerAdapter = new LoginFragmentPagerAdapter(getSupportFragmentManager());
+        mPagerAdapter = new LoginFragmentPagerAdapter(getSupportFragmentManager(),this);
         setupTabs(mPagerAdapter, mViewPager, getSupportActionBar());
     }
 

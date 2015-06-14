@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBarActivity;
 
 import com.ifiwereyou.BuildConfig;
 import com.ifiwereyou.activities.ChallengeActivity;
-import com.ifiwereyou.activities.MainActivity;
+import com.ifiwereyou.fragments.ChallengeFragment;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +28,7 @@ import static org.junit.Assert.assertNotNull;
 public class ChallengeActivityTest {
 
     private ChallengeActivity activity;
+    ChallengeFragment challengeFragment;
 
     @Before
     public void setup() {
@@ -33,11 +38,20 @@ public class ChallengeActivityTest {
                 .start()
                 .resume()
                 .get();
+        challengeFragment = new ChallengeFragment();
+        startFragment(challengeFragment, activity);
     }
 
     @Test
     public void checkNextActivityNotNull() throws Exception {
         assertNotNull(activity);
+    }
+
+    public void startFragment(Fragment fragment, ActionBarActivity activity){
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(fragment,null);
+        fragmentTransaction.commit();
     }
 
 
